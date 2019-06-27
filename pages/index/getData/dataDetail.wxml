@@ -1,0 +1,46 @@
+<template name="detailXml">
+  <!--pages/index/addPeople/addPeople.wxml-->
+  <view class='container'>
+    <form bindsubmit="formSubmit">
+      <view class='section'>
+        <view class='content'>
+          <view class='eachInfor' wx:if='{{detail.task_id}}'>
+            <label>车主姓名</label>
+            <text class='redInfor' wx:if='{{nameErr}}'>！</text>
+            <input type='text' name='trueName' id='trueName' bindfocus='cancelRed' placeholder='请输入联系人姓名' />
+
+          </view>
+          <view class='eachInfor'>
+            <label>联系电话</label>
+            <text class='redInfor' wx:if="{{mobileErr}}">！</text>
+            <input type='text' bindfocus='cancelRed' name='trueMobile' id='trueMobile' placeholder='请输入联系电话' />
+          </view>
+
+          <view class='eachInfor'>
+            <label>车牌号码</label>
+            <text class='redInfor' wx:if="{{carNoErr}}">！</text>
+            <input type='text' id='trueCar' name='trueCar' bindfocus='cancelRed' placeholder='请输入车牌号码' />
+          </view>
+          <view class='eachInfor'>
+            <label>救援类型</label>
+            <radio-group name='radio'>
+              <radio checked='checked' value='1'>搭电</radio>
+              <radio value='2'>换胎</radio>
+            </radio-group>
+          </view>
+          <view class='eachInfor'>
+            <label class='inforLabelArea'>救援地址</label>
+            <text class='redInfor' wx:if="{{addressErr}}">！</text>
+            <textarea class='inforTestArea' id='address' name='address' bindfocus='cancelRed' placeholder='请输入拖车地址'></textarea>
+          </view>
+
+          <view class='eachInfor'>
+            <label>备　　注</label>
+            <input type='text' name='secondinfor' placeholder='请输入备注信息' /> </view>
+          <button class='btn' formType="submit" wx:if='{{!allOver}}'>添 加</button>
+          <button class='btn' style='background:#BBBBBB;color:#fff' wx:if='{{allOver}}'>添 加</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</template>

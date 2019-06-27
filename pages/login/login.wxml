@@ -1,0 +1,44 @@
+<view class='container'>
+  <view class='back'>
+    <view class="page__hd i-header">
+      <image src='../img/logo@2x.png'></image>
+    </view>
+    <view class="section">
+      <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class='login_Infor'>
+          <view class='neme_cell'>
+            <view class='login_icon'>
+              <image src='../img/userIcon.png'></image>
+            </view>
+            <view class='name_input'>
+              <input type='text' name='name' placeholder='请输入您的帐号' value='{{userName}}' bindfocus='watchName' />
+            </view>
+          </view>
+          <view class='neme_cell pass_cell'>
+            <view class='login_icon'>
+              <image src='../img/psw.png'></image>
+            </view>
+            <view class='name_input'>
+              <input type='password' placeholder='请输入您的密码' name='pass' value='{{userPwd}}' bindfocus='watchPass' />
+            </view>
+
+          </view>
+    
+            <view class='remind userNull' wx:if='{{userNull}}'>！用户名不能为空</view>
+            <view class='remind pswNull' wx:if='{{pswNull}}'>!密码不能为空</view>
+            <view class='remind error' wx:if='{{error}}'>！用户名或密码错误</view>
+    
+           <view class='forget_pass'>
+            <text bindtap='toeditPsw'>忘记密码？</text>
+          </view>
+          <view class='btn_cell'>
+            <button wx:if='{{!logining}}' form-type='submit'>登录</button>
+            <button wx:if='{{logining}}'>登录中...</button>
+          </view>
+         
+        </view>
+
+      </form>
+    </view>
+  </view>
+</view>

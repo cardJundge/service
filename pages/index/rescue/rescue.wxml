@@ -1,0 +1,7 @@
+<!--pages/index/adminPeople/adminPeople.wxml-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='padding-top:{{paddingTop}}'>
+  <import src="../getData/list.wxml" />
+  <template is="listXml" data="{{allData,titTop}}" />
+</view>

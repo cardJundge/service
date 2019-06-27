@@ -1,0 +1,157 @@
+.wxSortPickerViewTemTags{
+  position: fixed;
+  top: 0px;
+  right: 0;
+  background-color: #fff;
+  color: cornflowerblue;
+  z-index: 3
+}
+.wxSortPickerViewTemTag{
+  text-align: center;
+  padding: 2px;
+  font-size: 12px;
+}
+.wxSortPickerViewFixedTag{
+  position: fixed;
+  width: 100%;
+}
+
+
+.wxSortPickerViewItem{
+  border-bottom: 1px solid #eee;
+  margin-left: 5px;
+}
+/* pages/index/adminPeople/adminPeople.wxss */
+
+.section{
+  text-align: center;
+}
+.eachInfor{
+  display: inline-block;
+  width:94%;
+  padding: 5px 0px;
+}
+.headImg{
+  text-align: center;
+  display: inline-block;
+  width:18%;
+  vertical-align: top;
+  padding: 15px 0px;
+  border-radius: 5px;
+}
+.headPro{
+  width:32px;
+  height: 32px;
+}
+.peopleInfor{
+  display: inline-block;
+  width:73%;
+  vertical-align: top;
+  font-size:14px;
+  text-align: left;
+  padding-left: 10px;
+  position: relative;
+  height: 70px;
+}
+.opration{
+  display: inline-block;
+  width:60px;
+  position: absolute;
+  top:20px;
+  font-size:12px;
+  background: #3891F8;
+  color:#fff;
+  right:10px;
+}
+
+.phoneNum{
+  padding-left:15px;
+}
+.name{
+  color:#2A2A2A;
+  display: inline-block;
+  width:24%;
+}
+.classify{
+  font-size:10px;
+  color:#aaa;
+  margin-top: 5px;
+}
+.state{
+  display: inline-block;
+  padding: 1px 6px;
+  font-size:10px;
+  color:green;
+  border-radius: 5px;
+  margin-left:20px;
+}
+.modal,.carHostModal{
+  position: fixed;
+  width:100%;
+  height: 100vh;
+  top:0px;
+  left:0px;
+  background: rgba(150,150,150,0.6);
+  z-index: 2
+}
+.modalContent{
+  position: fixed;
+  width:100%;
+  bottom: 0px;
+  background: #fff;
+  padding: 10px 0px;
+  color:#6F6F6F;
+}
+.modaleach{
+  line-height: 40px;
+  font-size: 14px;
+  padding-left: 20px
+}
+.forbide{
+  width:18px;
+  height: 18px;
+  vertical-align: middle;
+}
+.carHostcontent{
+  width:70%;
+  background: #fff;
+  margin:0px auto;
+  margin-top:50%;
+  border-radius:10px;
+}
+.confirm{
+  padding: 20px;
+  color:#080808;
+  border:1px solid #ccc;
+}
+.cancel{
+  display:inline-block;
+  width:49%;
+  text-align:center;
+  color:#080808;
+}
+.yes{
+  color:#218918;
+  border-left:1px solid #ccc;
+  padding: 10px 0px;
+}
+.wxSortPickerViewTag{
+  background-color: #eee;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 5px;
+  text-align: left;
+}
+.moduleCss{
+  display: inline-block;
+  width:35%;
+}
+.groupmonster{
+  display: inline-block;
+  width:40%;
+  color:#3891F8;
+  font-size:10px;
+}

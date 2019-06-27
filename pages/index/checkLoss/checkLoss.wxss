@@ -1,0 +1,21 @@
+@import '../maintain/maintain.wxss';
+.classify_tit{
+  padding-top:4px;
+}
+.classify_tit view{
+  display:inline-block;
+  width:33%;
+  text-align: center;
+  height:60rpx;
+  line-height:60rpx;
+  font-size: 30rpx;
+}
+.check,.sz,.bd{
+  width:70%!important;
+  color:#3891F8;
+  border-bottom: 2px solid #3891F8;
+}
+/* .loss{
+  color:#888;
+  width:70%!important;
+} */

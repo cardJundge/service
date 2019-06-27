@@ -1,0 +1,56 @@
+<view class='container1' wx:if='{{first_page}}'>
+  <form bindsubmit="formSubmit">
+    <view class='section'>
+      <view class='content'>
+        <view class='eachInfor'>
+          <label>客户姓名</label>
+          <text class='redInfor' wx:if='{{nameErr}}'>！</text>
+          <input type='text' bindinput='trueName' value='{{trueName_n}}' name='trueName' id='trueName' bindfocus='cancelRed' placeholder='请输入联系人姓名' />
+        </view>
+        <view class='eachInfor'>
+          <label>联系电话</label>
+          <text class='redInfor' wx:if="{{mobileErr}}">！</text>
+          <input type='text' bindfocus='cancelRed' value='{{mobile_n}}' bindinput='mobile' name='trueMobile' id='trueMobile' placeholder='请输入联系电话' />
+        </view>
+        <view class='eachInfor'>
+          <label>车牌号</label>
+          <text class='redInfor' wx:if="{{carNoErr}}">！</text>
+          <input type='text' bindinput='carNo' value='{{carNo_n}}' bindfocus='cancelRed' name='trueCar' id='trueCar' placeholder='请输入车牌号' />
+        </view>
+        <view class='eachInfor'>
+          <label>品牌
+            <text class='redInfor' wx:if="{{carTypeErr}}">！</text>
+          </label>
+          <view bindtap='toBrand' style='display:inline-block;width:50%;vertical-align:middle'>
+            <text wx:if='{{!choosedBrand}}'>--去选择--</text>
+            <view style='display:inline-block;vertical-align:middle' wx:if='{{choosedBrand}}'>
+              <text>{{brandName}}</text>
+              <image src='../../../img/right.png' style='width:16px;height:16px;vertical-align:middle;'></image>
+            </view>
+          </view>
+        </view>
+        <view class='eachInfor'>
+          <label>备注</label>
+          <input type='text' value='{{remark}}' bindinput='remark' name='secondinfor' placeholder='请输入备注信息' /> </view>
+        <view class='analyze' bindtap='toAnalyze'>
+          <text>短信解析</text> </view>
+        <button class='btn' wx:if='{{!allOver}}' formType="submit">添 加</button>
+        <button class='btn' style='background:#BBBBBB;color:#fff' wx:if='{{allOver}}'>添 加</button>
+      </view>
+    </view>
+  </form>
+</view>
+<view wx:if='{{!first_page}}'>
+  <form bindsubmit='analyze'>
+    <view style='text-align:center;background:#fff;'>
+      <view class='eachInfor' style='display:inline-block;width:94%;text-align:left;'>
+        <label style='width:100%;'>粘贴短信</label>
+        <textarea name='infor' bindfocus='writing' style='line-height:22px;border:1px solid #ddd;margin:0px auto;width:100%;height:200px;overflow:scroll' maxlength='9999999' placeholder='请粘贴短信' bindblur='ff'></textarea>
+        <view wx:if='{{tip}}' class='redInfor'>请粘贴短信</view>
+        <view class='analyze' bindtap='todirect'>
+          <text>直接填写</text> </view>
+      </view>
+      <button class='btn' formType="submit" style='width:80%;'>解析短信</button>
+    </view>
+  </form>
+</view>

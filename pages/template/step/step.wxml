@@ -1,0 +1,38 @@
+<template name="zan-steps">
+  <view class="zan-steps zan-steps--{{ type == 'vertical' ? 'vsteps' : 'steps' }} zan-steps--{{ steps.length }} {{ className }}">
+    <view style='width:100%;height:20px;background:#fff'></view>
+    <view wx:for="{{ steps }}" wx:for-item="step" wx:key="unique" wx:for-index="index" class="zan-steps__step {{ hasDesc ? 'zan-steps__step--db-title' : '' }} {{ index == 0 ? 'zan-steps__step--first-child' : '' }} {{ index == steps.length - 1 ? 'zan-steps__step--last-child' : '' }} {{ step.done ? 'zan-steps__step--done' : '' }} {{ step.current ? 'zan-steps__step--cur' : '' }}">
+
+      <view style='display:inline-block;width:90%;'>
+        <view wx:if='{{step.color=="grey"}}' class="stepText">
+          <text>{{ step.text }}</text>
+          <view wx:if='{{step.trace=="jieche"}}' id='jieche' bindtap='showGetCar'>查看轨迹</view>
+          <view class='' wx:if='{{step.trace=="songche"}}' bindtap='showGetCar' id='songche'>查看轨迹</view>
+        </view>
+        <view wx:if='{{step.color=="blue"}}' class="stepTextblue">
+          <text>{{ step.text }}</text>
+          <view class='' id='jieche' bindtap='showGetCar' wx:if='{{step.trace=="jieche"}}'>查看轨迹</view>
+          <view class='' wx:if='{{step.trace=="songche"}}' bindtap='showGetCar' id='songche'>查看轨迹</view>
+
+        </view>
+        <view wx:if='{{step.color=="grey"}}' class='stepTime'>
+          <view>{{ step.month }}</view>
+          <view>{{ step.time }}</view>
+        </view>
+        <view wx:if='{{step.color=="blue"}}' class='stepTimeblue'>
+          <view>{{ step.month }}</view>
+          <view>{{ step.time }}</view>
+        </view>
+
+        <view class="stepPicell">
+          <image wx:for='{{step.pic}}' wx:if='{{item}}' class='stepPic' src='https://www.chedou123.cn/uploads/work/{{item}}' id='https://www.chedou123.cn/uploads/work/{{item}}' bindtap='openImg'></image>
+        </view>
+      </view>
+      <view class="zan-steps__icons">
+        <view wx:if='{{step.color=="grey"}}' class="proCircle" style=''></view>
+        <view wx:if='{{step.color=="blue"}}' class="proCircleblue" style=''></view>
+      </view>
+      <view class="zan-steps__line" wx:if='{{step.first=="has"}}'></view>
+    </view>
+  </view>
+</template>

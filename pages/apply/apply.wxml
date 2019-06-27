@@ -1,0 +1,18 @@
+<view class='container'>
+  <view class='content'>
+    <form bindsubmit='submitData'>
+      <view class='each'>
+        <input type='text' placeholder='商户名称'/>
+      </view>
+      <view class='each'>
+        <input type='text' placeholder='联系手机'/>
+      </view>
+      <view class='each'>
+        <input type='text' placeholder='商户类型'/>
+      </view>
+      <view class='button_cell'>
+        <button>提交申请</button>
+      </view>
+    </form>
+  </view>
+</view>

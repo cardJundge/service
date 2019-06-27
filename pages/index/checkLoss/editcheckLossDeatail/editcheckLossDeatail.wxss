@@ -1,0 +1,60 @@
+/* pages/index/checkLoss/editcheckLossDeatail/editcheckLossDeatail.wxss */
+.sectionDe{
+  padding: 0px;
+}
+picker{
+  display: inline-block;
+  width:70%;
+}
+radio-group{
+  display: inline-block;
+   width:70%;
+}
+radio-group radio{
+   display: inline-block;
+   width:40%;
+}
+.tit{
+  width:100%;
+
+}
+.tit text{
+  margin-left: 10px;
+  color:#3891F8;
+}
+.eachInforDe{
+  margin: 0px 10px;
+}
+.third_tit{
+  padding:10px;
+  color:rgb(107, 175, 252);
+}
+.third_cell .eachInforDe{
+  border:none;
+}
+.third_tit image{
+  width:20px;
+  height: 20px;
+  float:right;
+  margin-top: 14px;
+  vertical-align: middle;
+}
+.eachInfor{
+  margin: 0px 10px;
+}
+
+.eachInfor label{
+  display: inline-block;
+  width:30%;
+  vertical-align:top;
+color:#3A3937;
+
+}
+.eachInfor{
+  line-height: 40px;
+}
+.eachInfor input{
+  display: inline-block;
+  width:180px;
+  overflow: hidden;
+}

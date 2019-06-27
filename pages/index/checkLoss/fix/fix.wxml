@@ -1,0 +1,53 @@
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+<view wx:if='{{noService}}' style='text-align:center;padding-top:160px;fon-size:14px;color:#3891F8;line-height:40px;'>暂无合作服务商，请先添加合作服务商
+<view style='text-decoration:underline' bindtap='back'>返回</view>
+</view>
+<view wx:if='{{loaded}}'>
+<view class='ok_btn'>
+  <view bindtap='optionCar' wx:if='{{!ok_btn}}'>
+  <button>确 定</button>
+  </view>
+  <view  wx:if='{{ok_btn}}'>
+  <button style='background:#aaa;'>确 定</button>
+  </view>
+</view>
+<view class="container1" style="height: {{systemHeight}};">
+  <scroll-view scroll-y style="height: {{systemHeightC}};" >
+    <view id='{{itemCell.id}}' wx:for='{{allList}}' wx:for-item='itemCell'>
+      <view class='letter' wx:if='{{itemCell.list.length!=0}}'>
+        <text>{{itemCell.id}}</text>
+      </view>
+      <view wx:if='{{itemCell.list.length!=0}}' wx:for='{{itemCell.list}}' bindtap='changeSeries' wx:for-item='item' data-name='{{item.name}}' id='{{item.id}}' data-letter='{{itemCell.id}}' data-name='{{item.name}}' class='{{item.class}}'>
+        <view class='each_brand'>
+          <view class='img_cell'>
+            <image src='{{hostName}}/{{item.Logo}}' class='logo_img'></image>
+          </view>
+          <view class='brand_name'>{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+
+
+  </scroll-view>
+  <view class='series_cell'>
+    <view class='letter_null'>
+      <text></text>
+    </view>
+    <scroll-view scroll-y style="height: {{systemHeightC}};">
+      <view class='{{itemSeries.class}}' bindtap='chooseSeries' id='{{itemSeries.id}}' wx:for='{{series}}' wx:for-item='itemSeries'>
+        <view class='brand_name' style='width:100%;'>
+          <text class='series_name' wx:if='{{itemSeries.short_name}}' style='display:inline-block;width:80%;'>{{itemSeries.short_name}}</text>
+          <text class='series_name' wx:else style='display:inline-block;width:80%;'>{{itemSeries.name}}</text>
+          <view style='display:inline-block;width:20%;'>
+            <image wx:if='{{itemSeries.class=="each_series active_series"}}' src='../../../img/active.png' style='width:20px;height:20px;vertical-align:middle;'></image>
+          </view>
+          
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+</view>
+</view>

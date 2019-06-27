@@ -1,0 +1,9 @@
+<template name="top">
+<view class='top'>
+  <view class='{{title_cell}}'>
+    <view class='{{back_cell}}'>
+      {{titleTop}}
+    </view>
+  </view>
+</view>
+</template>

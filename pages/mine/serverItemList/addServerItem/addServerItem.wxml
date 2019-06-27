@@ -1,0 +1,91 @@
+
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='container'>
+  <view class='img_cell_loading'></view>
+  <view class='mian_content'>
+    <form bindsubmit='addServer'>
+      <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>分类</view>
+          <view class='value'>
+            <picker value="{{index}}" name='classify' bindchange="changeClassify" range="{{classify}}">
+              <view class="tui-picker-detail">
+                <text class='redInfor' wx:if='{{classifyError}}'>！</text>
+                <text>{{classify[index]}}</text>
+                <image class='down' src='../../../img/down3.png'></image>
+              </view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>支持</view>
+          <view class='value'>
+            <checkbox-group name='support'>
+              <checkbox checked='true'>未消费，过期退</checkbox>
+              <checkbox checked='true'>过期退</checkbox>
+            </checkbox-group>
+          </view>
+        </view>
+      </view> -->
+      <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>市场价</view>
+          <view class='value'>
+            <input type='text' bindfocus='cancelRed' id='marketPrice' placeholder='请输入市场价格' name='marketPrice' />
+             <text class='redInfor' wx:if='{{marketPriceError}}'>！</text>
+          </view>
+        </view>
+      </view>
+      <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>平台价</view>
+          <view class='value'>
+            <input type='text' bindfocus='cancelRed' id='truePrice' placeholder='请输入平台价格' name='truePrice' />
+            <text class='redInfor' wx:if='{{truePriceError}}'>！</text>
+          </view>
+        </view>
+      </view>
+      <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>有效期</view>
+          <view class='value'>
+            <!-- <input type='date' placeholder='请选择有效期'/> -->
+            <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" name='data' bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+              <view class="tui-picker-detail">
+                <text>{{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}:{{dateTimeArray1[5][dateTime1[5]]}}</text>
+                <image class='down' src='../../../img/down3.png'></image>
+              </view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>支付方式</view>
+          <view class='value' name='payWay'>
+            <checkbox checked='true'>微信</checkbox>
+            <checkbox checked='true'>金豆</checkbox>
+          </view>
+        </view>
+      </view> -->
+      <view class='each_Item'>
+        <view class='item_content' style='border:none'>
+          <view class='label'>缩略图</view>
+          <view class='value'>
+            <image src='../../../img/plus.png' bindtap='addImage' wx:if='{{!imagePath}}'></image>
+            <image src='{{hostName}}uploads/project/{{imagePath}}' bindtap='addImage' wx:else></image>
+          </view>
+        </view>
+      </view>
+      <view class='each_Item'>
+        <view class='item_content' style='border:none'>
+          <button form-type='submit' wx:if='{{!adding}}'>确 定</button>
+          <button form-type='submit' wx:if='{{adding}}'>确 定</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

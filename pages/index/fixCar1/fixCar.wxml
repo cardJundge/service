@@ -1,0 +1,80 @@
+
+<!-- <import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='padding-top:{{paddingTop}}'>
+<view class='tit' style='top:{{titTop}}'>
+  <view class='search'>
+    <view class='searchIcon zan-icon zan-icon-search'></view>
+    <input class='searchInput' type='text' value='{{keyWordsTemp}}' bindinput='toChoose' placeholder='搜索业务' />
+    <view class='zan-icon zan-icon-clear' bindtap='cancelSearch' style='font-size:14px;color:#A3A3A3' wx:if='{{cancelSearchIcon}}'></view>
+  </view>
+  <view class='titIcon'> -->
+    <!-- <view class='icon iconAdd' bindtap='toAddAgency'>
+      <image src='../../img/add.png'></image>
+    </view> -->
+  <!-- </view>
+</view>
+<view class='section'>
+  <view class='content'>
+    <view class='eachInfor' wx:for='{{allData.listAtrr}}' wx:for-index="idx" wx:for-item="itemName">
+     <form bindsubmit='submitFormId' report-submit='true'>
+      <view class='eachData eachPos' id="{{itemName.id}}" bindtap='toDetail'>
+       <button form-type='submit' hover-class="none" class='formIdBtn'>
+        <view>
+          <view class='orderId' style='line-height:36px;'>
+            <label>订单号:</label>
+            <text>{{itemName.push_no}} </text>
+          </view>
+          <text wx:if='{{itemName.name}}'>{{itemName.name}} / </text>
+          <text wx:if='{{itemName.car_no}}'>{{itemName.car_no}} / </text>
+          <text wx:if='{{itemName.mobile}}'>{{itemName.mobile}}</text>
+          <view style='display:inline-block;position:absolute;right:0px' wx:if='{{itemName.is_push==0}}'>
+            <view class='states_cell' wx:if='{{itemName.result!=1}}'>
+              <text class='state' wx:if='{{itemName.result==0}}'>未反馈</text>
+              <text class='state' wx:if='{{itemName.result==1}}'>成　功</text>
+              <text class='state' wx:if='{{itemName.result==2}}' style='background:red'>失败</text>
+              <text class='state' wx:if='{{itemName.result==3}}'>不确定</text>
+            </view>
+            <view class='states_cell' wx:if='{{itemName.result==1}}'>
+              <text class='state' wx:if='{{itemName.status==0}}'>待审核</text>
+              <text class='state' style='background:red' wx:if='{{itemName.status==1}}'>审核失败</text>
+              <text class='state' wx:if='{{itemName.status==2}}'>审核成功</text>
+              <text class='state' wx:if='{{itemName.status==3}}'>已分配</text>
+              <text class='state' wx:if='{{itemName.status==4}}'>进行中</text>
+              <text class='state' wx:if='{{itemName.status==5}}'>已取消</text>
+              <text class='state' wx:if='{{itemName.status==6}}'>已完成</text>
+            </view>
+          </view>
+          <view style='display:inline-block;position:absolute;right:0px' wx:if='{{itemName.is_push==1}}'>
+            <text class='state' style='background:#AAAAAA'>已取消</text>
+          </view>
+
+        </view>
+        <view class='classify'>
+          <text>{{itemName.add_time}}</text>
+        </view>
+        </button>
+      </view>
+      
+      <view>
+
+      </view>
+      </form>
+    </view>
+    
+  </view>
+
+  <view class='gifCell' wx:if='{{allData.gif}}'>
+    <image src='../../img/loading.gif' class='gif'></image>
+  </view>
+  <view class='moredata' wx:if='{{allData.moredata}}'>
+    <text>没有更多数据~</text>
+  </view>
+</view>
+</view> -->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='padding-top:{{paddingTop}}'>
+  <import src="../getData/list.wxml" />
+  <template is="listXml" data="{{allData,titTop}}" />
+</view>

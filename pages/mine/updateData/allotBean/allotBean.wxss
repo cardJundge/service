@@ -1,0 +1,80 @@
+/* pages/index/updateData/allotBean/allotBean.wxss */
+.container{
+  text-align: center;
+}
+.content{
+  font-size: 36rpx;
+  margin-top: 60rpx;
+  display: inline-block;
+  width:80%;
+}
+.title_text{
+  display: inline-block;
+  width:60%;
+  text-align: left;
+}
+.Icon{
+  display: inline-block;
+  width:40%;
+  text-align: right;
+}
+.wx-switch-input{
+  width:100rpx !important;
+  height:60rpx !important;
+}
+.wx-switch-input::before{
+  width:100rpx !important;
+  height: 62rpx !important;
+}
+.wx-switch-input::after{
+  width: 54rpx !important;
+  height: 54rpx !important;
+}
+.module_cell{
+  position: relative;
+  margin-top: 30px;
+  font-size: 30rpx;
+}
+.white{
+  position: absolute;
+  top:0px;
+  left: 0px;
+  width:100%;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+  z-index: 2
+}
+.each_module{
+  line-height: 100rpx;
+}
+.check_cell{
+  display: inline-block;
+  text-align: left;
+  width:8%;
+  vertical-align: middle;
+}
+.check_cell image{
+  width:36rpx;
+  height: 36rpx;
+}
+.module_text{
+  width: 50%;
+  display: inline-block;
+}
+.input_cell{
+  width:40%;
+  text-align: left;
+  display: inline-block;
+  border:1rpx solid rgb(165, 165, 165);
+  vertical-align: middle;
+}
+.input_cell input{
+  font-size: 30rpx;
+  margin-left: 6rpx;
+  color:rgb(165, 165, 165);
+}
+.submit{
+  margin-top: 30px;
+  background: #3891F8;
+  color:#fff;
+}

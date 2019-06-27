@@ -1,0 +1,56 @@
+<!--pages/index/updateData/allotBean/allotBean.wxml-->
+<view class='container'>
+  <view class='content'>
+    <view class='tit1'>
+      <view class='title_text'>业务模块分配车豆</view>
+      <view class='Icon'>
+        <switch name="switch" bindchange='switchChange' checked='true' />
+      </view>
+    </view>
+    <view class='module_cell'>
+      <view class='module_content'>
+        <view class='each_module'>
+          <view class='check_cell'>
+            <image src='../../../img/check.png'></image>
+          </view>
+          <view class='module_text'>查勘定损</view>
+          <view class='input_cell'>
+            <input type='text' value='100' disabled='{{input_disabled}}'/>
+          </view>
+        </view>
+        <view class='each_module'>
+          <view class='check_cell'>
+            <image src='../../../img/check.png'></image>
+          </view>
+          <view class='module_text'>查勘定损</view>
+          <view class='input_cell'>
+            <input type='text' value='100' disabled='{{input_disabled}}'/>
+          </view>
+        </view>
+        <view class='each_module'>
+          <view class='check_cell'>
+            <image src='../../../img/check.png'></image>
+          </view>
+          <view class='module_text'>查勘定损</view>
+          <view class='input_cell'>
+            <input type='text' value='100' disabled='{{input_disabled}}'/>
+          </view>
+        </view>
+        <view class='each_module'>
+          <view class='check_cell'>
+            <image src='../../../img/check.png'></image>
+          </view>
+          <view class='module_text'>查勘定损</view>
+          <view class='input_cell'>
+            <input type='text' value='100' disabled='{{input_disabled}}'/>
+          </view>
+        </view>
+         <view>
+      <button class='submit'>保存</button>
+    </view>
+      </view>
+      <view class='white' wx:if='{{switchClose}}'></view>
+    </view>
+   
+  </view>
+</view>

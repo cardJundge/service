@@ -1,0 +1,58 @@
+<!--pages/index/addPeople/addPeople.wxml-->
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view  class='{{container}}'>
+  <view class='pageOne' wx:if='{{!pageTwo}}'>
+    <form bindsubmit='analyze'>
+      <view class='eachInfor'>
+        <label>粘贴短信</label>
+        <textarea name='infor' style='line-height:22px;border:1px solid #ddd;margin:0px auto;width:98%;height:200px;overflow:scroll' maxlength='9999999' placeholder='请粘贴短信' ></textarea>
+        <view class='redirect' bindtap='tosecondPagere'>直接填写</view>
+        <view wx:if='{{tip}}' class='redInfor'>请粘贴短信</view>
+      </view>
+      <button class='btn' formType="submit">解析短信</button>
+    </form>
+  </view>
+
+  <view class='pageTwo' wx:if='{{pageTwo}}'>
+    <form bindsubmit="formSubmit">
+      <view class='section'>
+        <view class='content'>
+          <view class='eachInfor'>
+            <label>车主姓名</label>
+            <text class='redInfor' wx:if='{{nameErr}}'>！</text>
+            <input type='text' name='trueName' id='trueName' bindfocus='cancelRed' value='{{userName}}' placeholder='请输入联系人姓名' />
+
+          </view>
+          <view class='eachInfor'>
+            <label>联系电话</label>
+            <text class='redInfor' wx:if="{{mobileErr}}">！</text>
+            <input type='text'  bindfocus='cancelRed' name='trueMobile' id='trueMobile' value='{{userPhone}}' placeholder='请输入联系电话' />
+          </view>
+
+          <view class='eachInfor'>
+            <label>车牌号码</label>
+            <text class='redInfor' wx:if="{{carNoErr}}">！</text>
+            <input type='text' value='{{userCar}}' id='trueCar' name='trueCar' bindfocus='cancelRed' placeholder='请输入车牌号码' />
+          </view>
+          <view class='eachInfor'>
+            <label class='inforLabelArea'>故障地址</label>
+            <text class='redInfor' wx:if="{{addressErr}}">！</text>
+            <textarea class='inforTestArea' id='address' name='accident_address' bindfocus='cancelRed' value='{{address}}' placeholder='请输入拖车地址'></textarea>
+          </view>
+            <view class='eachInfor'>
+            <label class='inforLabelArea'>目的地址</label>
+            <text class='redInfor' wx:if="{{deaddressErr}}">！</text>
+            <textarea class='inforTestArea' id='deaddress' name='deaddress' bindfocus='cancelRed' value='{{deaddress}}' placeholder='请输入拖车地址'></textarea>
+          </view>
+          <view class='eachInfor'>
+            <label>备　　注</label>
+            <textarea name='infor' style='line-height:22px;border:1px solid #ddd;margin:0px auto;width:98%;overflow:scroll' value='{{shortMessage}}' maxlength='9999999'></textarea></view>
+          <view class='redirect' bindtap='tofirstPage' style='margin:10px 0px;'>去解析</view>
+          <button class='btn' formType="submit" wx:if='{{!allOver}}'>添 加</button>
+          <button class='btn' style='background:#BBBBBB;color:#fff' wx:if='{{allOver}}'>添 加</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

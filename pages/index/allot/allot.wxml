@@ -1,0 +1,39 @@
+<!--pages/index/adminPeople/adminPeople.wxml-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+<import src="../allotSort/allotSort.wxml" />
+<view wx:if='{{notask}}' style='text-align:center;font-size:14px;color:#3891F8;line-height:40px;padding-top:160px;'>
+  该模块下暂无作业员，请先添加作业员
+  <view style='text-decoration:underline' bindtap='back'>返回</view>
+</view>
+<view wx:if='{{loaded}}'>
+  <form bindsubmit="formSubmit" wx:if='{{pageReady}}'>
+    <view>
+      <view class='tit' style='padding-right:18px;top:{{titTop}}'>
+        <view class='search'>
+          <view class='searchIcon zan-icon zan-icon-search'></view>
+          <input class='searchInput' type='text' placeholder='搜索人员' />
+        </view>
+       
+      </view>
+
+      <view class='section'>
+        <view class='redInfor' wx:if='{{pNull}}' style='font-size:12px;'>请选择作业人员</view>
+        <radio-group name='task'>
+          <template is="wxSortPickerView" data="{{wxSortPickerData,paddingTop}}" />
+          <scroll-view style="width:20px;margin-top:20px;top:{{paddingTop}};height: {{wxSortPickerData.view.scrollHeight}}px;" class="wxSortPickerViewTemTags">
+        <block wx:for="{{['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#']}}" wx:for-item="item" wx:key=""> 
+            <view bindtap="wxSortPickerViewTemTagTap" data-tag="{{item}}" class="wxSortPickerViewTemTag">{{item}}</view>
+        </block>
+    </scroll-view>
+        </radio-group>
+      </view>
+    </view>
+     <button class="btn-fixed" formType="submit">确认</button>
+  </form>
+  <view>
+  
+  </view>
+</view>
+</view>

@@ -1,0 +1,281 @@
+<import src="../../../template/step/step.wxml" />
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='padding-top:{{paddingTop}}'>
+  <view class='headerDe'>
+    <view class='titDe'>业务基本信息
+      <!-- <view wx:if='{{detail.status!=6}}' bindtap='openModal' class='zan-icon zan-icon-wap-nav'></view> -->
+    </view>
+  </view>
+  <view class='sectionDe'>
+    <view class='contentDe'>
+      <view class='eachInforDe' wx:if='{{detail.detailNumber}}'>
+        <label class='inforLabel'>业务编号</label>
+        <text class='inforTest'>{{detail.detailNumber}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.detailNumber}}'>
+        <label class='inforLabel'>报案号</label>
+        <text class='inforTest'>{{detail.report_no}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.name}}'>
+        <label class='inforLabel'>客户姓名</label>
+        <text class='inforTest'>{{detail.name}}</text>
+      </view>
+
+      <view class='eachInforDe' wx:if='{{detail.brand_id}}'>
+        <label class='inforLabel'>车型</label>
+        <text class='inforTest'>{{detail.brandName}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.car_no}}'>
+        <label class='inforLabel'>车牌号码</label>
+        <text class='inforTest'>{{detail.car_no}}</text>
+      </view>
+      <view class='eachInforDe' bindtap='link' id='host' data-num='{{detail.mobile}}'>
+        <label class='inforLabel' wx:if='{{detail.mobile}}'>联系电话</label>
+        <view class='inforTest phoneText1'>
+          <text class='phoneText zan-icon zan-icon-phone'></text>
+          <text>  {{detail.mobile}}</text>
+        </view>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.task_id}}'>
+        <label class='inforLabel'>作业人员</label>
+        <text class='inforTest'>{{detail.oprator.nickname}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.task_id}}' data-num='{{detail.oprator.mobile}}' bindtap='link'>
+        <label class='inforLabel'>联系电话</label>
+        <view class='inforTest phoneText1'>
+          <text class='phoneText zan-icon zan-icon-phone'></text>
+          <text> {{detail.oprator.mobile}}</text>
+        </view>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.money}}'>
+        <label class='inforLabel'>预估金额</label>
+        <text class='inforTest'> {{detail.money}}</text>
+      </view>
+      <view class='eachInforDe'>
+        <label class='inforLabel'>推修状态</label>
+        <text class='state' wx:if='{{detail.result==0}}'>未反馈</text>
+        <text class='state' wx:if='{{detail.result==1}}'>成功</text>
+        <text class='state' wx:if='{{detail.result==2}}'>失败</text>
+        <text class='state' wx:if='{{detail.result==3}}'>不确定</text>
+        <text class='state' wx:if='{{detail.result==4}}'>客户自选</text>
+      </view>
+      <view class='eachInforDe'>
+        <label class='inforLabel'>添加时间</label>
+        <text class='inforTest'>{{detail.add_time}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.update_time}}'>
+        <label class='inforLabel'>最后更新</label>
+        <text class='inforTest'>{{detail.update_time}}</text>
+      </view>
+      <!-- <view class='eachInforDe' wx:if='{{!detail.push_service_id}}' bindtap='tofix'>
+        <label class='inforLabel'>推修</label>
+        <view style='display:inline-block;width:70%;text-align:right'>
+          <image src='../../../img/right.png' style='width:20px;height:20px;'></image>
+        </view>
+      </view> -->
+      <view class='eachInforDe position' wx:if='{{detail.push_service_id}}' bindtap=''>
+        <label class='inforLabel'>已推修</label>
+        <view style='display:inline-block;width:70%;text-align:left'>
+          {{push_service}}
+          <view class='reset' wx:if='{{detail.push_service_id&&detail.result!=1&&detail.is_push==0}}' bindtap='tofix1'>重推</view>
+        </view>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.remark}}'>
+        <label class='inforLabel'>备注</label>
+        <text class='inforTest'>{{detail.remark}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class='modalDe' wx:if='{{detail.oprationModal}}' catchtap='closeOprationModal'>
+  <view class='modalContentDe' style='height:{{ss}}' catchtap='stopBubble'>
+    <view class='eachInformodalDe' bindtap='toEdit' wx:if='{{detail.is_push==0}}'>
+      <text class='zan-icon zan-icon-edit'></text>　编辑</view>
+    <view wx:if='{{detail.is_push==0}}'>
+      <view class='eachInformodalDe' wx:if='{{detail.result!=2&&detail.result!=1}}' catchtap='toSelectPeople'>
+        <text class='zan-icon zan-icon-exchange-record'></text>　分配</view>
+    </view>
+    <view class='eachInformodalDe' catchtap='toDelete'>
+      <text class='zan-icon zan-icon-close'></text>　删除</view>
+  </view>
+</view>
+<view class='modalInforDe' wx:if='{{detail.check}}'>
+  <view class='modalInforContentDe'>
+    <view class='InforDe'>确定审核通过？</view>
+    <view bindtap='checkPass' class='' style='color:#4b0;border-bottom:1px solid #ddd;padding:10px;'> 通过</view>
+    <view class='' style='color:#f44;border-bottom:1px solid #ddd;padding:10px;' bindtap='reasonOpen'> 不通过</view>
+    <view class='' bindtap='closeModal' style='border-bottom:1px solid #ddd;padding:10px;'> 取消</view>
+  </view>
+</view>
+<view class='modalInforDe' wx:if='{{detail.reason}}'>
+  <view class='modalInforContentDe'>
+    <form bindsubmit='unpassReason'>
+
+      <view class='InforDe' style='border:none'>不通过审核的原因</view>
+      <view style='text-align:center;padding:0px 10px;'>
+        <view class='redInfor' wx:if='{{detail.reasonErr}}'>请填写不通过原因</view>
+        <textarea style='border:1px solid #aaa;width:200px;height:100px;text-align:left;margin-left:auto;margin-right:auto' name='reason'></textarea>
+      </view>
+      <button formType="submit">确认</button>
+    </form>
+  </view>
+</view>
+
+<view class='modalInforDe' wx:if='{{detail.deleteMODAL}}'>
+  <view class='modalInforContentDe'>
+    <view class='InforDe'>确定删除此业务？</view>
+    <view class='confirmDe yesDe' bindtap='confirmDelete'> 确认</view>
+    <view class='confirmDe noDe' bindtap='cancelDeleteModal'> 取消</view>
+  </view>
+</view>
+
+<view class='headerDe' wx:if='{{is_survey}}'>
+  <view class='titDe'>查勘明细</view>
+</view>
+<view class='sectionDe' style='padding-bottom:20px' wx:if='{{is_survey}}'>
+  <view class='eachInforDe' wx:if='{{ckzpp1.length!=0}}'>
+    <view class='detailTit'>人车合一</view>
+    <view>
+      <view>
+        <view class='imgOuter' wx:for='{{ckzpp1}}' wx:item='item'>
+          <image bindtap='openImg1' class='detailImg' id='{{item.imgId}}' src='{{hostName}}uploads/work/{{item.path}}'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='eachInforDe' wx:if='{{ckzpp2.length!=0}}'>
+    <view class='detailTit'>车架号</view>
+    <view wx:if='{{steps[0].outer.length!=0}}'>
+
+      <view class='imgOuter' wx:for='{{ckzpp2}}'>
+        <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+      </view>
+
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{ckzpp3.length!=0}}'>
+    <view class='detailTit'>环境照片：事故现场大环境照片，以确认事故成因。</view>
+    <view class='imgOuter' wx:for='{{ckzpp3}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{ckzpp4.length!=0}}'>
+    <view class='detailTit'>验车照片：整车斜45°角四个角拍摄。</view>
+    <view class='imgOuter' wx:for='{{ckzpp4}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{ckzpp5.length!=0}}'>
+    <view class='detailTit'>车损照片：本次事故造成损伤部位照片。</view>
+
+    <view class='imgOuter' wx:for='{{ckzpp5}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{ckzpp6.length!=0}}'>
+    <view class='detailTit'>旧伤确认</view>
+    <view class='imgOuter' wx:for='{{ckzpp6}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+
+  <view class='eachInforDe' wx:if='{{gydzp1.length!=0}}'>
+    <view class='detailTit'>事故证明</view>
+    <view class='imgOuter' wx:for='{{gydzp1}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp2.length!=0}}'>
+    <view class='detailTit'>索赔申请书</view>
+    <view class='imgOuter' wx:for='{{gydzp2}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp3.length!=0}}'>
+    <view class='detailTit'>行驶证</view>
+    <view class='imgOuter' wx:for='{{gydzp3}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp4.length!=0}}'>
+    <view class='detailTit'>驾驶证</view>
+    <view class='imgOuter' wx:for='{{gydzp4}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp5.length!=0}}'>
+    <view class='detailTit'>查勘报告</view>
+    <view class='imgOuter' wx:for='{{gydzp5}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp6.length!=0}}'>
+    <view class='detailTit'>个案签报</view>
+    <view class='imgOuter' wx:for='{{gydzp6}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp7.length!=0}}'>
+    <view class='detailTit'>拒赔材料</view>
+    <view class='imgOuter' wx:for='{{gydzp7}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp8.length!=0}}'>
+    <view class='detailTit'>从民资格证</view>
+    <view class='imgOuter' wx:for='{{gydzp8}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp9.length!=0}}'>
+    <view class='detailTit'>法院判决书</view>
+    <view class='imgOuter' wx:for='{{gydzp9}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{gydzp10.length!=0}}'>
+    <view class='detailTit'>调查单证</view>
+    <view class='imgOuter' wx:for='{{gydzp10}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{zfdzp1.length!=0}}'>
+    <view class='detailTit'>收款方账户信息</view>
+    <view class='imgOuter' wx:for='{{zfdzp1}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+  <view class='eachInforDe' wx:if='{{zfdzp2.length!=0}}'>
+    <view class='detailTit'>收款方身份证明</view>
+    <view class='imgOuter' wx:for='{{zfdzp2}}'>
+      <image bindtap='openImg1' id='{{item.imgId}}' class='detailImg' src='{{hostName}}uploads/work/{{item.path}}'></image>
+    </view>
+  </view>
+</view>
+
+<view class='headerDe' wx:if='{{steps.length>0}}'>
+  <view class='titDe'>
+    <text class='progressTit'>业务进度</text>
+  </view>
+</view>
+
+<view class="zan-panel" wx:if='{{steps.length>0}}'>
+  <view class="zan-cell zan-cell">
+    <view class="zan-cell__bd">
+      <template is="zan-steps" data="{{ type: 'vertical', hasDesc: true, steps }}"></template>
+    </view>
+  </view>
+</view>
+<view class='headerDe' wx:if='{{detail.result==1}}'>
+  <view class='titDe'>核损金额</view>
+</view>
+<view class='eachInforDe position' wx:if='{{detail.result==1}}' style='text-align:center'>
+  <form bindsubmit='checkMoney'>
+    <input type='text' name='money' placeholder='请输入核损金额' class='money_check' />
+    <button class='money_check_btn' form-type='submit'>提交</button>
+  </form>
+</view>

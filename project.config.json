@@ -1,0 +1,320 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wx2aceddca15ff1ba5",
+	"projectname": "%E8%BD%A6%E8%B1%86%E6%9C%8D%E5%8A%A1%E5%95%86",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 46,
+			"list": [
+				{
+					"id": -1,
+					"name": "代办理赔模块",
+					"pathName": "pages/index/adminAgency/adminAgency",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "zhuye",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "操作员",
+					"pathName": "pages/index/adminPeople/adminPeople",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "代办理赔详情",
+					"pathName": "pages/index/claimsDetail/claimsDetail",
+					"query": ""
+				},
+				{
+					"id": 4,
+					"name": "操作员修改",
+					"pathName": "pages/index/adminPeople/adminPeople",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "分配操作员编辑",
+					"pathName": "pages/index/allotSort/allotSort",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分配操作员",
+					"pathName": "pages/index/allot/allot",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "管理分组",
+					"pathName": "pages/index/adminPeople/adminGroup/adminGroup",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "查勘详情",
+					"pathName": "pages/index/checkLoss/checkLossDeatail/checkLossDeatail",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "风险调查编辑",
+					"pathName": "pages/index/risk/editRisk/editRisk",
+					"query": "module=58"
+				},
+				{
+					"id": 10,
+					"name": "添加风险调查",
+					"pathName": "pages/index/risk/addRisk/addRisk",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "查勘详情",
+					"pathName": "pages/index/checkLoss/addcheckLoss/addcheckLoss",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "数据统计",
+					"pathName": "pages/index/allData/allData",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分配操作员",
+					"pathName": "pages/index/checkLoss/checkLoss",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "推修",
+					"pathName": "pages/index/fixCar/fixCar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "修改信息",
+					"pathName": "pages/index/updateData/updateData",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "推修",
+					"pathName": "pages/index/checkLoss/fix/fix",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设置品牌",
+					"pathName": "pages/index/updateData/brand/brand",
+					"query": ""
+				},
+				{
+					"id": 18,
+					"name": "用户资料",
+					"pathName": "pages/index/updateData/updateData",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关联服务商",
+					"pathName": "pages/index/updateData/service/service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "推修",
+					"pathName": "pages/index/fixCar/fixCar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "查堪",
+					"pathName": "pages/index/checkLoss/checkLoss",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "维修详情",
+					"pathName": "pages/index/fixCar1/fixCarDeatail/fixCarDeatail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "维修列表",
+					"pathName": "pages/index/fixCar1/fixCar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "添加推修",
+					"pathName": "pages/index/fixCar/addFixCar/addFixCar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "dcs",
+					"pathName": "pages/index/updateData/updateData",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "xx",
+					"pathName": "pages/index/updateData/brand/brand",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "添加查勘定损",
+					"pathName": "pages/index/checkLoss/addcheckLoss/addcheckLoss",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关联服务商",
+					"pathName": "pages/index/updateData/service/service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "申请",
+					"pathName": "pages/apply/apply",
+					"query": ""
+				},
+				{
+					"id": 30,
+					"name": "商户账户",
+					"pathName": "pages/mine/updateData/Account/Account",
+					"query": ""
+				},
+				{
+					"id": 31,
+					"name": "分配车豆",
+					"pathName": "pages/index/updateData/allotBean/allotBean",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": 33,
+					"name": "推修详情",
+					"pathName": "pages/index/fixCar1/fixCarDeatail/fixCarDeatail",
+					"query": "listId=252"
+				},
+				{
+					"id": -1,
+					"name": "账户明细",
+					"pathName": "pages/mine/updateData/Account/accountDetail/accountDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "紧急救援",
+					"pathName": "pages/index/rescue/rescue",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "添加紧急救援",
+					"pathName": "pages/index/rescue/addRescue/addRescue",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "修改密码",
+					"pathName": "pages/mobilePsw/mobilePsw",
+					"query": ""
+				},
+				{
+					"id": 38,
+					"name": "修改密码2",
+					"pathName": "pages/editPsw1/editPsw1",
+					"query": "mobile=18392390727"
+				},
+				{
+					"id": -1,
+					"name": "订单管理",
+					"pathName": "pages/mine/allOder/allOder",
+					"query": ""
+				},
+				{
+					"id": 40,
+					"name": "订单详情",
+					"pathName": "pages/mine/allOder/orderDetail/orderDetail",
+					"query": "order_id=4&formId=1"
+				},
+				{
+					"id": 41,
+					"name": "编辑查勘定损",
+					"pathName": "pages/index/checkLoss/editcheckLossDeatail/editcheckLossDeatail",
+					"query": "module=18677"
+				},
+				{
+					"id": -1,
+					"name": "关联服务商",
+					"pathName": "pages/index/updateData/service/service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关联服务商",
+					"pathName": "pages/mine/updateData/service/service",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设置项目",
+					"pathName": "pages/mine/setItem/setItem",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "服务项目列表",
+					"pathName": "pages/mine/serverItemList/serverItemList",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "添加服务项目",
+					"pathName": "pages/mine/serverItemList/addServerItem/addServerItem"
+				}
+			]
+		}
+	}
+}

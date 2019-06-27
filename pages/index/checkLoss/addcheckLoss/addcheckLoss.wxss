@@ -1,0 +1,123 @@
+@import '../../maintain/addMainbtain/addMainbtain.wxss';
+.componyPos{
+  position: relative;
+}
+.redirect{
+  float:right;
+  color:#5AA3F7;
+  text-decoration: underline
+}
+.modal,.carHostModal{
+  position: fixed;
+  width:100%;
+  height: 100vh;
+  top:0px;
+  left:0px;
+  background: rgba(150,150,150,0.6)
+}
+.modalContent{
+  position: fixed;
+  width:100%;
+  bottom: 0px;
+  background: #fff;
+  padding: 10px 0px;
+  color:#6F6F6F;
+}
+.modaleach{
+  line-height: 40px;
+  font-size: 14px;
+  padding-left: 20px
+}
+.forbide{
+  width:18px;
+  height: 18px;
+  vertical-align: middle;
+}
+.carHostcontent{
+  width:70%;
+  background: #fff;
+  margin:0px auto;
+  margin-top:50%;
+  border-radius:10px;
+}
+.confirm{
+  padding: 20px;
+  color:#080808;
+  border:1px solid #ccc;
+  text-align: center;
+}
+.cancel{
+  display:inline-block;
+  width:48%;
+  text-align:center;
+  color:#080808;
+  
+}
+.yes{
+  color:#218918;
+  padding:10px 0px;
+  
+}
+.no{
+  border-left:1px solid #ccc;
+   padding:10px 0px;
+}
+.company{
+  text-align: center;
+  padding-top: 10px;
+  position:absolute;
+  top:30px;
+  line-height: 30px;
+  background: #fff;
+  z-index:2;
+  left:26%;
+  width:30%;
+  border:1px solid #ddd;
+  border-top:none;
+  border-radius:3px;
+}
+.down{
+  position: absolute;
+  top:16px;
+  margin-left:10px;
+  width:12px;
+  height: 12px;
+}
+.redInfor{
+  font-size: 12px;
+}
+
+picker{
+  display: inline-block;
+  width:70%;
+}
+radio{
+  display: inline-block;
+  width:50%;
+}
+.addThird{
+  font-size: 14px;
+  display: inline-block;
+  color:#3891F8;
+  width:200px;
+  text-decoration: underline;
+  margin-right: 15px;
+  padding: 14px 0px 6px 0px;
+}
+.third_tit{
+  display: inline-block;
+  width:94%;
+  color:#5AA3F7;
+  text-align: left;
+}
+.third_tit image{
+  width:20px;
+  height: 20px;
+  float:right;
+  vertical-align: middle;
+}
+.third_cell{
+  background: #f7f7f7;
+  text-align: center;
+  padding-top: 10px;
+}

@@ -1,0 +1,60 @@
+<!--pages/index/addPeople/addPeople.wxml-->
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='section'>
+    <view class='content'>
+      <form bindsubmit='formSubmit'>
+        <view class='eachInfor'>
+          <label>姓 名</label>
+          <text class='redInfor' wx:if='{{nameErr}}'>！</text>
+          <input type='text' id='trueName' bindfocus='cancelRed' name='trueName' placeholder='请输入姓名' value='{{peopleDetail.nickname}}' />
+        </view>
+        <view class='eachInfor'>
+          <label>工　　号</label>
+          <text class='redInfor' wx:if='{{jobErr}}'>！</text>
+          <input type='text' bindfocus='cancelRed' id='jobNo' name='jobNo' placeholder='请输入工号' value='{{peopleDetail.job_no}}'/>
+        </view>
+        <view class='eachInfor'>
+          <label>密码</label>
+          <input type='text' id='truePassword' bindfocus='cancelRed' name='password' placeholder='不修改，则不填写' value='' />
+        </view>
+        <text class='redInfor' wx:if='{{pswErr}}'>密码不能少于6位</text>
+
+        <view class='eachInfor'>
+          <label>联系电话</label>
+          <text class='redInfor' wx:if='{{mobileErr}}'>！</text>
+          <input type='text' id='mobile' bindfocus='cancelRed' name='mobile' id='mobile' placeholder='请输入电话号码' value='{{peopleDetail.mobile}}' />
+        </view>
+        <view class='eachInfor' wx:if='{{!noGroup}}'>
+          <label class='inforLabel'>是否为组长</label>
+          <radio-group class='inforTestDetail' name='radio'>
+            <radio checked='{{detail.type==1}}' style='margin-left:10px;width:40%;' value='1'>是</radio>
+            <radio checked='{{detail.type==0}}' value='0'>否</radio>
+          </radio-group>
+        </view>
+        <view class='eachInfor' wx:if='{{!noGroup}}'>
+          <label>所属分组</label>
+          <picker style='display:inline-block' bindchange="bindPickerChange" name='groupBy' value="{{groupId}}" range="{{groupNameArr}}">
+            <view class="weui-input">{{groupNameArr[index1]}}</view>
+          </picker>
+        </view>
+
+        <view class='eachInfor' wx:if='{{module.length!=0}}'>
+          <label>人员类型</label>
+          <text class='redInfor' wx:if='{{checkBoxNull}}'>请选择人员类型</text>
+          <checkbox-group name='checkbox'>
+            <checkbox value='1' checked='{{peopleDetail.check}}' wx:if='{{ownModule.checkLoss}}'>查勘定损</checkbox>
+            <checkbox value='2' checked='{{peopleDetail.push}}' wx:if='{{(ownModule.push)&&(serviceType==1||serviceType==11)}}'>车辆推修</checkbox>
+            <checkbox value='2' checked='{{peopleDetail.push}}' wx:if='{{(ownModule.push)&&(serviceType!=1&&serviceType!=11)}}'>车辆维修</checkbox>
+            <checkbox value='3' checked='{{peopleDetail.trailer}}' wx:if='{{ownModule.trailer}}'>拖车</checkbox>
+            <checkbox value='4' checked='{{peopleDetail.rescue}}' wx:if='{{ownModule.rescue}}'>紧急救援</checkbox>
+           
+          </checkbox-group>
+        </view>
+        <button class='btn' wx:if='{{!allover}}' form-type='submit'>确 定</button>
+        <button class='btn' style='background:#bbbbbb' wx:if='{{allover}}'>确 定</button>
+      </form>
+    </view>
+  </view>
+</view>

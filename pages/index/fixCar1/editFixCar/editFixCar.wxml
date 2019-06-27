@@ -1,0 +1,43 @@
+
+  <form bindsubmit="formSubmit">
+<view class='containerDe'>
+  <view class='sectionDe'>
+    <view class='contentDe'>
+      <view class='eachInforDe'>
+        <label class='inforLabel'>业务编号</label>
+        <text>{{carHost.detail_no}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{carHost.name}}'>
+        <label class='inforLabel'>客户姓名</label>
+        <text class='redInfor' wx:if='{{carHost.nameErr}}'>！</text>
+        <input class='inforTestDetail' id='trueName'  name='trueName' type='text' value='{{carHost.name}}' bindfocus='cancelRed'/>
+      </view>
+      <view class='eachInforDe' wx:if='{{carHost.mobile}}' bindtap='link' id='host' data-num='17784562578'>
+        <label class='inforLabel'>联系电话</label>
+        <text class='redInfor' wx:if="{{carHost.mobileErr}}">！</text>
+        <input class='inforTestDetail' name='trueMobile' id='trueMobile' type='text' value='{{carHost.mobile}}' bindfocus='cancelRed'/>
+      </view>
+      <view class='eachInforDe' wx:if='{{carHost.car_no}}'>
+        <label class='inforLabel'>车牌号码</label>
+         <text class='redInfor' wx:if="{{carHost.carNoErr}}">！</text>
+         <input class='inforTestDetail'  id='trueCar' name='trueCar' type='text' value='{{carHost.car_no}}' bindfocus='cancelRed'/>
+      </view>
+<view class='eachInforDe' wx:if='{{carHost.car_no}}' bindtap='tofix'>
+        <label class='inforLabel'>车型</label>
+         <view class='car_type'>{{carHost.brandName}}
+          <image src='../../../img/right.png' class='right'></image>
+         </view>
+      </view>
+      <view class='eachInforDe'>
+        <label class='inforLabel'>备注</label>
+         
+         <input class='inforTestDetail'  type='text' name='secondinfor' value='{{carHost.remark}}'/>
+      </view>
+       <view class='eachInforDe'>
+        <button formType="submit" wx:if='{{!allOver}}' style='background:#3891F8;color:#fff'>确 认</button>
+         <button class='btn' style='background:#BBBBBB;color:#fff' wx:if='{{allOver}}'>确 定</button> 
+      </view>
+    </view>
+  </view>
+</view>
+</form>

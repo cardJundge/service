@@ -1,0 +1,23 @@
+<!--明细-->
+<import src="../../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class="{{container}}">
+  <view class="detail-list" wx:if="{{hasRecord}}">
+    <block wx:for="{{beanList}}">
+      <view class="detail-item">
+        <view class="detail-left">
+          <view class="detail-text">{{item.title}}</view>
+          <view class="detail-time">{{item.time}}</view>
+        </view>
+        <view class="detail-right">{{item.bean}}</view>
+      </view>
+    </block>
+
+  </view>
+  <view class="no-detail" wx:if="{{!hasRecord}}">
+    <view class="no-detail-img">
+      <image src="/pages/img/bean.png" />
+    </view>
+    <text>暂时没有账户明细...</text>
+  </view>
+</view>

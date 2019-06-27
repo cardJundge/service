@@ -1,0 +1,146 @@
+@import '../../maintain/maintainDetail/maintainDetail.wxss';
+@import '../../checkLoss/checkLossDeatail/checkLossDeatail.wxss';
+
+.result_cell {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.result {
+  margin: 10px 0px;
+  display: inline-block;
+  width: 94%;
+  text-align: left;
+  font-size: 12px;
+}
+
+.result button {
+  margin-right: 10px;
+  display: inline-block;
+  width: 23%;
+  font-size: 10px;
+  border: none;
+  vertical-align: middle;
+  background: #ccc;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 0px;
+}
+
+.result button::after {
+  border: none;
+}
+
+.result_tit {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.active {
+  background: #3891f8 !important;
+  color: #fff;
+}
+
+.result_con {
+  text-align: center;
+}
+
+.result_con input {
+  background: rgb(227, 233, 255);
+  display: inline-block;
+  width: 90%;
+  height: 36px;
+  margin: 20px 0px;
+  line-height: 36px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.result_con_tit {
+  display: inline-block;
+  width: 94%;
+  text-align: left;
+  font-size: 12px;
+  color: #3a3a3a;
+  line-height: 30px;
+}
+
+.circle1 {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #3a3a3a;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.result_sub button {
+  display: inline-block;
+  width: 90%;
+  background: #3891f8;
+  color: #fff;
+}
+
+.fail_cell {
+  display: inline-block;
+  width: 80%;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.fail_tag_cell{
+  height: 0px;
+  opacity: 0;
+}
+
+.each_cell {
+  display: inline-block;
+  width: 50%;
+  margin: 10px 0px;
+}
+
+.each_cell_right {
+  text-align: right;
+}
+
+.tag {
+  display: inline-block;
+  width: 90%;
+  font-size: 10px;
+  text-align: center;
+  line-height: 26px;
+  height: 26px;
+  color: #aaa;
+  border: 1rpx solid #aaa;
+}
+
+.active {
+  display: inline-block;
+  width: 90%;
+  font-size: 10px;
+  text-align: center;
+  line-height: 26px;
+  height: 26px;
+  background: #3891f8;
+  color: #fff !important;
+  border: 1rpx solid #3891f8;
+}
+
+.add_progress {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 6px 0px;
+  background: #eee;
+  z-index: 2;
+}
+
+.add_progress button {
+  width: 80%;
+  background: #3891f8;
+  color: #fff;
+  height: 36px;
+  margin-top: 10px;
+  line-height: 36px;
+  font-size: 14px;
+}

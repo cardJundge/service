@@ -1,0 +1,64 @@
+<!--pages/index/addPeople/addPeople.wxml-->
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<form bindsubmit="formSubmit">
+  <view class='{{container}}'>
+    <view class='section'>
+      <view class='content'>
+        <view class='eachInfor'>
+          <label>姓　　名</label>
+          <text class='redInfor' wx:if='{{nameErr}}'>！</text>
+          <input type='text' bindfocus='cancelRed' id='trueName' name='trueName' placeholder='请输入姓名' />
+        </view>
+
+        <view class='eachInfor'>
+          <label>工　　号</label>
+          <text class='redInfor' wx:if='{{jobErr}}'>！</text>
+          <input type='text' bindfocus='cancelRed' id='jobNo' name='jobNo' placeholder='请输入工号' />
+        </view>
+        <view class='eachInfor'>
+          <label>密　　码</label>
+          <input type='text' bindfocus='cancelRed' name='truePassword' id='truePassword' placeholder='初始密码为‘123456’' />
+        </view>
+        <text class='redInfor' wx:if='{{pswErr}}'>密码不能少于6位</text>
+        <view class='eachInfor'>
+          <label>联系电话</label>
+          <text class='pswRd' wx:if='{{mobileErr}}'>！</text>
+          <input type='text' bindfocus='cancelRed' id='mobile' name='mobile' placeholder='请输入电话号码' />
+          <view wx:if='{{registered}}'>
+            <label></label>
+            <text class='redInfor'>！该号码已注册</text>
+          </view>
+        </view>
+
+        <view class='eachInfor' name='adminitor' wx:if='{{hasGroup}}'>
+          <label>是否为组长</label>
+          <radio-group name='radio'>
+            <radio value='1'>是</radio>
+            <radio checked='checked' value='0'>否</radio>
+          </radio-group>
+        </view>
+        <view class='eachInfor' wx:if='{{hasGroup}}'>
+          <label>所属分组</label>
+          <picker bindchange="bindPickerChange" name='groupBy' value="{{groupId}}" range="{{groupNameArr}}">
+            <view class="weui-input">{{groupNameArr[index1]}}</view>
+          </picker>
+        </view>
+        <view class='eachInfor' wx:if='{{module.length!=0}}'>
+          <label>人员类型</label>
+          <text class='redInfor' wx:if='{{checkBoxNull}}'>请选择人员类型</text>
+          <checkbox-group name='checkbox'>
+            <checkbox value='1' checked='true' wx:if='{{ownModule.checkLoss}}'>查勘定损</checkbox>
+            <checkbox value='2' checked='true' wx:if='{{(ownModule.push)&&(serviceType==1||serviceType==11)}}'>车辆推修</checkbox>
+            <checkbox value='2' checked='true' wx:if='{{(ownModule.push)&&(serviceType!=1&&serviceType!=11)}}'>车辆维修</checkbox>
+            <checkbox value='3' checked='true' wx:if='{{ownModule.trailer}}'>拖车</checkbox>
+            <checkbox value='4' checked='true'  wx:if='{{ownModule.rescue}}'>紧急救援</checkbox>
+          </checkbox-group>
+        </view>
+
+        <button class='btn' wx:if='{{!allOver}}' formType="submit">添 加</button>
+        <button class='btn' wx:if='{{allOver}}' style='background:#bbbbbb'>添 加</button>
+      </view>
+    </view>
+  </view>
+</form>

@@ -1,0 +1,103 @@
+<!--pages/index/claimsDetail/addProgress/addProgress.wxml-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='padding-top:{{paddingTop}}'>
+<form bindsubmit='sbmitInfor'>
+  <view  wx:if='{{!cameral}}'>
+    <view class=''>
+      <view class='titText'> 添加文字信息</view>
+      <textarea name='title' bindfocus='toHidden' bindblur='saveInfor' bindinput='checkText' value='{{textInfor}}'></textarea>
+
+      <view wx:if='{{textTip}}' class='loading'>请输入文字信息</view>
+    </view>
+  </view>
+  <view class='container1' wx:if='{{cameral}}'>
+    <camera device-position="{{cameraBack}}" flash="{{cameraFlasf}}" binderror="error" style="{{cameralIf}}">
+      <cover-view class='faBack'>
+        <cover-image class='back' bindtap='shiftCamera' src='../../img/camera.png'></cover-image>
+        <cover-image wx:if='{{flash.auto}}' bindtap='switchFlash' class='back flashAuto' src='../../img/flashAuto.png'></cover-image>
+        <cover-image wx:if='{{flash.off}}' bindtap='switchFlash' class='back flashOff' src='../../img/flashOff.png'></cover-image>
+        <cover-image wx:if='{{flash.on}}' bindtap='switchFlash' class='back flashUp' src='../../img/flashUp.png'></cover-image>\
+        <cover-view class='falshContrl' wx:if='{{falshContrl}}'>
+          <cover-view id='off' bindtap='flashOr' class='text closeText'>关闭</cover-view>
+          <cover-view id='on' bindtap='flashOr' class='text upText'>打开</cover-view>
+          <cover-view id='auto' bindtap='flashOr' class='text autoText'>自动</cover-view>
+        </cover-view>
+      </cover-view>
+
+    </camera>
+
+    <view class='photoCell'>
+      <view style='display:inline-block;width:33.3%;height:80px;text-align:center'>
+        <image animation='{{animation}}' wx:if='{{src==""}}' src='../../img/timg.jpg' style='border-radius:50%;position:absolute;left:9%;bottom:15px;margin:0px auto;width:50px;height:50px;' class='{{imgRotate}}'></image>
+        <image src='{{src}}' wx:if='{{src!=""}}' catchtap='openImg' style='border-radius:50%;position:absolute;left:9%;bottom:15px;margin:0px auto;width:50px;height:50px;' class='{{imgRotate}}'></image>
+      </view>
+
+      <view class='btnCell' wx:if='{{!waiting}}'>
+        <image class='photoBtn' src='../../img/tophoto1.png' bindtap="takePhoto"></image>
+      </view>
+
+      <view class='btnCell' wx:if='{{waiting}}'>
+        <image class='photoBtn' src='../../img/tophoto.png'></image>
+      </view>
+
+
+      <view style='display:inline-block;width:33.3%;height:80px;text-align:center;position:absolute;right:0px;bottom:0px;'>
+        <image bindtap='upload' src='../../img/ok.png' style='position:absolute;right:29%;bottom:20px;margin:0px auto;width:40px;height:40px;'></image>
+      </view>
+    </view>
+
+
+
+    <view class='loading' wx:if='{{status}}'>正在上传...</view>
+    <view class='imgBox'>
+
+    </view>
+    <view wx:if='{{imageArr.length!=0}}'>
+
+
+    </view>
+  </view>
+
+
+  <view wx:if='{{!cameral&&allImgsArr.length!=0}}'>
+    <view class='titText'>已经上传的图片</view>
+    <view class='imageBox' wx:for='{{allImgsArr}}' wx:for-item="item">
+      <view class='closeBox' wx:if='{{deleteImg}}'>
+        <image bindtap='openImg' class='pic1' id='{{item.imgId}}' src='{{item.path}}'></image>
+
+
+      </view>
+    </view>
+  </view>
+
+
+  <view class='content' wx:if='{{!cameral}}'>
+    <view class='titText'> 添加照片</view>
+    <view class='pictures'>
+      <view class='eachPic'>
+        <view class='pic' bindtap='abulmn'>
+          <image class='plus' src='../../img/plus.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view wx:if='{{!submitOver}}'>
+    <button class='btn' form-type='submit' wx:if='{{!cameral&&textNotNull}}'>提交</button>
+    <button class='btn' style='background:#BBBBBB' wx:if='{{!cameral&&!textNotNull}}' bindtap='toWarning'>提交</button>
+  </view>
+
+
+  <button class='btn' wx:if='{{submitOver}}' style='background:#BBBBBB'>提交</button>
+
+</form>
+ </view>
+<view class='modalInforDe' wx:if='{{picture}}'>
+  <view class='modalInforContentDe'>
+    <view class='InforDe' bindtap='abulmn'>从相册选择</view>
+    <view class='InforDe' bindtap='toTakePhoto'>拍摄</view>
+  </view>
+</view>

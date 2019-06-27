@@ -1,0 +1,151 @@
+<import src="../wxSortPickerView/wxSortPickerView.wxml" />
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='tit' style='top:{{top}}'>
+    <view class='search'>
+      <view class='searchIcon zan-icon zan-icon-search'></view>
+      <input wx:if='{{!inputShow}}' bindinput='toChoose' bindblur='ifNull' value='{{taskName}}' class='searchInput' type='text' placeholder='搜索人员' />
+      <view class='cancae_search zan-icon zan-icon-clear' wx:if='{{cancelSearchIcon}}' bindtap='cancelSearch'>
+      </view>
+    </view>
+    <view class='titIcon'>
+      <view class='icon iconAdd' bindtap='toGroup'>
+        <image src='../../img/group.png' style='z-index:100'></image>
+      </view>
+      <view class='icon iconAdd' bindtap='toAddPeople'>
+        <image src='../../img/add.png'></image>
+      </view>
+    </view>
+    <view class='groupOprator' wx:if='{{ifGroup}}'>
+      <view>
+        <view bindtap='addGroup'>添加分组</view>
+        <view bindtap='toEdit1'>编辑分组</view>
+      </view>
+    </view>
+  </view>
+  <view class='section' catchtap='cancalModal' style='margin-top:50px'>
+  <view class='loading'>
+<image src='../../img/load.gif' wx:if='{{!pageReady}}'></image>
+</view>
+    <template is="wxSortPickerView" wx:if='{{pageReady}}' data="{{wxSortPickerData,marginTop}}" />
+
+    <view style='font-size:12px;text-align:center;margin-top:20px;' wx:if='{{noTask}}'>暂无作业员</view>
+  </view>
+  <view class='modal' wx:if='{{opration}}' catchtap='closeOprationModal'>
+    <view class='modalContent'>
+      <view class='modaleach' catchtap='link1'>
+        <view class='zan-icon zan-icon-phone'> 联系他</view>
+      </view>
+      <view class='modaleach' catchtap='toEdit'>
+        <view class='zan-icon zan-icon-certificate'> 编辑</view>
+      </view>
+      <view class='modaleach' catchtap='toforbide' wx:if='{{personsta==1}}'>
+        <view class=''>
+          <image class='forbide' src='../../img/forbidden2.png'></image>
+          <text> 禁用</text>
+        </view>
+      </view>
+      <view class='modaleach' wx:if='{{personsta==0}}' catchtap='toUse'>
+        <view class=''>
+          <image class='forbide' src='../../img/forbidden2.png'></image>
+          <text> 启动</text>
+        </view>
+      </view>
+      <view class='modaleach' catchtap='deleteModal'>
+        <view class='zan-icon zan-icon-delete'> 删除</view>
+      </view>
+    </view>
+  </view>
+</view>
+<scroll-view style="width:20px;margin-top:{{marginTop}}" class="wxSortPickerViewTemTags">
+    <block wx:for="{{['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#']}}" wx:for-item="item" wx:key="">
+      <view bindtap="wxSortPickerViewTemTagTap" data-tag="{{item}}" class="wxSortPickerViewTemTag">{{item}}</view>
+    </block>
+  </scroll-view>
+<view class='carHostModal' wx:if='{{deleteModalm}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要删除此操作员吗？</view>
+    <view class='cancel no' bindtap='cancelModal'>取消</view>
+    <view class='cancel yes' bindtap='toDeletePeople'>确定</view>
+  </view>
+</view>
+
+<view class='carHostModal' wx:if='{{forbideModal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要禁用吗？</view>
+    <view class='cancel no' bindtap='cancelForbide'>取消</view>
+    <view class='cancel yes' bindtap='confirmForbide'>确定</view>
+  </view>
+</view>
+
+<view class='carHostModal' wx:if='{{noforbideModal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要启用吗？</view>
+    <view class='cancel no' bindtap='cancelnoForbide'>取消</view>
+    <view class='cancel yes' bindtap='confirmnoForbide'>确定</view>
+  </view>
+</view>
+
+
+<view class='editlModal' wx:if='{{modal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要编辑吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+<view class='deleteModal' wx:if='{{modal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要删除吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+
+<view class='tit' wx:if='{{false}}'>
+  <text>人员管理</text>
+  <text class='add' bindtap='toAddPeople'>添加人员</text>
+</view>
+
+<view class='carHostModal' wx:if='{{modal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要编辑此操作员吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+<view class='fordiddelModal' wx:if='{{modal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要将此禁止吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+<view class='editlModal' wx:if='{{modal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要编辑吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+<view class='deleteModal' wx:if='{{modal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要删除吗？</view>
+   
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+
+<view class='carHostModal' wx:if='{{addGroupModal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>
+      <label>分组名称</label>
+      <input type='text' style='border:1px solid #ccc;display:inline-block;font-size:14px;width:130px;margin-left:10px;vertical-align:middle' value='{{addGroupName}}' bindinput='recordName' />
+    </view>
+    <view class='redInfor' style='font-size:12px;margin-left:10px;' wx:if='{{groupErr}}'>请填写正确的分组</view>
+    <view class='cancel no' bindtap='cancelGroupModal'>取消</view>
+    <view class='cancel yes' bindtap='addGroupEve'>确定</view>
+  </view>
+</view>

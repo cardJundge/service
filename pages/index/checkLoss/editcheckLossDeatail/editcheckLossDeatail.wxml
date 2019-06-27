@@ -1,0 +1,88 @@
+<!--pages/index/claimsDetail/claimsDetail.wxml-->
+<import src="../../template/step/step.wxml" />
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' >
+<form bindsubmit="formSubmit">
+  <view class='containerDe'>
+    <view class='sectionDe'>
+      <view class='tit'>
+        <text>基本信息</text>
+      </view>
+      <view class='contentDe'>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>业务编号</label>
+          <text>{{detail.survey_no}}</text>
+        </view>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>案件类型</label>
+          <radio-group name='classify' style='display:inline-block'>
+            <radio value='0' checked='{{detail.type==0}}'>查勘</radio>
+            <radio value='1' checked='{{detail.type==1}}'>定损</radio>
+          </radio-group>
+        </view>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>被保人</label>
+          <text class='redInfor' wx:if='{{casePersonErr}}'>！</text>
+          <input class='inforTestDetail' id='casePerson' name='casePerson' type='text' value='{{detail.recognizee}}' bindfocus='cancelRed' />
+        </view>
+        <view class='eachInforDe' bindtap='link' id='host' data-num='17784562578'>
+          <label class='inforLabel'>报案号</label>
+          <text class='redInfor' wx:if="{{report_noErr}}">！</text>
+          <input class='inforTestDetail' name='report_no' id='report_no' type='text' value='{{detail.report_no}}' bindfocus='cancelRed' />
+        </view>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>车牌号码</label>
+          <text class='redInfor' wx:if="{{carIdErr}}">！</text>
+          <input class='inforTestDetail' id='carId' name='carId' type='text' value='{{detail.car_no}}' bindfocus='cancelRed' />
+        </view>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>报案电话</label>
+          <text class='redInfor' wx:if="{{caseMobileErr}}">！</text>
+          <input class='inforTestDetail' id='caseMobile' name='caseMobile' type='text' value='{{detail.mobile}}' bindfocus='cancelRed' />
+        </view>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>保险公司</label>
+          <picker bindchange="bindPickerChange" name='mobile' value="{{index1}}" range="{{array}}">
+            <view class="weui-input">{{array[index1]}}</view>
+          </picker>
+        </view>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>预估金额</label>
+          <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+          <input class='inforTestDetail' id='money' name='money' type='text' value='{{detail.money}}' bindfocus='cancelRed' />
+        </view>
+        <view class='eachInforDe'>
+          <label class='inforLabel'>备注</label>
+          <text class='redInfor' wx:if="{{remarkErr}}">！</text>
+          <textarea wx:if='{{detail.remark=="undefined"}}' name='remark' id='remark' style='line-height:22px;border:1px solid #ddd;margin:0px auto;width:98%;height:150px;overflow:scroll' maxlength='123456789'></textarea>
+
+          <textarea wx:if='{{detail.remark!="undefined"}}' name='remark' id='remark' style='line-height:22px;border:1px solid #ddd;margin:0px auto;width:98%;height:150px;overflow:scroll' maxlength='123456789' value='{{detail.remark}}'></textarea>
+
+        </view>
+      </view>
+      <view class='tit' wx:if='{{third.length>0}}'>
+        <text>三者信息</text>
+      </view>
+      <view class='third_content'  wx:if='{{third.length>0}}'>
+        <view class='third_cell' wx:for='{{third}}' wx:for-item='item'>
+          <view class='third_tit'>三者信息{{index+1}}</view>
+          <view class='eachInforDe'>
+            <label class='inforLabel'>联系电话</label>
+            <input class='inforTestDetail' id='mobile{{index+1}}' name='mobile{{index+1}}' type='text' value='{{item.phone}}' bindfocus='cancelRed' />
+          </view>
+          <view class='eachInforDe'>
+            <label class='inforLabel'>车牌号</label>
+            <text class='redInfor' wx:if='{{casePersonErr}}'>！</text>
+            <input class='inforTestDetail' id='car{{index+1}}' name='car{{index+1}}' type='text' value='{{item.car_no}}' bindfocus='cancelRed' />
+          </view>
+        </view>
+      </view>
+      <view class='eachInforDe'>
+        <button formType="submit" style='background:#3891F8;color:#fff' wx:if='{{!allOver}}'>确 认</button>
+        <button class='btn' style='background:#BBBBBB;color:#fff' wx:if='{{allOver}}'>确 认</button>
+      </view>
+    </view>
+  </view>
+</form>
+</view>

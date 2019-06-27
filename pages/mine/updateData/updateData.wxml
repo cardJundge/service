@@ -1,0 +1,79 @@
+<!--pages/index/updateData/updateData.wxml-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view wx:if='{{!loaded}}' style='text-align:center'>
+    <image src='../../img/load.gif'></image>
+  </view>
+  <view wx:if='{{loaded}}' animation="{{animationData}}">
+    <view class='header' bindtap='changeImgModal'>
+      <swiper indicator-dots="false" autoplay="true" style='height:180px;' interval="5000" indicator-color='rgb(255,255,255)' duration="1000" wx:if='{{imgUrls.length!=0}}'>
+        <swiper-item bindtap='addImage' style='height:180px!important' wx:for="{{imgUrls}}">
+          <image bindlongpress='deleteImg' id='{{item}}' src="{{hostName}}uploads/stores/{{item}}" />
+        </swiper-item>
+      </swiper>
+      <image src='../../img/11.jpg' wx:if='{{imgUrls.length==0}}'></image>
+    </view>
+    <view class="section">
+      <view class='content'>
+        <form bindsubmit='tosubmit'>
+          <view class="eachInfor">
+            <label>商户名称：</label>
+            <view class='label_con'>
+              <text style='font-size:12px;'>{{userInfor.name}}</text>
+            </view>
+          </view>
+          <view class="eachInfor">
+            <label>商户简称：
+              <text class='redInfor' wx:if="{{nameErr}}">！</text>
+            </label>
+            <view class='label_con'>
+              <input class='inforData' type="text" bindfocus='cancelRed' name="userName" id='userName' placeholder='请输入商户简称' value='{{userInfor.short_name}}' />
+            </view>
+          </view>
+          <view class="eachInfor">
+            <label>联 系 人 ：
+              <text class='redInfor' wx:if="{{contactErr}}">！</text>
+            </label>
+            <view class='label_con'>
+              <input type="text" bindfocus='cancelRed' class='inforData' id='contact' name="contact" placeholder='请输入商户联系人' value='{{userInfor.contact}}' />
+            </view>
+          </view>
+          <view class="eachInfor">
+            <label>联系电话：
+              <text class='redInfor' wx:if="{{mobileErr}}">！</text>
+            </label>
+            <view class='label_con'>
+              <input type="text" bindfocus='cancelRed' class='inforData' id='mobile' name="mobile" placeholder='请输入联系电话' value='{{userInfor.mobile}}' />
+            </view>
+          </view>
+          <view class="eachInfor">
+            <label>商户地址：
+              <text class='redInfor' wx:if="{{addressErr}}">！</text>
+            </label>
+            <view class='label_con'>
+              <input type="text" bindfocus='cancelRed' class='inforData' id='address' name="address" placeholder='请输入地址' value='{{userInfor.address}}' />
+            </view>
+          </view>
+          <view class="eachInfor">
+            <label>商户简介：
+              <text class='redInfor' wx:if="{{introErr}}">！</text>
+            </label>
+            <view class='label_con'>
+              <input type="text" bindfocus='cancelRed' class='inforData' id='intro' name="intro" placeholder='请输入简介' value='{{userInfor.intro}}' />
+            </view>
+            <view class='redInfor' style='text-align:left;font-size:10px;line-height:20px;' wx:if="{{introErr1}}">简介过长，长度为12</view>
+          </view>
+          <button style='' form-type='submit'>保存</button>
+        </form>
+      </view>
+    </view>
+  </view>
+  <view class='modal' style='height:100vh' wx:if='{{modalImage}}' catchtap='canceModal'>
+    <view class='modal-content' catchtap='changemg'>增加门店图片</view>
+  </view>
+  <view class='modal' style='height:100vh' wx:if='{{deleteImage}}' catchtap='canceModal'>
+    <view class='modal-content' catchtap='confirmDelete'>删除此门店图</view>
+  </view>
+
+</view>

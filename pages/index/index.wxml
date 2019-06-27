@@ -1,0 +1,119 @@
+<import src="../template/top.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='gif_loading_cell' wx:if='{{!loaded}}'>
+  <image class='gif_loading' src='../img/load.gif'></image>
+</view>
+<view wx:if='{{loaded}}' class='{{container}}'>
+  <view class='titleText'>最新通知</view>
+  <view class="scrollInfor">
+    <view class='scroll-content'>
+      <image class="icon" src="../img/know.png"></image> 暂无最新通知</view>
+  </view>
+  <view class="titleText" wx:if='{{moduleTemp.length!=0}}'>业务管理</view>
+  <view class="section">
+    <form bindsubmit='submitFormId' report-submit='true' wx:if='{{ownModule.checkLoss==1}}'>
+      <view class='task' bindtap='toCheckLoss'>
+        <button form-type='submit' hover-class="none" class='formIdBtn'>
+          <view class="zan-icon">
+            <image src='../img/ckds@2x.png' style='margin-top:12px;width:38px;height:28px;'></image>
+            <view class="badge-count" wx:if='{{false}}'>2</view>
+          </view>
+          <view>任务流</view>
+        </button>
+      </view>
+    </form>
+    <form bindsubmit='submitFormId' report-submit='true' wx:if='{{serviceType==1||serviceType==11}}'>
+      <view class='task' bindtap='tofix' wx:if='{{ownModule.fixCar}}'>
+        <button form-type='submit' hover-class="none" class='formIdBtn'>
+          <view class="zan-icon">
+            <image src='../img/cltx@2x.png' style='margin-top:5px;width:36px;height:35px'></image>
+            <view class="badge-count" wx:if='{{false}}'>2</view>
+          </view>
+          <view>车辆推修</view>
+        </button>
+      </view>
+    </form>
+    <form bindsubmit='submitFormId' report-submit='true' wx:if='{{serviceType!=1&&serviceType!=11}}'>
+      <view class='task' bindtap='tofix1' wx:if='{{ownModule.fixCar}}'>
+        <button form-type='submit' hover-class="none" class='formIdBtn'>
+          <view class="zan-icon">
+            <image src='../img/cltx@2x.png' style='width:36px;height:35px'></image>
+            <view class="badge-count" wx:if='{{false}}'>2</view>
+          </view>
+          <view>车辆维修</view>
+        </button>
+      </view>
+    </form>
+    <form bindsubmit='submitFormId' report-submit='true' wx:if='{{ownModule.trailer}}'>
+      <view class='task' bindtap='toTrail'>
+        <button form-type='submit' hover-class="none" class='formIdBtn'>
+          <view class="zan-icon">
+            <image src='../img/tc@2x.png' style='width:35px;height:31px;margin-top:10px;'></image>
+            <view class="badge-count" wx:if='{{false}}'>2</view>
+          </view>
+          <view>拖车</view>
+        </button>
+      </view>
+    </form>
+    <form bindsubmit='submitFormId' report-submit='true' wx:if='{{ownModule.rescue}}'>
+      <view class='task' bindtap='toRescue'>
+        <button form-type='submit' hover-class="none" class='formIdBtn'>
+          <view class="zan-icon">
+            <image src='../img/jjjy@2x.png' style='margin-top:5px;width:35px;height:35px;'></image>
+            <view class="badge-count" wx:if='{{false}}'>2</view>
+          </view>
+          <view>救援</view>
+        </button>
+      </view>
+    </form>
+  </view>
+  <view class="titleText" wx:if='{{serviceType!=1&&serviceType!=11}}'>订单管理</view>
+  <form bindsubmit='submitFormId' report-submit='true' wx:if='{{serviceType!=1&&serviceType!=11}}'>
+    <view class='task' bindtap='toOrder'>
+      <button form-type='submit' hover-class="none" class='formIdBtn'>
+        <view class="zan-icon">
+          <image src='../img/cltx@2x.png' style='width:36px;height:35px'></image>
+          <view class="badge-count" wx:if='{{count!=0}}'>{{count}}</view>
+        </view>
+        <view>所有订单</view>
+      </button>
+    </view>
+  </form>
+
+  <view class="modal" wx:if='{{modal}}'>
+    <view class="modal-content">
+      <view class="setInfor">您的基本资料还没完善哦~</view>
+      <view class='confirm' bindtap='toUpdate'>设置</view>
+      <view class='confirm cancel' bindtap='cancelTo'>取消</view>
+    </view>
+  </view>
+  <view class='tab' wx:if='{{false}}'>
+    <view class='index eachTab'>
+      <view class='tabIcon zan-icon zan-icon-home' wx:if='{{indexTag==true}}'></view>
+      <view class='tabIconActive zan-icon zan-icon-home' wx:if='{{indexTag==false}}'></view>
+      <view class='tabText'>首页</view>
+    </view>
+    <view class='adminPeople eachTab'>
+      <view class='tabIcon'>
+        <image class='tabImage' wx:if='{{adminPeople==true}}' src="../img/adminPeople.png"></image>
+        <image class='tabImage' wx:if='{{adminPeople==false}}' src="../img/admPeolpeActive.png"></image>
+      </view>
+
+      <view class='tabText'>管理人员</view>
+    </view>
+    <view class='mine eachTab'>
+      <view class='tabIcon zan-icon zan-icon-contact' wx:if='{{mine==true}}'></view>
+      <view class='tabIconActive zan-icon zan-icon-contact' wx:if='{{mine==false}}'></view>
+      <view class='tabText'>我的</view>
+    </view>
+  </view>
+  <view class='modal' wx:if='{{logOut}}'>
+    <view class='modalContent'>
+      <view class='data'>确定退出？</view>
+      <view class='cancelTop'>
+        <view class='cancel no' bindtap='cancelModal'>取消</view>
+        <view class='cancel yes' bindtap='logOut'>退出</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,147 @@
+.container{
+  text-align: left;
+  position: relative;
+  display: block;
+  width:96%;
+}
+.letter{
+   display: inline-block;
+  width:100%;
+  height: 20px;
+  text-align: left;
+  background: #E6E6E6;
+}
+.letter text{
+  margin-left: 20rpx;
+  font-size:32rpx;
+}
+.brand_cell{
+  display: block;
+  width:100%;
+  text-align: left;
+  padding: 16rpx 0rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.active{
+  background: #fff;
+  box-shadow: none;
+}
+.img_cell{
+  display: inline-block;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+.logo_img{
+  width:80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+}
+.brand_name{
+  display: inline-block;
+  width: 70%;
+  line-height: 80rpx;
+  font-size: 28rpx;
+}
+.series_cell{
+  display: inline-block;
+  width:50%;
+  position: absolute;
+  right:0px;
+  top:0px;
+  font-size: 28rpx;
+  text-align: left;
+}
+.letter_null{
+  display: block;
+  width:100%;
+  height: 20px;
+  border-bottom:1rpx solid #eee;  
+}
+.each_series{
+  display: block;
+  width:90%;
+  margin-left: 20rpx;
+  line-height: 80rpx;
+  padding: 16rpx 0rpx;
+  border-bottom:1rpx solid #eee; 
+  position: relative;
+}
+.fa-check{
+  position: absolute;
+  right: 30rpx;
+  top:40rpx;
+}
+.active_series{
+  color:#FF9800;
+}
+.navigate{
+  display: inline-block;
+  width:5%;
+  position: fixed;
+  right:0px;
+  top:70rpx;
+  color:#3891F8;
+  font-size: 26rpx;
+  text-align: center;
+}
+.navigate view{
+  line-height: 46rpx;
+}
+.letter_float{
+  display: inline-block;
+  width:100%;
+  height: 100px;
+  position: absolute;
+  top:46%;
+  text-align: center;
+}
+.letter_cell{
+  display: inline-block;
+  width:140rpx;
+  height: 140rpx;
+  background: rgba(220,220,220,0.8);
+  font-size: 80rpx;
+  border-radius:20rpx;
+}
+.letter_cell view{
+  margin-top: 10rpx;
+  color:#fff;
+}
+.ok_btn{
+  display: inline-block;
+  width:100%;
+  background:#3891F8;
+  height: 70rpx;
+}
+.ok_btn view{
+  display: inline-block;
+  width:96%;
+  text-align: right;
+  color:#fff;
+}
+.ok_btn view button{
+  display: inline-block;
+  width: 140rpx;
+  background: #3891F8;
+  color:#fff;
+  font-size: 32rpx;
+  line-height: 60rpx;
+}
+.modal_content input{
+  display: inline-block;
+  width:130px;
+  font-size: 28rpx;
+  vertical-align: middle;
+  border: 1rpx solid #bbb;
+  border-radius:4px;
+}
+.modal_content button{
+  margin-top: 30px;
+  background: #FF9800;
+  color:#fff;
+}
+.radio{
+  display: inline-block;
+  width: 10%;
+  text-align: right;
+}

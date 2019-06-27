@@ -1,0 +1,36 @@
+<!--pages/editPsw/editPsw.wxml-->
+<import src="../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='content'>
+    <form bindsubmit='toEdit'>
+      <view class='eachInfor'>
+        <label>
+          <text class='redInfor'>*</text>原密码</label>
+        <input name='older' type='password' placeholder='请输入原始密码' />
+      </view>
+      <view class='eachInfor'>
+        <label>
+          <text class='redInfor'>*</text>新密码</label>
+        <input type='password' name='new' placeholder='请输入新密码' />
+      </view>
+      <view class='eachInfor'>
+        <label>
+          <text class='redInfor'>*</text>确认密码</label>
+        <input type='password' name='renew' placeholder='请输入确认密码' />
+      </view>
+      <!-- <view class='eachInfor' wx:if='{{differArc}}'>
+        <view class='warning'> 两次密码不一致!</view>
+      </view>
+      <view class='eachInfor' wx:if='{{primaryDiffer}}'>
+        <view class='warning'>原密码不正确！</view>
+      </view>
+      <view class='eachInfor' wx:if='{{nuArc}}'>
+        <view class='warning'>新密码需6位以上！</view>
+      </view> -->
+      <view class='eachInfor submit'>
+        <button class="btn" formType="submit">确 认</button>
+      </view>
+    </form>
+  </view>
+</view>

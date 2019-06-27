@@ -1,0 +1,79 @@
+/* pages/login/login.wxss */
+page{
+  background: url('https://612d-a-data-1a3ebf-1257782233.tcb.qcloud.la/server/login/loginBac.png?sign=3b3fcba3ea36297c18dad8262882803a&t=1541668370');
+  background-size: cover;
+}
+
+.back {
+  font-size: 0px;
+  text-align: center;
+  color: #fff;
+  background:url('https://612d-a-data-1a3ebf-1257782233.tcb.qcloud.la/server/login/ceng.png?sign=ad31c1d16232d940d1c07ae9645d5ebd&t=1541669795;');
+  background-size: 100% 100%; 
+  margin: 30px 38px 0px 38px;
+  padding-bottom: 30px;
+}
+
+.page__hd image {
+  width: 70px;
+  height: 70px;
+  margin: 47px 115px 31px 115px;
+}
+
+.login_Infor {
+  margin: 0px 30px;
+  text-align: left;
+}
+.neme_cell {
+  border:1rpx solid #979797;
+  border-radius: 40px;
+}
+
+.login_icon{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+.login_icon image{
+  width:26px;
+  height: 26px;
+  vertical-align: middle;
+  margin: 0px 5px 0px 12px;
+
+}
+.name_input{
+  display: inline-block;
+  vertical-align: middle;
+  width:60%;
+}
+.name_input input{
+  font-size: 14px;
+  line-height: 38px;
+  height: 38px;
+  color: #3891F8;
+}
+.pass_cell{
+  margin-top: 33px;
+}
+.remind{
+  height: 60px;
+  color:red;
+  font-size:12px;
+  line-height: 60px;
+}
+.btn_cell button{
+  background: #3891F8;
+  color:#fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  line-height: 40px;
+  margin-bottom: 30px;
+}
+.forget_pass{
+  text-align: right;
+  color:#1A84FF;
+  font-size:12px;
+  margin: 15px 0px;
+}
+

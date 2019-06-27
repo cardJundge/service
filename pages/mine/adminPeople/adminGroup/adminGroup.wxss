@@ -1,0 +1,68 @@
+/* pages/index/adminGroup/adminGroup.wxss */
+.tit{
+  width:100%;
+  padding: 5px 0px;
+  text-align: center;
+}
+.tiCon{
+  display: inline-block;
+  width:94%;
+  text-align: left;
+  font-size: 14px;
+  color:#3388FF;
+}
+.tiCon text{
+  display: inline-block;
+  width:30%;
+}
+.addBtn{
+   display: inline-block;
+  width:70%;
+  text-align: right;
+
+}
+.addBtn image{
+    width:20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.section{
+   margin: 0px auto;
+   height: 100px;
+   font-size: 14px;
+   line-height: 30px;
+}
+.eachGroup{
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.editDiv{
+  display: inline-block;
+  width:10%;
+  text-align: center;
+}
+.groupName{
+  display: inline-block;
+  width:50%;
+}
+.groupName input{
+  display: inline-block;
+  width:80%;
+  vertical-align: middle;
+}
+.groupEdit{
+  display: inline-block;
+  width:40%;
+}
+.groupEdit view{
+ display: inline-block;
+  width:50%;
+  color:#3388FF;
+}
+.differ{
+  background: #eee;
+}
+.inputActive{
+  border: 1px solid #3388FF;
+  box-shadow: 3px 3px 3px #aaa;
+}

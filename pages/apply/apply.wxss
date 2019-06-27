@@ -1,0 +1,32 @@
+/* pages/apply/apply.wxss */
+.container{
+  text-align: center;
+}
+.content{
+  display: inline-block;
+  width:86%;
+  margin-top: 50px;
+}
+.content .each{
+  border:1rpx solid #c0c0c0;
+  font-size: 28rpx;
+  margin-top: 20px;
+border-radius: 10rpx; 
+}
+.content .each input{
+  margin-left: 20rpx;
+  text-align: left;
+  line-height: 80rpx;
+   height: 80rpx;   
+}
+.button_cell{
+   margin-top: 40px;
+}
+.button_cell button{
+  background:#00A3D9;
+  color: #fff;
+  border: none;
+  font-size: 26rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}

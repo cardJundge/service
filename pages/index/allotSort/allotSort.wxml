@@ -1,0 +1,34 @@
+
+<template name="wxSortPickerView">
+    <scroll-view class="wxSortPickerViewList" style='' scroll-y="true" style="height: {{wxSortPickerData.view.scrollHeight}}px;" bindscrolltoupper="wxSortPickerViewUpper" bindscrolltolower="wxSortPickerViewLower" bindscroll="wxSortPickerViewScroll" scroll-into-view="{{wxSortPickerData.wxSortPickerViewtoView}}" >
+    <!--<view animation="{{wxSortPickerData.animationData}}" class="wxSortPickerViewList">-->
+        <!--<view class="wxSortPickerViewTag wxSortPickerViewFixedTag">{{wxSortPickerData.nowTag}}</view>-->
+        <block wx:for="{{wxSortPickerData.textData}}" wx:for-item="item" wx:key="">
+            <view id="{{item.tag}}" style='width:0px;height:0px;font-size:0px;' class="wxSortPickerViewTag">{{item.tag}}</view>
+            <template is="wxSortPickerViewItem" data="{{item}}"/>
+        </block>
+    <!--</view>-->
+    </scroll-view>
+
+    <template is="wxSortPickerViewTemTags"/>
+</template>
+
+<template name="wxSortPickerViewItem">
+    <block wx:for="{{item.textArray}}" wx:for-item="child" wx:key="">
+        <view class="wxSortPickerViewItem" data-text="{{child}}"  bindtap = "wxSortPickerViewItemTap" >
+        
+  <view class='eachInfor' wx:if='{{child.status==1}}'>
+       
+      <view class='peopleInfor'>
+       <image class='headPro'  src='../../img/headd.png'></image>
+        <view class='name'>{{child.nickname}} <radio  id='{{child.groupId}}' class='selection' value='{{child.id}}&{{child.groupId}}&{{child.nickname}}'></radio> </view>
+      
+      </view>
+    </view>          
+        </view>
+    </block>
+</template>
+
+<template name="wxSortPickerViewTemTags">
+    
+</template>

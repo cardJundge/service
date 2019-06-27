@@ -1,0 +1,58 @@
+/* pages/index/adminPeople/adminPeople.wxss */
+@import "../allotSort/allotSort.wxss";
+.section{
+  margin-top: 120rpx;
+  margin-bottom: 120rpx;
+  text-align: center;
+}
+.eachInfor{
+  display: inline-block;
+  width:100%;
+  padding: 10px 0px;
+}
+
+.headPro{
+  width:30px;
+  height: 30px;
+  margin-right:10px;
+   vertical-align: middle;
+}
+.peopleInfor{
+  display: inline-block;
+  font-size:14px;
+  text-align: left;
+  width:100%;
+  position: relative;
+}
+.name{
+  display: inline-block;
+  width:80%;
+}
+radio{
+  float: right;
+}
+.tit{
+  position:fixed;
+  top:0px;
+  left:0px;
+  background: linear-gradient(#3891F8, rgb(164, 205, 253));
+  z-index: 3;
+  width:100%;
+}
+.tit button::after{
+  border:none;
+}
+
+.btn-fixed {
+  height: 80rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #fff;
+  background-color: #3891F8;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+}

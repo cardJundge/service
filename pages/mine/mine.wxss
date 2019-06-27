@@ -1,0 +1,164 @@
+/* pages/mine/mine.wxss */
+
+.container {
+  text-align: center;
+  font-size: 0px;
+}
+
+.header {
+  position: relative;
+  height: 180px;
+}
+
+.header image {
+  width: 100%;
+  height: 180px;
+}
+
+.formIdBtn {
+  position: absolute;
+  left: 0px;
+  bottom: -36px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  background: none;
+}
+
+.avatar_cell {
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  /* padding: 5px; */
+  background: #fff;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 10rpx 20rpx 2rpx #ecebeb;
+}
+
+.avatar image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+
+.user_name {
+  font-size: 36rpx;
+  margin-top: 80rpx;
+  color: rgb(51, 51, 51);
+}
+
+.section {
+  margin-top: 156rpx;
+}
+
+.each_cell {
+  line-height: 120rpx;
+  border-bottom: 1rpx solid #eee;
+  text-align: left;
+}
+.each_cell:last-child {
+  border-bottom: 0
+}
+
+.each_tab {
+  display: flex;
+  align-items: center;
+}
+
+.icon_cell {
+  margin-left: 24rpx;
+  width: 82rpx;
+  height: 82rpx;
+  text-align: left;
+}
+
+.tab_text {
+  margin-left: 12rpx;
+  vertical-align: middle;
+  text-align: left;
+  font-size: 15px;
+  display: inline-block;
+  color: #4d4d4d;
+}
+
+.icon_cell image {
+  vertical-align: top;
+  width: 82rpx;
+  height: 82rpx;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999
+}
+
+.modalContent {
+  background: #fff;
+  width: 620rpx;
+  /* height: 254rpx; */
+  background-color: #fff;
+  border-radius: 10rpx;
+  color: #444;
+}
+
+.cancelTop {
+  border-top: 1px solid #eee;
+}
+
+.data {
+  padding: 10rpx 0 30rpx 50rpx;
+  text-align: left;
+  font-size: 30rpx;
+  color: #afafaf;
+}
+
+.cancel {
+  display: inline-block;
+  width: 49%;
+  text-align: center;
+  padding: 10px 0px 10px 0px;
+  /* border-left: 1px solid #d8d8d8; */
+  font-size: 36rpx;
+}
+
+.yes {
+  color: #21961a;
+  border-left: 1px solid #eee;
+}
+
+.modal-tip {
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 30rpx 10rpx 0;
+  text-align: center;
+}
+
+.each_cell .formIdBtn1 {
+  background: #fff;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: left;
+  padding: 0px;
+}
+
+.each_cell .formIdBtn1::after {
+  border: none;
+}

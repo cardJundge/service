@@ -1,0 +1,12 @@
+<template name="top">
+  <view class='{{title_cell}}'>
+    <view class='{{back_cell}}'>
+      <view class='image_cell' bindtap='backPage'>
+        <image src='https://612d-a-data-1a3ebf-1257782233.tcb.qcloud.la/allImage/back.png?sign=565025f0da194654889abe07889eb93d&t=1541732247'></image>
+      </view>
+      <view style='display:inline-block;'>
+        {{titleTop}}
+      </view>
+    </view>
+  </view>
+</template>

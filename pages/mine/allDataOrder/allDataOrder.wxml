@@ -1,0 +1,65 @@
+<!--pages/index/allData/allData.wxml-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='tit'>
+    <view class='search'>
+      <view class='searchIcon zan-icon zan-icon-search'></view>
+      <input class='searchInput' type='text' value='{{keyWordsTemp}}' bindinput='toChoose' placeholder='输入作业员姓名' style='text-align:left' />
+      <view class='zan-icon zan-icon-clear' bindtap='cancelSearch' style='font-size:14px;color:#A3A3A3' wx:if='{{cancelSearchIcon}}'></view>
+    </view>
+  </view> 
+  <view wx:if='{{noData=="none"}}'>暂无数据</view>
+  <view class='section' style='margin-top:10px;display:{{noData}}'>
+    <view class='business_cell' wx:if='{{!noPeople}}'>
+      <view>
+        <view class='all_data'>
+          <text>累计业务数</text>
+          <text class='number'>{{allData}}</text>
+        </view>
+      </view>
+      <view style='text-align:center'>
+        <view class='month_data'>
+          <text>本月业务数</text>
+          <text class='number'>{{month}}</text>
+        </view>
+      </view>
+      <view style='text-align:right'>
+        <view class='day_data'>
+          <text>今日业务数</text>
+          <text class='number'>{{today}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if='{{noPeople}}'>暂无数据</view>
+    <view style='height:16rpx; background: #EFEFEF;'></view>
+    <view class='chars_cell' wx:if='{{!noPeople}}'>
+      <view class='section_tit'>本周业务</view>
+    </view>
+    <view class='canvas_cell' style='display:{{noPeopleCancvas}}'>
+      <canvas canvas-id="line-canvas" data-canvas='left' bindtouchstart='canvasEvent' bindtouchend='cancelTouched' id="line-canvas" style='width:{{systemWidth}}'></canvas>
+      <view class='modal_cell' wx:if='{{touched}}' style='top:{{modal_top}};left:{{modal_left}}'>
+        <view class='modal_cont'>
+          <view>{{dateNow}}</view>
+          <view>业务量：{{dataNumber}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='table_cell' wx:if='{{!noPeople}}'>
+      <view class='table'>
+        <view class='table_left'>
+          <view class='td data'>日期</view>
+          <view wx:for='{{weekArr1}}' wx:for-item='item' class='{{index%2==1?"td evenTd":"td"}}'>{{item.data}}</view>
+        </view>
+        <view class='table_right'>
+          <view class='tr' style='width:{{trWidth}}'>
+            <view class='td tit' style='width:{{tdWidth}}' wx:for='{{serverList}}' wx:for-item='item' id='{{item.classify_name}}'>{{item.classify_name}}</view>
+          </view>
+          <view class='tr' style='width:{{trWidth}}' wx:for='{{daysValue}}' wx:for-item='item' class='{{index%2==1?"tr even":"tr"}}'>
+            <view class='td' style='width:{{tdWidth}}' wx:for='{{item.daysCount}}' wx:for-item='item1'>{{item1.count}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

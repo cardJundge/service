@@ -1,0 +1,211 @@
+<!--pages/index/adminPeople/adminPeople.wxml-->
+<view class='tit'>
+  <view class='search'>
+    <view class='searchIcon zan-icon zan-icon-search'></view>
+    <input class='searchInput' type='text' placeholder='搜索代办维修保养业务'/>
+  </view>
+  <view class='titIcon'>
+    <view class='icon' bindtap='toAdd'>➕</view>
+  </view>
+  </view>
+<view class='section'>
+  <view class='content'>
+ <view class='eachInfor'>
+    <view class='eachData' bindtap='toDetail'>
+      <view>
+        <text>张三 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view> 
+<view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view>
+<view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view>
+<view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view>
+<view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view>
+<view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view><view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view>
+<view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view> <view class='eachInfor'>
+    <view class='eachData'>
+      <view>
+        <text>张三 / </text><text>陕A88888 / </text><text>13144551245</text><text class='state'>正常</text>
+      </view>
+      <view class='classify'>
+        <text>2017/12/8　</text><text>16:00</text>
+      </view>
+    </view>
+    <view>
+      <view class='update'>
+        <text> <text class='zan-icon zan-icon-passed'></text> 审核 　</text>
+        <text><text class='zan-icon zan-icon-exchange-record'></text> 分配 　</text>
+        <text><text class='zan-icon zan-icon-close'></text> 删除  　</text>
+        <text><text class='zan-icon zan-icon-edit-data'></text> 取消</text>
+      </view>
+      <view style='clear:both'></view>
+</view>
+</view>
+  </view>
+</view>
+<view class='carHostModal' wx:if='{{modal}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>确定要将此设为车主吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+<view class='fordiddelModal' wx:if='{{modal}}'>
+<view class='carHostcontent'>
+    <view class='confirm'>确定要将此禁止吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+<view class='editlModal' wx:if='{{modal}}'>
+<view class='carHostcontent'>
+    <view class='confirm'>确定要编辑吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>
+<view class='deleteModal' wx:if='{{modal}}'>
+<view class='carHostcontent'>
+    <view class='confirm'>确定要删除吗？</view>
+    <view class='cancel no'>取消</view>
+    <view class='cancel yes'>确定</view>
+  </view>
+</view>

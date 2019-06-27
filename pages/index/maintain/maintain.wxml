@@ -1,0 +1,3 @@
+<!--pages/index/adminPeople/adminPeople.wxml-->
+<import src="../getData/list.wxml" />
+<template is="listXml" data="{{allData}}"/>

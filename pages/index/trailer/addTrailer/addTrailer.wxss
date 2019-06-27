@@ -1,0 +1,33 @@
+@import '../../maintain/addMainbtain/addMainbtain.wxss';
+
+.inforLabelArea {
+  display: inline-block;
+  width: 22%;
+  vertical-align: top;
+  line-height: 32px;
+}
+
+.inforTestArea {
+  display: inline-block;
+  width: 72%;
+  margin-top: 8px;
+  height: 64px;
+  line-height: 32px;
+}
+
+.container {
+  background: #fff;
+}
+
+.pageOne {
+  margin: 0px auto;
+  width: 90%;
+}
+
+.redirect {
+  font-size: 14px;
+  float: right;
+  color: #5aa3f7;
+  text-decoration: underline;
+}
+

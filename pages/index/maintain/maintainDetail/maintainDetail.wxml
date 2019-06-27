@@ -1,0 +1,13 @@
+<!--pages/index/claimsDetail/claimsDetail.wxml-->
+<import src="../../../template/step/step.wxml" />
+<import src="../../getData/detail.wxml" />
+<view class='containerDe'>
+  <template is="detailXml" data="{{detail}}" />
+  <view class="zan-panel">
+    <view class="zan-cell zan-cell">
+      <view class="zan-cell__bd">
+        <template is="zan-steps" data="{{ type: 'vertical', hasDesc: true, steps }}"></template>
+      </view>
+    </view>
+  </view>
+</view>

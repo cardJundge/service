@@ -1,0 +1,125 @@
+
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='img_cell_loading' wx:if='{{!loaded1}}'>
+    <image src='../../img/load.gif' style='width:20px;height:20px'></image>
+  </view>
+  <view class='main_content' wx:if='{{loaded1}}'>
+    <view class='nav_cell' style='top:{{top}}'>
+      <view class='nav' data-id='1' bindtap='changeType'>
+        <text class='{{decoration==1?"decoration":""}}'>全部</text>
+      </view>
+      <view class='nav' data-id='2' bindtap='changeType'>
+        <text class='{{decoration==2?"decoration":""}}'>已完成</text>
+      </view>
+      <view class='nav' data-id='3' bindtap='changeType'>
+        <text class='{{decoration==3?"decoration":""}}'>已评价</text>
+      </view>
+    </view>
+    <view class='all_order' style='height:{{sceollHeight}}'>
+      <view class='each_order_cell' wx:for='{{orderList}}' wx:for-item='item'>
+        <view class='store_name_state'>
+          <view class='store_content'>
+            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==1}}'>
+              <text class='order_state' wx:if='{{item.work_status==0}}'>待接单</text>
+              <text class='order_state' wx:if='{{item.work_status==1}}'>待分配</text>
+              <text class='order_state' wx:if='{{item.work_status==2}}'>待作业员接单</text>
+              <text class='order_state' wx:if='{{item.work_status==3}}'>进行中</text>
+              <text class='order_state' wx:if='{{item.work_status==4}}'>已完成</text>
+              <text class='order_state' wx:if='{{item.work_status==6}}'>已取消</text>
+            </view>
+
+            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==0}}'>
+              <text class='order_state'>待付款</text>
+            </view>
+
+            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==2}}'>
+              <text class='order_state'>已退款</text>
+            </view>
+            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==3}}'>
+              <text class='order_state'>已评价</text>
+            </view>
+            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==4}}'>
+              <text class='order_state'>用户已取消</text>
+            </view>
+          </view>
+        </view>
+        <view class='service_infor'>
+          <view class='service_infor_content'>
+            <view class='service_pic'>
+              <image src='{{hostName1}}uploads/project/{{item.project_thumb}}' wx:if='{{item.project_thumb}}'></image>
+              <image src='https://612d-a-data-1a3ebf-1257782233.tcb.qcloud.la/allImage/moren.png?sign=84a7f8fd3f7161294b0f13d9fe76e79d&t=1539137115' wx:if='{{!item.project_thumb}}'></image>
+            </view>
+            <view class='service_name_money' bindtap='toDetail' id='{{item.id}}'>
+              <form bindsubmit='submitFormId' report-submit='true'>
+                <button form-type='submit' hover-class="none" class='formIdBtn'>
+                  <view class='service_name'>{{item.classify_name}}</view>
+                  <view class='service_money'>
+                    <text class='service_num'>x1</text>
+                    <text class='service_price'>￥{{item.price}}</text>
+                  </view>
+                </button>
+              </form>
+            </view>
+          </view>
+        </view>
+        <view class='order_btn' wx:if='{{item.work_status==0&&item.status==1}}'>
+          <view class='each_btn' bindtap='cancelOrder' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                取消订单
+              </button>
+            </form>
+          </view>
+          <view class='each_btn secondBtn' bindtap='accept' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                接 单
+              </button>
+            </form>
+          </view>
+        </view>
+        <view class='order_btn' wx:if='{{item.work_status==1&&item.status==1}}'>
+          <view class='each_btn' bindtap='cancelOrder' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                取消订单
+              </button>
+            </form>
+          </view>
+          <view class='each_btn secondBtn' bindtap='toAllot' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                去分配
+              </button>
+            </form>
+          </view>
+        </view>
+        <view class='order_btn' wx:if='{{1<item.work_status&&item.work_status<4&&item.status==1}}'>
+          <view class='each_btn' bindtap='addProgress' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                添加进度
+              </button>
+            </form>
+          </view>
+          <view class='each_btn secondBtn'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                已分配
+              </button>
+            </form>
+          </view>
+        </view>
+        <view class='order_btn' style='height:20px;' wx:if='{{item.work_status==4||item.status==0||item.status==2||item.status==3||item.status==4||item.work_status==6}}'>
+        </view>
+      </view>
+    </view>
+    <view class='img_cell_loading' wx:if='{{!loaded}}'>
+      <image src='../../img/loading.gif'></image>
+    </view>
+    <view style='font-size:14px;background:#fff;padding:10px 0px;text-align:center' wx:if='{{noAllData}}'>暂无订单</view>
+    <view style='font-size:14px;background:#fff;padding:10px 0px;text-align:center' wx:if='{{noData}}'>没有啦~~~</view>
+  </view>
+</view>

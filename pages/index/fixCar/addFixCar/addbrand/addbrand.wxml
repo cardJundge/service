@@ -1,0 +1,40 @@
+
+ <form bindsubmit="formSubmit">
+ <radio-group name='radio'>
+   
+<view class='ok_btn' wx:if='{{true}}'>
+  <view>
+    <button form-type='submit' class='okBtn'>确 定</button>
+  </view>
+</view>
+<view class="container" wx:if='{{true}}' style="height: {{systemHeight}};">
+  <scroll-view scroll-y style="height: {{systemHeightC}};" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toViewModal}}" scroll-top="{{scrollTop}}">
+    <view id='{{itemCell.id}}' wx:for='{{allList}}' wx:for-item='itemCell'>
+      <view class='letter'>
+        <text>{{itemCell.id}}</text>
+      </view>
+      <view wx:for='{{itemCell.list}}' wx:for-item='item' id='{{item.id}}' data-letter='{{itemCell.id}}' class='brand_cell'>
+            <view class='each_brand'>
+              <view class='img_cell'>
+                <image src='{{hostName}}/{{item.Logo}}' class='logo_img'></image>
+              </view>
+              <view class='brand_name'>{{item.name}}</view>
+              <view class='radio'>
+                <radio value='{{item.name}}&&{{item.id}}'></radio>
+              </view>
+            </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+</radio-group>
+</form>
+<view class='navigate'>
+  <view wx:for='{{letterList}}' bindtap='toView' wx:for-item='item' id='{{item}}'>{{item}}</view>
+</view>
+<view class='letter_float' wx:if='{{animation}}'>
+  <view class='letter_cell'>
+    <view>{{toViewModal}}</view>
+  </view>
+</view>

@@ -1,0 +1,301 @@
+/* pages/index/allData/allData.wxss */
+.container{
+  overflow: hidden;
+  text-align: center;
+  font-size: 32rpx;
+  line-height:80rpx;
+
+  color:#AAAAAA;
+}
+.search{
+  width:94%;
+  margin-left:0px;
+}
+.searchIcon{
+  margin-left:0px;
+}
+.header{
+  background: #fff;
+  padding-top:30rpx;
+}
+.title{
+  display: inline-block;
+  width:94%;
+}
+.title view{
+  display: inline-block;
+  width:50%;
+  vertical-align: top;
+  margin-bottom: 60rpx;
+}
+.title view text{
+  display: inline-block;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.active{
+  color:#3891F8;
+}
+.active text{
+  border-bottom: 3px solid #3891F8;
+}
+.business_cell{
+  display: inline-block;
+  width:94%;
+  text-align: left;
+  padding-bottom: 60rpx;
+  margin-bottom: 10px;
+}
+.business_cell view{ 
+  display: inline-block;
+  width:33.3%;
+}
+.business_cell view view{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width:180rpx;
+  height: 180rpx;
+  border:2rpx solid #EFEFEF;
+}
+.business_cell view view text{
+  font-size:32rpx;
+  display: block;
+  color:#BBBBBB;
+}
+.number{
+  color:#101010!important;
+  font-weight: bold
+}
+
+.chars_cell{
+  display: inline-block;
+  width: 94%;
+}
+.section_tit{
+  text-align: left;
+  font-size: 32rpx;
+  color:#333;
+}
+/*画布*/
+#line-canvas {
+  margin-top: 10rpx;
+	height: 240px;
+}
+#line-canvass {
+  margin-top: 10rpx;
+	height: 240px;
+}
+#line-canvasM {
+  margin-top: 10rpx;
+	height: 240px;
+}
+.table{
+  font-size: 30rpx;
+  display: inline-block;
+  width:94%;
+  overflow-x: hidden;
+  text-align: left;
+
+}
+.table_cell{
+  padding-top: 20px;
+}
+.table_left{
+  vertical-align: top;
+  display: inline-block;
+  width:18%;
+  border-top:1rpx solid #ccc;
+  border-left:1rpx solid #ccc;
+
+}
+.table_right{
+  display: inline-block;
+  width:80%;
+}
+.table_right .tit{
+  background:#D6DBF4!important; 
+}
+
+.data{
+  color:#aaa;
+   background:#D6DBF4; 
+}
+.table_left .td{
+  display: block;
+  text-align: center;
+  line-height:80rpx;
+  height: 80rpx;
+}
+.table_right{
+  overflow-x: scroll;
+  border-top:1rpx solid #ccc;
+}
+.table_right .tr{
+  display: inline-block;
+  width:400%;
+}
+.table_right .td{
+  padding: 0px;
+  display: inline-block;
+  width:7%;
+  text-align: center;
+   line-height:80rpx;
+  height: 80rpx;
+}
+.td{
+  border-bottom: 1rpx solid #ccc;
+  border-right:1rpx solid #ccc;
+}
+.even .td{
+  background: #F4F5FA;
+}
+.evenTd{
+  background: #F4F5FA;
+}
+.classify{
+  display: inline-block;
+  width: 94%;
+}
+.classify view{
+  display: inline-block;
+  width:20%;
+}
+.classify view text{
+  display: inline-block;
+  width:80%;
+   border:1rpx solid #ccc;
+  text-align: center;
+  border-radius: 20px;
+  color:#ccc;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 20rpx;
+}
+.classif_active text{
+  background: #3891F8;
+  color:#fff!important;
+  border:none!important;
+  outline: none;
+}
+.data_range_cell{
+  display: inline-block;
+  width:94%;
+}
+.data_range{
+  width:100%;
+  text-align: left;
+  padding: 20rpx 0px;
+  padding-top: 40rpx;
+}
+.data_range view{
+  display: inline-block;
+  width:25%;
+  text-align: left;
+}
+.data_range view text{
+  display: inline-block;
+  width:60%;
+  text-align: center;
+  border:1rpx solid #ccc;
+  color:#ccc;
+  border-radius: 20px;
+  height: 46rpx;
+  line-height: 46rpx;
+  font-size: 20rpx;
+}
+.range_active text{
+  border: 1rpx solid #3891F8!important; 
+  color:#3891F8!important;
+}
+.data_true{
+  font-size: 32rpx;
+  text-align: left;
+}
+.data_start{
+  display: inline-block;
+}
+.weui-input{
+  display: inline-block;
+}
+.down{
+  width:60rpx;
+  vertical-align: middle;
+  height: 60rpx;
+}
+.chares_cell{
+  width:100%;
+  background: #fff;
+}
+.chares{
+  display: inline-block;
+  width:94%;
+}
+.tit_right{
+  text-align: left;
+  font-size: 36rpx;
+  font-weight: bold;
+  color:#444444;
+}
+.modules{
+  display: inline-block; 
+}
+.dendrogram{
+ text-align: left;
+ line-height: 50rpx;
+ font-size: 28rpx;
+}
+.each_text{
+  display: inline-block;
+  width:20%;
+  text-align: right;
+  color:#333;
+  font-size:24rpx;
+}
+.each_right{
+  font-size: 20rpx;
+  display: inline-block;
+  width:78%;
+  text-align: left;
+  padding-left: 2%;
+}
+.each_right view{
+  display: inline-block;
+}
+.ratio_icon{
+  display: inline-block;
+  width:100px;
+  height: 20rpx;
+  background: #7587DB;
+}
+.module_number{
+  color: #7587DB;
+  display: inline-block;
+  text-align: center;
+  width:8%;
+}
+.ratio{
+  display: inline-block;
+  text-align: center;
+  width:8%;
+}
+.canvas_cell{
+  position: relative;
+}
+.modal_cell{
+  position: absolute;
+  display: inline-block;
+  width:100px;
+  color:#fff;
+  height: 70px;
+  background: rgba(100,100,100,0.6);
+  font-size:20rpx;
+  z-index: 100;
+  line-height: 30px;
+  text-align: center;
+}
+.modal_cell view{
+  display: inline-block;
+  width:80%;
+  text-align: left;
+}

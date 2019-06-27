@@ -1,0 +1,31 @@
+
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='img_cell_loading' wx:if='{{!loaded}}'>
+    <image src='../../img/load.gif'></image>
+  </view>
+  <view class='main_content' wx:else>
+    <view class='add_Icon' bindtap='addItem'>
+      <image src='../../img/add.png'></image>
+    </view>
+    <view class='noData' wx:if='{{serverList.length==0}}'>暂无服务项目</view>
+    <view wx:else>
+      <view class='each_server' wx:for='{{serverList}}' wx:for-item='item'>
+        <view class='each_content'>
+          <view class='server_name_image'>
+            <view class='server_image'>
+              <image src='{{hostName}}uploads/project/{{item.thumb}}' wx:if='{{item.thumb}}'></image>
+              <image src='https://612d-a-data-1a3ebf-1257782233.tcb.qcloud.la/server/order_list.png?sign=4b9ccfa6635265dabe7e4bcbad2bfefd&t=1541035784' wx:else></image>
+            </view>
+            <view class='server_name'>{{item.classify_name}}</view>
+          </view>
+          <view class='server_edit'>
+            <button class='edit' id='{{item.id}}' bindtap='toEdit'>编辑</button>
+            <button class='delete' id='{{item.id}}' bindtap='deleteServer'>删除</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<template name="wxSortPickerView">
+  <scroll-view class="wxSortPickerViewList" scroll-y="true" style="height: {{wxSortPickerData.view.scrollHeight}}px;" bindscrolltoupper="wxSortPickerViewUpper" bindscrolltolower="wxSortPickerViewLower" bindscroll="wxSortPickerViewScroll" scroll-into-view="{{wxSortPickerData.wxSortPickerViewtoView}}">
+    <!--<view animation="{{wxSortPickerData.animationData}}" class="wxSortPickerViewList">-->
+    <!--<view class="wxSortPickerViewTag wxSortPickerViewFixedTag">{{wxSortPickerData.nowTag}}</view>-->
+    <block wx:for="{{wxSortPickerData.textData}}" wx:for-item="item" wx:key="">
+      <view id="{{item.tag}}" style='width:0px;height:0px;font-size:0px;' class="wxSortPickerViewTag">{{item.tag}}</view>
+      <template is="wxSortPickerViewItem" data="{{item}}" />
+    </block>
+    <!--</view>-->
+  </scroll-view>
+
+  <template is="wxSortPickerViewTemTags" />
+</template>
+
+<template name="wxSortPickerViewItem">
+  <block wx:for="{{item.textArray}}" wx:for-item="child" wx:key="">
+    <view class="wxSortPickerViewItem" data-text="{{child}}" bindtap="wxSortPickerViewItemTap">
+
+      <view class='eachInfor'>
+        <view class='headImg'>
+          <image class='headPro' src='../../img/headd.png'></image>
+        </view>
+        <view class='peopleInfor'>
+          <view class='name'>{{child.nickname}}</view>
+          <view class='groupmonster'>{{child.rankName}}</view>
+          <view class='classify'>
+            <view  class='moduleCss' wx:if='{{index<5}}' wx:for='{{child.module}}' wx:for-item='item'> 
+            <text wx:if='{{index<4}}'>[{{item}}]</text>
+            <text wx:if='{{child.module.length>4&&index==4}}'>......</text>
+             </view>
+            
+          </view>
+         
+
+          <button class='opration' wx:if='{{child.status==1}}' id='{{child.id}}' bindtap='openOpration'>操 作</button>
+          <button class='opration' wx:if='{{child.status==0}}' id='{{child.id}}' style='background:#aaa' bindtap='openOpration'>操 作</button>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

@@ -1,0 +1,2 @@
+<import src="../../getData/edit.wxml" />
+<template is="editXml" data="{{carHost}}"/>

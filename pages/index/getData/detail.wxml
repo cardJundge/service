@@ -1,0 +1,160 @@
+<import src="../../template/step/step.wxml" />
+<template name="detailXml">
+  <view class='headerDe'>
+    <view class='titDe'>业务基本信息
+      <!-- <view wx:if='{{detail.status!=6}}' bindtap='openModal' class='zan-icon zan-icon-wap-nav'></view> -->
+    </view>
+  </view>
+  <view class='sectionDe'>
+    <view class='contentDe'>
+      <view class='eachInforDe' wx:if='{{detail.detailNumber}}'>
+        <label class='inforLabel'>业务编号</label>
+        <text class='inforTest'>{{detail.detailNumber}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.owner_name}}'>
+        <label class='inforLabel'>车主姓名</label>
+        <text class='inforTest'>{{detail.owner_name}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.recognizee}}'>
+        <label class='inforLabel'>被保人</label>
+        <text class='inforTest'>{{detail.recognizee}}</text>
+      </view>
+     
+      <view class='eachInforDe' wx:if='{{detail.insurance_id}}'>
+        <label class='inforLabel'>保险公司</label>
+        <text class='inforTest'>{{detail.insuranName}}</text>
+      </view>
+      
+      <view class='eachInforDe' bindtap='link' id='host' data-num='{{detail.mobile}}'>
+        <label class='inforLabel' wx:if='{{detail.mobile}}'>联系电话</label>
+        <view class='inforTest phoneText1'>
+          <text class='phoneText zan-icon zan-icon-phone'></text>
+        <text >  {{detail.mobile}}</text>
+        </view>
+        
+      </view>
+       <view class='eachInforDe' wx:if='{{detail.car_type}}'>
+        <label class='inforLabel'>车型</label>
+        <text class='inforTest'>{{detail.car_type}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.car_no}}'>
+        <label class='inforLabel'>车牌号码</label>
+        <text class='inforTest'>{{detail.car_no}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.shuttle||detail.shuttle==0}}'>
+        <label class='inforLabel'>是否需接送车</label>
+        <text class='inforTest' wx:if='{{detail.shuttle==0}}'>否</text>
+        <text class='inforTest' wx:if='{{detail.shuttle==1}}'>是</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.accident_address}}'>
+        <label class='inforLabelArea'>事故地址</label>
+        <textarea class='inforTestArea' disabled='disabled'>{{detail.accident_address}}</textarea>
+      </view>
+       <view class='eachInforDe' wx:if='{{detail.destination_address}}'>
+        <label class='inforLabelArea'>目的地址</label>
+        <textarea class='inforTestArea' disabled='disabled'>{{detail.destination_address}}</textarea>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.notice}}'>
+        <label class='inforLabel'>通知书</label>
+        <image class='notice' id='{{detail.notice}}' bindtap='previewImg' src='https://www.feecgo.com/uploads/work/{{detail.notice}}'></image>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.type}}'>
+        <label class='inforLabel'>救援类型</label>
+        <text class='inforTest' wx:if='{{detail.type==1}}'>搭电</text>
+        <text class='inforTest' wx:if='{{detail.type==2}}'>换胎</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.task_id}}'>
+        <label class='inforLabel'>作业人员</label>
+        <text class='inforTest'>{{detail.oprator.nickname}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.task_id}}' data-num='{{detail.oprator.mobile}}' bindtap='link'>
+        <label class='inforLabel'>联系电话</label>
+        <view class='inforTest phoneText1'> 
+          <text class='phoneText zan-icon zan-icon-phone'></text>
+        <text > {{detail.oprator.mobile}}</text>
+        </view>
+        
+      </view>
+      <view class='eachInforDe'>
+        <label class='inforLabel'>状态</label>
+        <text class='inforTest' wx:if='{{detail.status==0}}'>待审核</text>
+        <text class='inforTest' wx:if='{{detail.status==1}}'>审核失败</text>
+        <text class='inforTest' wx:if='{{detail.status==2}}'>审核成功</text>
+        <text class='inforTest' wx:if='{{detail.status==3}}'>已分配</text>
+        <text class='inforTest' wx:if='{{detail.status==4}}'>进行中</text>
+        <text class='inforTest' wx:if='{{detail.status==5}}'>已取消</text>
+        <text class='inforTest' wx:if='{{detail.status==6}}'>已完成</text>
+      </view>
+      <view class='eachInforDe'>
+        <label class='inforLabel'>添加时间</label>
+        <text class='inforTest'>{{detail.add_time}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.update_time}}'>
+        <label class='inforLabel'>最后更新</label>
+        <text class='inforTest'>{{detail.update_time}}</text>
+      </view>
+      <view class='eachInforDe' wx:if='{{detail.remark}}'>
+        <label class='inforLabel' style='vertical-align:top'>备注</label>
+        <text class='inforTest' style='max-height:100px;overflow:scroll'>{{detail.remark}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='headerDe'>
+    <view class='titDe'>
+      <text class='progressTit'>业务进度</text>
+    </view>
+  </view> 
+  <view class='modalDe' wx:if='{{detail.oprationModal}}' catchtap='closeOprationModal'>
+    <view class='modalContentDe' style='height:{{ss}}' catchtap='stopBubble'>
+      <view class='eachInformodalDe' bindtap='toEdit'>
+        <text class='zan-icon zan-icon-edit'></text>　编辑</view>
+      <view wx:if='{{detail.status==0}}' class='eachInformodalDe' catchtap='checkModal'>
+        <text class='zan-icon zan-icon-passed'></text>　审核</view>
+      <view class='eachInformodalDe' wx:if='{{detail.status==2||detail.status==3||detail.status==5}}' catchtap='toSelectPeople'>
+        <text class='zan-icon zan-icon-exchange-record'></text>　分配</view>
+
+      <view class='eachInformodalDe' catchtap='toDelete'>
+        <text class='zan-icon zan-icon-close'></text>　删除</view>
+      <view class='eachInformodalDe' wx:if='{{detail.task_id}}' bindtap='cancelClaim'>
+        <text class='zan-icon zan-icon-edit-data'></text>　取消</view>
+    </view>
+  </view>
+
+  <view class='modalInforDe' wx:if='{{detail.check}}'>
+    <view class='modalInforContentDe'>
+      <view class='InforDe'>确定审核通过？</view>
+      <view bindtap='checkPass' class='' style='color:#4b0;border-bottom:1px solid #ddd;padding:10px;'> 通过</view>
+      <view class='' style='color:#f44;border-bottom:1px solid #ddd;padding:10px;' bindtap='reasonOpen'> 不通过</view>
+      <view class='' bindtap='closeModal' style='border-bottom:1px solid #ddd;padding:10px;'> 取消</view>
+    </view>
+  </view>
+  <view class='modalInforDe' wx:if='{{detail.reason}}'>
+    <view class='modalInforContentDe'>
+      <form bindsubmit='unpassReason'>
+
+        <view class='InforDe' style='border:none'>不通过审核的原因</view>
+        <view style='text-align:center;padding:0px 10px;'>
+          <view class='redInfor' wx:if='{{detail.reasonErr}}'>请填写不通过原因</view>
+          <textarea style='border:1px solid #aaa;width:200px;height:100px;text-align:left;margin-left:auto;margin-right:auto' name='reason'></textarea>
+        </view>
+        <button formType="submit">确认</button>
+      </form>
+    </view>
+  </view>
+
+  <view class='modalInforDe' wx:if='{{detail.deleteMODAL}}'>
+    <view class='modalInforContentDe'>
+      <view class='InforDe'>确定删除此业务？</view>
+      <view class='confirmDe yesDe' bindtap='confirmDelete'> 确认</view>
+      <view class='confirmDe noDe' bindtap='cancelDeleteModal'> 取消</view>
+    </view>
+  </view>
+  <view class='modalInforDe' wx:if='{{detail.cancelModal}}'>
+    <view class='modalInforContentDe'>
+      <view class='InforDe'>确定取消？</view>
+      <view class='confirmDe yesDe' bindtap='confirmCancel'> 确认</view>
+      <view class='confirmDe noDe' bindtap='noCancel'> 取消</view>
+    </view>
+  </view>
+
+</template>

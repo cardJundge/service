@@ -1,0 +1,80 @@
+<!--pages/index/userInfor/userInfor.wxml-->
+<view class='container'>
+  <view class='titleText'>
+    <text class='account'>当前登录帐号</text>
+    <text class='account editTit' bindtap='toUpdate'>修改资料</text> </view>
+  <view class='section'>
+    <view class='content'>
+      <view class='eachInfor centerImg'>
+        <view class='logo'>
+          <image class='logoImg' src='../../img/service.png'></image>
+        </view>
+      </view>
+      <view class='eachInfor centerImg'>
+        <view class='inforData'>
+          <view class='inforData' style='text-align:center'>{{userInfor.short_name}}　<image wx:if='{{userInfor.isstar==1}}' class='star' src='../../img/star.png'></image></view>
+        </view>
+      </view>
+      <view class='eachInfor'>
+        <label>名称</label>
+        <view class='inforData'>
+          <text class='inforData'>{{userInfor.name}}</text>
+        </view>
+      </view>
+      <view class='eachInfor'>
+        <label>帐号</label>
+        <view class='inforData'>
+          <text class='inforData'>{{userInfor.account}}</text>
+        </view>
+      </view>
+      <view class='eachInfor'>
+        <label>编号</label>
+        <view class='inforData'>
+          <text class='inforData'>{{userInfor.service_no}}</text>
+        </view>
+      </view>
+      <view class='eachInfor'>
+        <label>联系人</label>
+        <view class='inforData'>
+          <text class='inforData'>{{userInfor.contact}}</text>
+        </view>
+      </view>
+      <view class='eachInfor'>
+        <label>联系电话</label>
+        <view class='inforData'>
+          <text class='inforData'>{{userInfor.mobile}}</text>
+        </view>
+      </view>
+       <view class='eachInfor'>
+        <label>简介</label>
+        <view class='inforData'>
+          <text class='inforData' wx:if='{{userInfor.intro}}'>{{userInfor.intro}}</text>
+        </view>
+      </view>
+      <view class='eachInfor'>
+        <label>地址</label>
+        <view class='inforData'>
+          <text>{{userInfor.address}}</text>
+        </view>
+      </view>
+         <view class='eachInfor'>
+        <label>介绍</label>
+        <view class='inforData'>
+          <text class='inforData' wx:if='{{userInfor.remark}}'>{{userInfor.remark}}</text>
+        </view>
+      </view>
+      <!-- <view class='eachInfor' wx:if='{{userType==2||userType==3}}'>
+        <label>所有品牌</label>
+        <view class='inforData1'>
+          <text wx:for='{{brand}}' wx:for-item='item'>{{item.name}}</text>
+        </view>
+      </view>
+      <view class='eachInfor' wx:if='{{userType==1}}'>
+        <label>合作服务商</label>
+        <view class='inforData1'>
+          <text wx:for='{{service}}' wx:for-item='item'>{{item.name}}</text>
+        </view>
+      </view> -->
+    </view>
+  </view>
+</view>

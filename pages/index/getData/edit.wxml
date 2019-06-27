@@ -1,0 +1,63 @@
+<template name="editXml">
+  <form bindsubmit="formSubmit">
+    <view class='containerDe'>
+      <view class='sectionDe'>
+        <view class='contentDe'>
+          <view class='eachInforDe'>
+            <label class='inforLabel'>业务编号</label>
+            <text>{{carHost.detail_no}}</text>
+          </view>
+          <view class='eachInforDe' wx:if='{{carHost.owner_name}}'>
+            <label class='inforLabel'>车主姓名</label>
+            <text class='redInfor' wx:if='{{carHost.nameErr}}'>！</text>
+            <input class='inforTestDetail' id='trueName' name='trueName' type='text' value='{{carHost.owner_name}}' bindfocus='cancelRed' />
+          </view>
+          <view class='eachInforDe' wx:if='{{carHost.mobile}}' bindtap='link' id='host' data-num='17784562578'>
+            <label class='inforLabel'>联系电话</label>
+            <text class='redInfor' wx:if="{{carHost.mobileErr}}">！</text>
+            <input class='inforTestDetail' name='trueMobile' id='trueMobile' type='text' value='{{carHost.mobile}}' bindfocus='cancelRed' />
+          </view>
+          <view class='eachInforDe' wx:if='{{carHost.car_no}}'>
+            <label class='inforLabel'>车牌号码</label>
+            <text class='redInfor' wx:if="{{carHost.carNoErr}}">！</text>
+            <input class='inforTestDetail' id='trueCar' name='trueCar' type='text' value='{{carHost.car_no}}' bindfocus='cancelRed' />
+          </view>
+          <view class='eachInforDe' wx:if='{{carHost.shuttle||carHost.shuttle==0}}'>
+            <label class='inforLabel'>是否需接送车</label>
+
+            <radio-group name='radio' style='display:inline-block'>
+              <radio checked='{{carHost.shuttle==1}}' value='1'>是</radio>
+              <radio checked='{{carHost.shuttle==0}}' value='0'>否</radio>
+            </radio-group>
+          </view>
+          <view class='eachInforDe' wx:if='{{carHost.type}}'>
+            <label class='inforLabel'>救援类型</label>
+            <radio-group class='inforTestDetail' name='radio' style='width:60%;'>
+              <radio checked='{{carHost.type==1}}' style='margin-left:10px;width:45%;' value='1'>搭电</radio>
+              <radio checked='{{carHost.type==2}}' value='2'>换胎</radio>
+            </radio-group>
+          </view>
+          <view class='eachInforDe' wx:if='{{carHost.accident_address}}'>
+            <label class='inforLabel'>故障地址</label>
+            <text class='redInfor' wx:if="{{carHost.addressErr}}">！</text>
+            <input class='inforTestDetail' id='address' name='address' type='text' value='{{carHost.accident_address}}' bindfocus='cancelRed' />
+          </view>
+          <view class='eachInforDe' wx:if='{{carHost.destination_address}}'>
+            <label class='inforLabel'>目的地址</label>
+            <text class='redInfor' wx:if="{{carHost.deaddressErr}}">！</text>
+            <input class='inforTestDetail' id='address' name='address' type='text' value='{{carHost.destination_address}}' bindfocus='cancelRed' />
+          </view>
+          <view class='eachInforDe'>
+            <label class='inforLabel'>备注</label>
+
+            <input class='inforTestDetail' type='text' name='secondinfor' value='{{carHost.remark}}' />
+          </view>
+          <view class='eachInforDe'>
+            <button formType="submit" wx:if='{{!allOver}}' style='background:#3891F8;color:#fff'>确 认</button>
+            <button class='btn' style='background:#BBBBBB;color:#fff' wx:if='{{allOver}}'>确 定</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </form>
+</template>

@@ -1,0 +1,44 @@
+/* pages/editPsw/editPsw.wxss */
+.container{
+  padding-top:10px; 
+}
+.content{
+  padding: 0px 18px;
+}
+.eachInfor{
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+}
+label{
+  display: inline-block;
+  width:26%;
+  font-size: 14px;
+  color: #454D47;
+}
+input{
+  display: inline-block;
+  width:72%;
+  vertical-align: middle;
+  font-size: 12px;
+}
+.btn{
+  margin-top:20px;
+  width:100%;
+  font-size: 16px;
+  background: #3891F8;
+  color:#fff;
+}
+.warning{
+  font-size: 12px;
+  color:red;
+}
+.submit{
+  padding: 0px;
+  text-align: center;
+  border-radius:5px;
+  height: 40px;
+  line-height: 40px;
+  background:#1AAD19;
+  color:#fff;
+  
+}

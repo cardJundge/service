@@ -1,0 +1,49 @@
+/* pages/mobilePsw/mobilePsw.wxss */
+.contry{
+  color:#1F9024;
+  margin-left:10px;
+}
+.section{
+   padding: 0px 18px;
+}
+.eachInfor{
+  padding: 10px 0px;
+  font-size:14px;
+}
+label{
+   display: inline-block;
+  width:24%;
+}
+input{
+  display: inline-block;
+  width:110px;
+  vertical-align: middle;
+}
+.vertify{
+  background: #fff;
+  color:#494949;
+  float: right;
+  font-size: 14px;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid #494949;
+  border-radius: 3px;
+}
+.phoneNum{
+  border-bottom: 1px solid #ccc;
+}
+.verfifing{
+  border-bottom: 1px solid #1F9024;
+}
+.time{
+  color:#aaa;
+  text-align: right;
+}
+button{
+  background: #3891F8;
+  color:#fff;
+}
+.errorWarning{
+  font-size:12px;
+  color:red;
+}

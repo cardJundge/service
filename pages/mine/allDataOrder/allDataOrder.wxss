@@ -1,0 +1,2 @@
+/* pages/mine/allDataOrder/allDataOrder.wxss */
+@import '../allData/allData.wxss';

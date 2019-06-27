@@ -1,0 +1,51 @@
+/* pages/mine/serverItemList/addServerItem/addServerItem.wxss */
+.item_content{
+  border-bottom:1rpx solid #efefef;
+}
+.item_content{
+  margin: 0px 15px;
+  line-height: 50px;
+  font-size: 14px;
+}
+.item_content view{
+  display: inline-block;
+}
+.item_content .label{
+  width:24%;
+}
+.item_content .value{
+ width:76%;
+ text-align: right;
+}
+checkbox{
+  margin-left: 10px;
+}
+input{
+  display: inline-block;
+  line-height: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+.item_content image{
+  width:60px;
+  height: 60px;
+  vertical-align: top;
+  margin-top: 10px;
+  border: 2px solid #EAEAEA;
+}
+button{
+  margin-top: 30px;
+  background:#3891F8;
+  color:#fff;
+  border-radius: 0px;
+}
+.down{
+  border:none!important;
+  width:14px!important;
+  height: 14px!important;
+  vertical-align: middle!important;
+  margin: 0px!important;
+}
+.value text{
+  margin-right: 6px;
+}

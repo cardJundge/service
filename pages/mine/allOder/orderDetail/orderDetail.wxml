@@ -1,0 +1,93 @@
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class=''></view>
+  <view class='img_cell_loading' wx:if='{{!loaded}}'>
+  <image src='../../../img/load.gif'></image>
+  </view>
+  <view class='main_content' style='height:100vh' wx:if='{{loaded}}'>
+    <view class='user_infor'>
+      <view class='user_avatar'>
+        <view class='user_icon'>
+          <image src='../../../img/user.png'></image>
+        </view>
+        <view class='nickname'>{{detailData.user.nickname}}</view>
+      </view>
+      <view class='user_phone'>
+        <view class='user_icon'>
+          <image src='../../../img/mobilephone.png'></image>
+        </view>
+        <view class='nickname' data-num='{{detailData.user.mobile}}' bindtap='link'>{{detailData.user.mobile}}</view>
+      </view>
+    </view>
+    <view class='service_item'>
+      <view class='servicer_text'>服务</view>
+      <view class='service_infor'>
+        <view class='service_avatar'>
+          <image src='https://612d-a-data-1a3ebf-1257782233.tcb.qcloud.la/allImage/moren.png?sign=f9db201b01236e4899767ed4df5c0e64&t=1539589326'></image>
+        </view>
+        <view class='order_infor'>
+          <view class='service_name'>{{detailData.server.classify_id}}</view>
+          <view class='service_num'>x1</view>
+          <view class='service_price'>￥{{detailData.server.price}}</view>
+        </view>
+
+      </view>
+      <view class='order_infor_order'>
+        <view class=''>
+          <text>订单编号：{{detailData.server.order_no}}</text>
+          <text class='copy_cell' bindtap="copyTBL" id='{{detailData.server.order_no}}'>复制</text>
+        </view>
+
+        <view>订单时间：{{detailData.server.add_time}}</view>
+        <view>支付方式：线上支付</view>
+      </view>
+    </view>
+    <!-- <view class='bottom_cell'>
+      <view class='bottom_left'>
+        <text style='font-size:12px'>合计：</text>
+        <text style='font-size:14px;color:#FF9701'>￥25.00</text>
+      </view>
+      <view class='bottom_right'>
+        <view class='cancel_btn'>取消订单</view>
+        <view class='pay_btn' bindtap='topay'>立即支付</view>
+      </view>
+    </view> -->
+    <import src="../../../template/step/step.wxml" />
+    <view class='service_item'>
+      <view class='servicer_text'>时效</view>
+      <view class='service_infor' style='border-top:none'>
+        <view class="zan-panel">
+          <view class="zan-cell zan-cell" style='padding:0px'>
+            <view class="zan-cell__bd">
+              <template is="zan-steps" data="{{ type: 'vertical', hasDesc: true, steps }}"></template>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style='background:#fff;'>
+      <view class='order_btn' wx:if='{{detailData.server.work_status==0&&detailData.server.status==1}}'>
+        <view class='each_btn' bindtap='cancelOrder'>
+          <text>取消订单</text>
+        </view>
+        <view class='each_btn' bindtap='accept'>
+          <text>接 单</text>
+        </view>
+      </view>
+      <view class='order_btn' wx:if='{{detailData.server.work_status==1&&detailData.server.status==1}}'>
+      
+        <view class='each_btn' bindtap='toAllot'>
+          <text>去分配</text>
+        </view>
+      </view>
+      <view class='order_btn' wx:if='{{1<detailData.server.work_status&&detailData.server.work_status<4&&detailData.server.status==1}}'>
+        <view class='each_btn'>
+          <text bindtap='addProgress'>添加进度</text>
+        </view>
+      </view>
+    </view>
+    <view class='backList' bindtap='toIndex' wx:if='{{formId}}'>返回主页</view>
+
+  </view>
+</view>

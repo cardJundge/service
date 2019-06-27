@@ -1,0 +1,60 @@
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view wx:if='{{!loaded}}' class='index_load_cell'>
+    <image src='../../../img/load.gif' class='index_load'></image>
+    <text>加载中...</text>
+  </view>
+  <view wx:if='{{loaded}}'>
+    <form bindsubmit="formSubmit">
+      <checkbox-group name='brandIds'>
+        <view class='ok_btn' wx:if='{{true}}'>
+          <view>
+            <button form-type='submit' class='okBtn'>确 定</button>
+          </view>
+        </view>
+        <view class='hasCoor'>
+          <view class='hasCoor_cell'>
+            <view class='hasCoor_tit' bindtap='showAll'>
+              <text>已经选择的服务品牌</text>
+              <image src='../../../img/down.png'></image>
+            </view>
+          </view>
+          <view class='hasCoor_con' wx:if='{{show_all}}'>
+            <view class='hasCoor_con_cell'>
+              <text wx:for='{{brand}}' wx:for-item='item'>· {{item.name}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="container1" wx:if='{{true}}' style="height: {{systemHeight}};">
+          <scroll-view scroll-y style="height: {{systemHeightC}};" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toViewModal}}" scroll-top="{{scrollTop}}">
+            <view id='{{itemCell.id}}' wx:for='{{allList}}' wx:for-item='itemCell'>
+              <view class='letter'>
+                <text>{{itemCell.id}}</text>
+              </view>
+              <view wx:for='{{itemCell.list}}' wx:for-item='item' id='{{item.id}}' data-letter='{{itemCell.id}}' class='brand_cell'>
+                <view class='each_brand'>
+                  <view class='img_cell'>
+                    <image src='{{hostName}}/{{item.Logo}}' class='logo_img'></image>
+                  </view>
+                  <view class='brand_name'>{{item.name}}</view>
+                  <view class='radio'>
+                    <checkbox value='{{item.id}}' checked='{{item.own}}'></checkbox>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </checkbox-group>
+    </form>
+    <view class='navigate' style='margin-top:{{marginTop}}'>
+      <view wx:for='{{letterList}}' bindtap='toView' wx:for-item='item' id='{{item}}'>{{item}}</view>
+    </view>
+    <view class='letter_float' wx:if='{{animation}}'>
+      <view class='letter_cell'>
+        <view>{{toViewModal}}</view>
+      </view>
+    </view>
+  </view>
+</view>

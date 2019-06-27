@@ -1,0 +1,253 @@
+<!--pages/index/addPeople/addPeople.wxml-->
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='height:200vh'>
+  <view class='section'>
+    <view class='content'>
+      <view class='firstPage' wx:if='{{firstPage}}'>
+        <form bindsubmit='analyze'>
+          <view class='eachInfor'>
+            <label>粘贴短信</label>
+            <textarea name='infor' bindfocus='writing' style='line-height:22px;border:1px solid #ddd;margin:0px auto;width:98%;height:200px;overflow:scroll' maxlength='9999999' placeholder='请粘贴短信' bindblur='ff'></textarea>
+            <view class='redirect' bindtap='tosecondPagere'>直接填写</view>
+            <view wx:if='{{tip}}' class='redInfor'>请粘贴短信</view>
+          </view>
+          <button class='btn' formType="submit">解析短信</button>
+        </form>
+      </view>
+      <view class='secondPage' wx:if='{{secondPage}}'>
+        <view wx:if='{{cannot}}' class='redInfor'>您输入的短信无法解析，请自行输入</view>
+
+        <form bindsubmit='submitCheck'>
+
+          <view class='eachInfor'>
+            <label>类型</label>
+            <radio-group name='classify' bindchange='radioChage'>
+              <radio value='0' checked='{{!ifLoss}}'>查勘</radio>
+              <radio value='1' checked='{{ifLoss}}'>定损</radio>
+            </radio-group>
+          </view>
+
+          <view class='eachInfor' id='insurance'>
+            <label>保险公司</label>
+            <picker bindchange="bindPickerChange" name='insurance' value="index1" range="{{array}}">
+              <view class="weui-input">{{array[index1]}}</view>
+            </picker>
+          </view>
+
+          <view class='eachInfor'>
+            <label>报案号</label>
+            <text class='redInfor' wx:if="{{report_noErr}}">！</text>
+            <input type='text' bindfocus='cancelRed' name='report_no' id='report_no' placeholder='请输入报案号' bindinput='bindInfor' value='{{caseInfor[0].numberId}}' />
+          </view>
+
+          <view class='eachInfor'>
+            <label>车牌号</label>
+            <text class='redInfor' wx:if="{{carIdErr}}">！</text>
+            <input type='text' name='carId' id='carId' placeholder='请输入车牌号' bindfocus='cancelRed' value='{{caseInfor[0].carId}}' />
+          </view>
+          <view class='eachInfor'>
+            <label>被保人</label>
+            <text class='redInfor' wx:if="{{casePersonErr}}">！</text>
+            <input type='text' name='casePerson' id='casePerson' bindfocus='cancelRed' placeholder='请输入被保人姓名' value='{{caseInfor[0].casePerson}}' />
+          </view>
+          <view class='eachInfor'>
+            <label>报案电话</label>
+            <text class='redInfor' wx:if="{{caseMobileErr}}">！</text>
+            <input type='text' name='caseMobile' id='caseMobile' bindfocus='cancelRed' placeholder='请输入报案电话' value='{{caseInfor[0].casePhone}}' />
+          </view>
+          <view class='eachInfor' wx:if='{{hasMoney}}'>
+            <label>预估金额</label>
+            <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+            <input type='number' name='money' id='money' bindfocus='cancelRed' placeholder='请输入预估金额' value='{{money}}' />
+          </view>
+
+          <view class='third_cell' wx:if='{{third_num<11&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息1</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile1' id='mobile1' bindfocus='cancelRed' placeholder='请输入三者信息1的联系电话' value='' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car1' id='car1' bindfocus='cancelRed' placeholder='请输入三者信息1的车牌号' value='' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<10&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息2</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile2' id='mobile2' bindfocus='cancelRed' placeholder='请输入三者信息2的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car2' id='car2' bindfocus='cancelRed' placeholder='请输入三者信息2的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<9&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息3</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile3' id='mobile3' bindfocus='cancelRed' placeholder='请输入三者信息3的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car3' id='car3' bindfocus='cancelRed' placeholder='请输入三者信息3的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<8&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息4</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile4' id='mobile4' bindfocus='cancelRed' placeholder='请输入三者信息4的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car4' id='car4' bindfocus='cancelRed' placeholder='请输入三者信息4的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<7&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息5</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile5' id='mobile5' bindfocus='cancelRed' placeholder='请输入三者信息5的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car5' id='car5' bindfocus='cancelRed' placeholder='请输入三者信息5的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<6&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息6</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile6' id='mobile6' bindfocus='cancelRed' placeholder='请输入三者信息6的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car6' id='car6' bindfocus='cancelRed' placeholder='请输入三者信息6的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<5&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息7</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile7' id='mobile7' bindfocus='cancelRed' placeholder='请输入三者信息7的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car7' id='car7' bindfocus='cancelRed' placeholder='请输入三者信息7的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<4&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息8</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile8' id='mobile8' bindfocus='cancelRed' placeholder='请输入三者信息8的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car8' id='car8' bindfocus='cancelRed' placeholder='请输入三者信息8的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<3&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息9</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile9' id='mobile9' bindfocus='cancelRed' placeholder='请输入三者信息9的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car9' id='car9' bindfocus='cancelRed' placeholder='请输入三者信息9的车牌号' />
+            </view>
+          </view>
+          <view class='third_cell' wx:if='{{third_num<2&&third_num>0}}'>
+            <view class='third_tit'>
+              <text>三者信息10</text>
+              <image src='../../../img/decrease.png' bindtap='decrease_third'></image>
+            </view>
+            <view class='eachInfor'>
+              <label>联系电话</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='number' name='mobile10' id='mobile10' bindfocus='cancelRed' placeholder='请输入三者信息10的联系电话' />
+            </view>
+            <view class='eachInfor'>
+              <label>车牌号</label>
+              <text class='redInfor' wx:if="{{moneyErr}}">！</text>
+              <input type='text' name='car10' id='car10' bindfocus='cancelRed' placeholder='请输入三者信息10的车牌号' />
+            </view>
+          </view>
+
+
+          <view style='text-align:right' bindtap='addThird'>
+            <view class='addThird'>增加三者信息</view>
+          </view>
+
+          <view class='eachInfor'>
+            <view class='eachInfor'>
+              <label>备注</label>
+              <textarea name='remark' id='remark' style='line-height:22px;border:1px solid #ddd;margin:0px auto;width:98%;height:150px;overflow:scroll' maxlength='123456789'>{{shortInfor1}}</textarea>
+
+
+            </view>
+          </view>
+          <button class='btn' wx:if='{{!allOver}}' form-type='submit'>确 定</button>
+          <button class='btn' style='background:#BBBBBB;color:#fff' wx:if='{{allOver}}'>确 定</button>
+        </form>
+      </view>
+
+    </view>
+  </view>
+</view>
+<view class='carHostModal' wx:if='{{toallot}}'>
+  <view class='carHostcontent'>
+    <view class='confirm'>添加成功</view>
+    <view class='cancel yes' bindtap='toAllotP'>去分配</view>
+    <view class='cancel no' bindtap='back'>返回</view>
+  </view>
+</view>

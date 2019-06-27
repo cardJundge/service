@@ -1,0 +1,49 @@
+/* pages/editPsw/editPsw.wxss */
+
+.content {
+  padding: 0 36rpx;
+}
+
+.eachInfor {
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #ddd;
+}
+
+label {
+  display: inline-block;
+  width: 26%;
+  font-size: 28rpx;
+  color: #454d47;
+}
+
+input {
+  display: inline-block;
+  width: 72%;
+  vertical-align: middle;
+  font-size: 24rpx;
+}
+
+.btn {
+  margin-top: 40rpx;
+  width: 100%;
+  font-size: 36rpx;
+  background: #3891f8;
+  color: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.warning {
+  font-size: 24rpx;
+  color: red;
+}
+
+.submit {
+  padding: 0;
+  text-align: center;
+  border-radius: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #1aad19;
+  color: #fff;
+}

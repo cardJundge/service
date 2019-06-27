@@ -1,0 +1,129 @@
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view wx:if='{{!loaded}}' class='index_load_cell'>
+    <image src='../../../img/load.gif' class='index_load'></image>
+    <text>加载中...</text>
+  </view>
+  <view wx:if='{{loaded}}'>
+    <view class='ok_btn' wx:if='{{true}}' style='top:{{titTop}}'>
+      <view bindtap='optionCar'>
+        <button class='okBtn'>确 定</button>
+      </view>
+    </view>
+    <view class='hasCoor' style='top:{{top}}'>
+      <view class='hasCoor_cell'>
+        <view class='hasCoor_tit' bindtap='showAll'>
+          <text>已经关联的服务商</text>
+          <image src='../../../img/down.png'></image>
+        </view>
+      </view>
+      <view class='hasCoor_con' wx:if='{{!show_all}}' style='background:#F4F8FF'>
+        <view class='hasCoor_con_cell' style='height:{{systemHeight}};overflow:scroll'>
+
+          <view class="leftview">
+            <block wx:for="{{serviceArr}}" wx:key="" wx:for-item="item">
+              <view class=" {{selectMenuID == index ? 'activemenu' : 'leftlist'}}" bindtap="switchToRight" data-index="{{index}}">{{item.name}}</view>
+            </block>
+          </view>
+
+          <view class="rightview">
+            <view wx:if="{{serviceArr[selectMenuID]}}">
+              <block wx:for="{{serviceArr[selectMenuID].service}}" wx:for-item="items" wx:key="">
+                <view class="rightlist">{{items.short_name}}</view>
+              </block>
+            </view>
+          </view>
+          <!-- <view wx:for='{{serviceArr}}' wx:for-item='item' class='service_cell'> -->
+          <!-- <view class='service_tit' wx:if='{{!item.service_sname}}'>{{item.service_name}}</view>
+            <view class='service_tit' wx:if='{{item.service_sname}}'>{{item.service_sname}}</view> -->
+          <!-- <view class='brand_cell_tit'>
+            <text wx:for='{{item.brand}}' wx:for-item='item1'>{{item1.brand_name}}</text>
+          </view> -->
+          <!-- </view> -->
+        </view>
+      </view>
+    </view>
+    <view class="" wx:if='{{loaded}}' style="height: {{systemHeight}};margin-top:65px;">
+      <scroll-view scroll-y style="height: {{systemHeight}};" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toViewModal}}" scroll-top="{{scrollTop}}">
+        <view id='{{itemCell.id}}' wx:for='{{allList}}' wx:for-item='itemCell'>
+          <view class='letter'>
+            <text>{{itemCell.id}}</text>
+          </view>
+          <view wx:for='{{itemCell.list}}' data-name='{{item.name}}' bindlongtap='checkName' bindtap='changeSeries' wx:for-item='item' id='{{item.id}}' data-letter='{{itemCell.id}}' class='{{item.class}}'>
+            <view class='each_brand'>
+              <view class='img_cell'>
+                <image src='{{hostName}}{{item.Logo}}' class='logo_img'></image>
+              </view>
+              <view class='brand_name'>{{item.name}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+      <view class='series_cell' style="height:{{systemHeightC}};top:{{top}}">
+        <view class='letter_null'>
+          <text></text>
+        </view>
+        <scroll-view scroll-y style="height:{{systemHeightRight}}">
+          <view class='{{itemSeries.class}}' bindtap='chooseSeries' id='{{itemSeries.id}}' wx:for='{{series}}' wx:for-item='itemSeries' animation="{{animationData}}">
+            <view class='brand_name1'>
+              <text class='series_name' wx:if='{{itemSeries.short_name}}'>{{itemSeries.short_name}}</text>
+              <text class='series_name' wx:else>{{itemSeries.name}}</text>
+              <view class='select_icon' style=''>
+                <image wx:if='{{itemSeries.class=="each_series active_series"}}' src='../../../img/active.png' style='vertical-align:middle;width:20px;height:20px;'></image>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class='navigate' style='top:{{top}}'>
+      <view wx:for='{{letterList}}' bindtap='toView' wx:for-item='item' id='{{item}}'>{{item}}</view>
+    </view>
+    <view class='letter_float' wx:if='{{animation}}'>
+      <view class='letter_cell'>
+        <view>{{toViewModal}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class='modal' wx:if='{{modalLevel}}'>
+  <form bindsubmit='okAddSercice'>
+    <view class='modal_content'>
+      <view class='modal_title'>请选择优先级</view>
+      <view class='modal_main'>
+        <radio-group name='level'>
+          <view class='level'>
+            <text>一级</text>
+            <radio value='1' checked='checked'></radio>
+          </view>
+          <view class='level'>
+            <text>二级</text>
+            <radio value='2'></radio>
+          </view>
+          <view class='level'>
+            <text>三级</text>
+            <radio value='3'></radio>
+          </view>
+          <view class='level'>
+            <text>四级</text>
+            <radio value='4'></radio>
+          </view>
+          <view class='level'>
+            <text>五级</text>
+            <radio value='5'></radio>
+          </view>
+        </radio-group>
+      </view>
+      <view class='modal_bottom'>
+        <view class='ok'>
+          <button form-type='submit'>确定</button>
+        </view>
+        <view class='cancel' bindtap='cancelModal'>
+          <button style='color:#aaa'>取消</button>
+        </view>
+      </view>
+    </view>
+  </form>
+</view>

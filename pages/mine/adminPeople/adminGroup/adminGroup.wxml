@@ -1,0 +1,44 @@
+<!--pages/index/adminGroup/adminGroup.wxml-->
+
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='tit'>
+  <view class='tiCon'>
+    <text>所有分组</text>
+    </view>
+  </view>
+  <view class='section'>
+    <view class='eachGroup' wx:for='{{groupList}}' wx:for-item="item">
+      <view class='groupName'>
+      <text class='redInfor' wx:if='{{redInfor[index]}}'>！</text>
+        <input id='{{item.id}}' bindfocus='inputFocus' focus='{{getFocus[index]}}' class='{{inputActive[index]}}' type='text' value='{{item.name}}' bindinput='getValue'/>
+      </view>
+      <view class='groupEdit'>
+        <view class='editDiv' wx:if='{{!getFocus[index]}}' bindtap='toEdit' id='{{item.id}}'>编辑</view>
+        <view class='editDiv' style='color:#3CC51F' wx:if='{{getFocus[index]}}' bindtap='edit' id='{{item.id}}'>确定 <text class='zan-icon zan-icon-checked'></text> </view>
+        <view class='editDiv' style='color:red' wx:if='{{getFocus[index]}}' bindtap='cancel' id='{{item.id}}'>取消 <text class='zan-icon zan-icon-clear'></text></view>
+
+
+        <view class='editDiv' bindtap='toDeleteGroup' wx:if='{{!getFocus[index]}}' id='{{item.id}}'>删除</view>
+      </view>
+    </view>
+ 
+
+
+    
+  </view>
+
+
+
+</view>
+<view class='modalInforDe' wx:if='{{modal}}'>
+  <view class='modalInforContentDe'>
+    <view class='InforDe'>确定删除？
+     <view class='redInfor' style='font-size:10px;'>小组下面若有成员，不可删除</view>
+    </view>
+     
+    <view class='confirmDe yesDe' bindtap='confirmDelete'> 确认</view>
+    <view class='confirmDe noDe' bindtap='noCancel'> 取消</view>
+  </view>
+</view>

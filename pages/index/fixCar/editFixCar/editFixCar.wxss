@@ -1,0 +1,9 @@
+/* pages/index/fixCar/editFixCar/editFixCar.wxss */
+.car_type{
+  display:inline-block;
+}
+.right{
+  width:18px;
+  height: 18px;
+  vertical-align: middle;
+}

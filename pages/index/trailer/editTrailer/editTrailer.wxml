@@ -1,0 +1,7 @@
+
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' >
+<import src="../../getData/edit.wxml" />
+<template is="editXml" data="{{carHost}}"/>
+</view>

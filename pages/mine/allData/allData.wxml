@@ -1,0 +1,170 @@
+<!--pages/index/allData/allData.wxml-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='tit'>
+    <view class='search'>
+      <view class='searchIcon zan-icon zan-icon-search'></view>
+      <input class='searchInput' type='text' value='{{keyWordsTemp}}' bindinput='toChoose' placeholder='输入作业员姓名' style='text-align:left' />
+      <view class='zan-icon zan-icon-clear' bindtap='cancelSearch' style='font-size:14px;color:#A3A3A3' wx:if='{{cancelSearchIcon}}'></view>
+    </view>
+  </view>
+  <view class='header'>
+    <view class='title'>
+      <view class='{{activeLeft}}' bindtap='toOutLine' style='text-align:left'>
+        <text>{{short_name}}数据概括</text>
+      </view>
+      <view style='text-align:right' class='{{activeRight}}' bindtap='toDetail'>
+        <text>{{short_name}}数据详情</text>
+      </view>
+    </view>
+  </view>
+  <view class='section' style='display:{{main_left}}'>
+    <view class='business_cell' wx:if='{{!noPeople}}'>
+      <view>
+        <view class='all_data'>
+          <text>累计业务数</text>
+          <text class='number'>{{allData}}</text>
+        </view>
+      </view>
+      <view style='text-align:center'>
+        <view class='month_data'>
+          <text>本月业务数</text>
+          <text class='number'>{{month}}</text>
+        </view>
+      </view>
+      <view style='text-align:right'>
+        <view class='day_data'>
+          <text>今日业务数</text>
+          <text class='number'>{{today}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if='{{noPeople}}'>暂无数据</view>
+    <view style='height:16rpx; background: #EFEFEF;'></view>
+    <view class='chars_cell' wx:if='{{!noPeople}}'>
+      <view class='section_tit'>本周业务</view>
+    </view>
+    <view class='canvas_cell' style='display:{{noPeopleCancvas}}'>
+ 
+      <canvas canvas-id="line-canvas" data-canvas='left'    bindtouchstart='canvasEvent'  bindtouchend='cancelTouched'  id="line-canvas" style='width:{{systemWidth}}'></canvas>
+      <view class='modal_cell' wx:if='{{touched}}' style='top:{{modal_top}};left:{{modal_left}}'>
+        <view class='modal_cont'>
+        <view>{{dateNow}}</view>
+        <view>业务量：{{dataNumber}}</view>
+          
+        </view>
+      </view>
+    </view>
+    <view class='table_cell' wx:if='{{!noPeople}}'>
+      <view class='table'>
+        <view class='table_left'>
+          <view class='td data'>日期</view>
+          <view wx:for='{{weekArr1}}' wx:for-item='item' class='{{index%2==1?"td evenTd":"td"}}'>{{item.data}}</view>
+        </view>
+        <view class='table_right'>
+          <view class='tr' style='width:{{trWidth}}'>
+            <view class='td tit' style='width:{{tdWidth}}' wx:for='{{moduleArr}}' wx:for-item='item' id='{{item.id}}'>{{item}}</view>
+          </view>
+          <view class='tr' style='width:{{trWidth}}' wx:for='{{weekList}}' wx:for-item='item' class='{{index%2==1?"tr even":"tr"}}'>
+            <view class='td' wx:if='{{item.value.claims||item.value.claims==0}}' style='width:{{tdWidth}}'>{{item.value.claims}}</view>
+            <view class='td' wx:if='{{item.value.maintain||item.value.maintain==0}}' style='width:{{tdWidth}}'>{{item.value.maintain}}</view>
+            <view class='td' wx:if='{{item.value.yearbook||item.value.yearbook==0}}' style='width:{{tdWidth}}'>{{item.value.yearbook}}</view>
+            <view class='td' wx:if='{{item.value.trailer||item.value.trailer==0}}' style='width:{{tdWidth}}'>{{item.value.trailer}}</view>
+            <view class='td' wx:if='{{item.value.rescue||item.value.rescue==0}}' style='width:{{tdWidth}}'>{{item.value.rescue}}</view>
+            <view class='td' wx:if='{{item.value.accident||item.value.accident==0}}' style='width:{{tdWidth}}'>{{item.value.accident}}</view>
+            <view class='td' wx:if='{{item.value.used||item.value.used==0}}' style='width:{{tdWidth}}'>{{item.value.used}}</view>
+            <view class='td' wx:if='{{item.value.sale||item.value.sale==0}}' style='width:{{tdWidth}}'>{{item.value.sale}}</view>
+            <view class='td' wx:if='{{item.value.survey||item.value.survey==0}}' style='width:{{tdWidth}}'>{{item.value.survey}}</view>
+            <view class='td' wx:if='{{item.value.risk||item.value.risk==0}}' style='width:{{tdWidth}}'>{{item.value.risk}}</view>
+            <view class='td' wx:if='{{item.value.push||item.value.push==0}}' style='width:{{tdWidth}}'>{{item.value.push}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='section' style='display:{{main_right}}'>
+    <view class='classify'>
+      <view style='text-align:left' data-name='1' bindtap='changebussiness' class='{{bussinessClasify==1?"classif_active":""}} '>
+        <text>业务量</text>
+      </view>
+      <view data-name='2' bindtap='changebussiness' class='{{bussinessClasify==2?"classif_active":""}} '>
+        <text>接单时效</text>
+      </view>
+      <view style='text-align:right' bindtap='changebussiness' data-name='3' class='{{bussinessClasify==3?"classif_active":""}} '>
+        <text>结案时效</text>
+      </view>
+    </view>
+    <view style='height:2rpx;background:#EFEFEF;margin-top:40rpx;'></view>
+    <view class='data_range_cell'>
+      <view class='data_range'>
+        <view class='range_text'>日期范围</view>
+        <view class='{{dataRange==1?"range_active":""}}' bindtap='changeRange' data-name='1'>
+          <text>近7天</text>
+        </view>
+        <view class='{{dataRange==2?"range_active":""}}' bindtap='changeRange' data-name='2'>
+          <text>近30天</text>
+        </view>
+      </view>
+      <view class='data_true'>
+        <view class="data_start">
+          <picker mode="date" value="{{start_time}}" start="2018-03-01" end="{{initEnd_time}}" bindchange="bindDateChange">
+            <view class="weui-input">{{start_time}}</view>
+            <image src='../../img/down2.png' class='down'></image>
+          </picker>
+        </view>
+        <view style='display:inline-block;margin:0px 10px;color:#D8D8D8'>到</view>
+        <view class="data_start end">
+          <picker mode="date" value="{{end_time}}" start="2015-09-01" end="{{initEnd_time}}" bindchange="bindDateChange1">
+            <view class="weui-input">{{end_time}}</view>
+            <image src='../../img/down2.png' class='down'></image>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view style='height:12rpx;background:#EFEFEF;margin-top:10rpx;'></view>
+    <view class='chares_cell'>
+      <view class='chares'>
+        <view class='tit_right'>
+          <picker class='modules' value="{{moduIndex}}" id='{{moduleArr[moduIndex]}}' bindchange='changeModule' range='{{moduleArr}}'>
+            {{bussinessText}}·
+            <view class="weui-input">{{moduleArr[moduIndex]}}</view>
+            <image src='../../img/down3.png' class='down' style='margin-left:6px;width:40rpx;height:40rpx'></image>
+          </picker>
+        </view>
+        <view>
+         <view class='canvas_cell'>
+          <canvas data-canvas='right' canvas-id="line-canvass" id="line-canvass" style='width:{{systemWidth}};display:{{canvasNull}}'  bindtouchstart='canvasEvent' bindtouchend='cancelTouched'></canvas>
+           <view class='modal_cell' wx:if='{{touched}}' style='top:{{modal_top}};left:{{modal_left}}'>
+        <view class='modal_cont'>
+        <view>{{dateNow}}</view>
+        <view>业务量：{{dataNumber}}</view>
+        </view>
+      </view>
+          </view>
+          <view wx:if='{{dataNull}}'>暂无数据</view>
+        </view>
+      </view>
+    </view>
+    <view style='height:12rpx;background:#EFEFEF;margin:20rpx 0px;' wx:if='{{!dataNull}}'></view>
+    <view class='chares_cell' wx:if='{{!dataNull}}'>
+      <view class='chares'>
+        <view class='tit_right'>{{radioText}}</view>
+        <view class='dendrogram'>
+          <view class='each' wx:for='{{radiosArr}}' wx:for-item='item'>
+            <text class='each_text'>{{item.moduName}}</text>
+            <view class='each_right'>
+              <view>
+                <text class='ratio_icon' style='width:{{item.width}};'></text>
+              </view>
+
+              <text class='module_number'>{{item.num}}</text>
+              <text class='ratio'>{{item.radio}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+

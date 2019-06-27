@@ -1,0 +1,16 @@
+<import src="../../../template/step/step.wxml" />
+<import src="../../getData/detail.wxml" />
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='padding-top:{{paddingTop}}'>
+  <view class='containerDe'>
+    <template is="detailXml" data="{{detail}}" />
+    <view class="zan-panel">
+      <view class="zan-cell zan-cell">
+        <view class="zan-cell__bd">
+          <template is="zan-steps" data="{{ type: 'vertical', hasDesc: true, steps }}"></template>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

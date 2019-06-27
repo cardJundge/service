@@ -1,0 +1,35 @@
+.wxSortPickerViewTemTags{
+  position: fixed;
+  top: 10px;
+  right: 0;
+  background-color: #fff;
+  color: cornflowerblue;
+}
+.wxSortPickerViewTemTag{
+  text-align: center;
+  padding: 2px;
+  font-size: 12px;
+}
+.wxSortPickerViewFixedTag{
+  position: fixed;
+  width: 100%;
+}
+
+
+.wxSortPickerViewItem{
+  border-bottom: 1px solid #eee;
+  margin-left: 5px;
+}
+/* pages/index/adminPeople/adminPeople.wxss */
+
+
+.wxSortPickerViewTag{
+  background-color: #eee;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 5px;
+  text-align: left;
+}

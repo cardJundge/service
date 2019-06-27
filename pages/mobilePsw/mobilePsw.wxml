@@ -1,0 +1,47 @@
+<!--pages/mobilePsw/mobilePsw.wxml-->
+<import src="../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class='titleText'>
+    手机号验证
+  </view>
+  <view class='section'>
+    <view class='eachInfor'>
+      <text class='region'>国家/地区</text>
+      <text class='contry'>中国（+86）</text>
+    </view>
+    <form bindsubmit='getCode'>
+    <view class='eachInfor phoneNum'>
+
+      <label>手机号</label>
+      <input type='text' name='mobile' placeholder='请输入手机号码' bindinput='getPhone' bindfocus='cancelRed'  />
+    </view>
+    <view class='eachInfor verfifing'>
+      <label>验证码</label>
+      <input type='text' placeholder='请填写验证码' bindfocus='cancelRed1' bindinput='vertifyCode' />
+      <text wx:if='{{!send}}' class='time'>{{time}}秒后重新获取</text>
+      <button wx:if='{{send}}' class='vertify' form-type='submit'>获取验证码</button>
+
+    </view>
+</form>
+    <view class='eachInfor' wx:if='{{phoneMatter}}'>
+      <view class='errorWarning'>请输入正确手机号码</view>
+    </view>
+    <view class='eachInfor' wx:if='{{phoneNull}}'>
+      <view class='errorWarning'>手机号码不能为空</view>
+    </view>
+    <view class='eachInfor' wx:if='{{vertifyNull}}'>
+      <view class='errorWarning'>请输入验证码</view>
+    </view>
+    <view class='eachInfor' wx:if='{{vertifyed}}'>
+      <view class='coded'>验证码已过期</view>
+    </view>
+    <view class='eachInfor' wx:if='{{errorVertify}}'>
+      <view class='errorWarning'>验证码错误</view>
+    </view>
+    <view class='eachInfor'>
+      <button  wx:if='{{!allOver}}' bindtap='toNext'>下一步</button>
+      <button wx:if='{{allOver}}'>验证中...</button>
+    </view>
+  </view>
+</view>

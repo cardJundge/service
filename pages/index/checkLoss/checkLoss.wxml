@@ -1,0 +1,143 @@
+<!--pages/index/adminPeople/adminPeople.wxml-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}' style='padding-top:{{paddingTop}}'>
+  <view class='tit' style='top:{{titTop}}'>
+    <view class='search'>
+      <view class='searchIcon zan-icon zan-icon-search'></view>
+      <input class='searchInput' type='text' value='{{keyWordsTemp}}' bindinput='toChoose' placeholder='搜索业务' />
+      <view class='zan-icon zan-icon-clear' bindtap='cancelSearch' style='font-size:14px;color:#A3A3A3' wx:if='{{cancelSearchIcon}}'></view>
+    </view>
+    <!-- <view class='titIcon'>
+      <view class='icon iconAdd' bindtap='toAddAgency'>
+        <image src='../../img/add.png'></image>
+      </view>
+    </view> -->
+  </view>
+  <view class='section'>
+    <view class='classify_tit'>
+      <view>
+        <view class='{{ck_tit}}' bindtap='check'>查勘</view>
+      </view>
+      <view>
+        <view class='{{sz_tit}}' bindtap='threeRes'>三责</view>
+      </view>
+      <view>
+        <view class='{{bd_tit}}' bindtap='targetAdd'>标的</view>
+      </view>
+    </view>
+    <view class='content' wx:if='{{listAtrr_show}}'>
+      <view class='eachInfor' wx:for='{{listAtrr}}' wx:for-index="idx" wx:for-item="itemName">
+        <form bindsubmit='submitFormId' report-submit='true'>
+
+          <view class='eachData' id="{{itemName.id}}" data-type='{{itemName.type}}' bindtap='toDetail'>
+            <button form-type='submit' hover-class="none" class='formIdBtn'>
+              <view class='detailId'>
+                <label>报案号：</label>
+                <text>{{itemName.report_no}}</text>
+              </view>
+              <view>
+                <!-- <text>{{itemName.recognizee}} / </text> -->
+                <text wx:if='{{itemName.car_no}}'>{{itemName.car_no}} </text>
+                <text wx:if='{{itemName.type ==0}}'> /  查勘</text>
+                <text wx:if='{{itemName.type ==1}}'> /  三责</text>
+                <text wx:if='{{itemName.type ==2}}'> /  标的</text>
+                <!-- <text>{{itemName.mobile}}</text> -->
+                <text class='state' wx:if='{{itemName.status==0}}'>待审核</text>
+                <text class='state' style='background:red' wx:if='{{itemName.status==1}}'>审核失败</text>
+                <text class='state' wx:if='{{itemName.status==2}}'>审核成功</text>
+                <text class='state' wx:if='{{itemName.status==3}}'>已分配</text>
+                <text class='state' wx:if='{{itemName.status==4}}'>进行中</text>
+                <text class='state' wx:if='{{itemName.status==5}}'>已取消</text>
+                <text class='state' wx:if='{{itemName.status==6}}'>已完成</text>
+              </view>
+              <view class='classify'>
+                <text>{{itemName.add_time}}</text>
+              </view>
+            </button>
+          </view>
+
+        </form>
+        <view>
+
+        </view>
+      </view>
+    </view>
+    <view class='content'>
+      <view class='eachInfor'  wx:if="{{listBtrr}}" wx:for='{{listBtrr}}' wx:for-index="idx" wx:for-item="itemName">
+        <form bindsubmit='submitFormId' report-submit='true'>
+          <view class='eachData' id="{{itemName.id}}" data-type='{{itemName.type}}' bindtap='toDetail'>
+            <button form-type='submit' hover-class="none" class='formIdBtn'>
+              <view class='detailId'>
+                <label>报案号：</label>
+                <text>{{itemName.report_no}}</text>
+              </view>
+              <view>
+                <!-- <text>{{itemName.recognizee}} / </text> -->
+                <text wx:if='{{itemName.car_no}}'>{{itemName.car_no}}</text>
+                <text wx:if='{{itemName.type ==0}}'> /  查勘</text>
+                <text wx:if='{{itemName.type ==1}}'> /  三责</text>
+                <text wx:if='{{itemName.type ==2}}'> /  标的</text>
+                <!-- <text>{{itemName.mobile}}</text> -->
+                <text class='state' wx:if='{{itemName.status==0}}'>待审核</text>
+                <text class='state' style='background:red' wx:if='{{itemName.status==1}}'>审核失败</text>
+                <text class='state' wx:if='{{itemName.status==2}}'>审核成功</text>
+                <text class='state' wx:if='{{itemName.status==3}}'>已分配</text>
+                <text class='state' wx:if='{{itemName.status==4}}'>进行中</text>
+                <text class='state' wx:if='{{itemName.status==5}}'>已取消</text>
+                <text class='state' wx:if='{{itemName.status==6}}'>已完成</text>
+              </view>
+              <view class='classify'>
+                <text>{{itemName.add_time}}</text>
+              </view>
+            </button>
+          </view>
+          <view>
+
+          </view>
+        </form>
+      </view>
+    </view>
+    <view class='content' wx:if='{{listCtrr_show}}'>
+      <view class='eachInfor'wx:for='{{listCtrr}}' wx:for-index="idx" wx:for-item="itemName">
+        <form bindsubmit='submitFormId' report-submit='true'>
+          <view class='eachData' id="{{itemName.id}}" data-type='{{itemName.type}}' bindtap='toDetail'>
+            <button form-type='submit' hover-class="none" class='formIdBtn'>
+              <view class='detailId'>
+                <label>报案号：</label>
+                <text>{{itemName.report_no}}</text>
+              </view>
+              <view>
+                <!-- <text>{{itemName.recognizee}} / </text> -->
+                <text wx:if='{{itemName.car_no}}'>{{itemName.car_no}}</text>
+                <text wx:if='{{itemName.type ==0}}'> /  查勘</text>
+                <text wx:if='{{itemName.type ==1}}'> /  三责</text>
+                <text wx:if='{{itemName.type ==2}}'> /  标的</text>
+                <!-- <text>{{itemName.mobile}}</text> -->
+                <text class='state' wx:if='{{itemName.status==0}}'>待审核</text>
+                <text class='state' style='background:red' wx:if='{{itemName.status==1}}'>审核失败</text>
+                <text class='state' wx:if='{{itemName.status==2}}'>审核成功</text>
+                <text class='state' wx:if='{{itemName.status==3}}'>已分配</text>
+                <text class='state' wx:if='{{itemName.status==4}}'>进行中</text>
+                <text class='state' wx:if='{{itemName.status==5}}'>已取消</text>
+                <text class='state' wx:if='{{itemName.status==6}}'>已完成</text>
+              </view>
+              <view class='classify'>
+                <text>{{itemName.add_time}}</text>
+              </view>
+            </button>
+          </view>
+          <view>
+          </view>
+        </form>
+      </view>
+    </view>
+
+    <view class='gifCell' wx:if='{{gif}}'>
+      <image src='../../img/loading.gif' class='gif'></image>
+    </view>
+    <view class='moredata' wx:if='{{moredata}}'>
+      <text>没有更多数据~</text>
+    </view>
+  </view>
+</view>

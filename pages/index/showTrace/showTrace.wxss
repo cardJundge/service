@@ -1,0 +1,5 @@
+/* pages/index/showTrace/showTrace.wxss */
+map{
+  width:100%;
+  height:100vh
+}

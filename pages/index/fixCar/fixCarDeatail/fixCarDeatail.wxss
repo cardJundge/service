@@ -1,0 +1,30 @@
+@import '../../maintain/maintainDetail/maintainDetail.wxss';
+@import '../../checkLoss/checkLossDeatail/checkLossDeatail.wxss';
+.position{
+  position: relative;
+}
+.reset{
+  display: inline-block;
+  color:#3891F8;
+  position: absolute;
+  right:10px;
+}
+.money_check {
+  background: rgb(227, 233, 255);
+  display: inline-block;
+  width: 90%;
+  height: 36px;
+  margin: 20px 0px;
+  line-height: 36px;
+  text-align: left;
+  font-size: 14px;
+}
+.money_check_btn{
+  display: inline-block;
+  width:90%;
+  background: #3891F8;
+  height: 40px;
+  line-height: 40px;
+  color:#fff;
+}
+

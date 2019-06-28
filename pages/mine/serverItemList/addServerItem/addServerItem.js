@@ -2,7 +2,6 @@ var dateTimePicker = require('../../../dateTimePicker.js');
 var test = getApp().globalData.hostName;
 Page({
   data: {
-    top: '64px',
     back_cell: 'back_cell',
     title_cell: 'title_cell',
     container: 'container',
@@ -20,14 +19,13 @@ Page({
       delta:1
     })
   },
-  onLoad() {
+  onLoad: function() {
     var iphoneReg = /iPhone X/
     if (getApp().globalData.mobileType.match(iphoneReg)) {
       this.setData({
         back_cell: 'back_cellX',
         title_cell: 'title_cellX',
         container: 'containerX',
-        top: '90px',
       })
     }
     // 获取完整的年月日 时分秒，以及默认显示的数组
@@ -81,6 +79,12 @@ Page({
       })
       return
     }
+    if (!e.detail.value.mealPrice) {
+      this.setData({
+        mealPriceError: true
+      })
+      return
+    }
     wx.showLoading({
       title: '添加中...',
     })
@@ -98,6 +102,7 @@ Page({
         classify_id: selectId,
         market_price: e.detail.value.marketPrice,
         platform_price: e.detail.value.truePrice,
+        combo_price: e.detail.value.mealPrice,
         useful: this.data.dateTimeArray1[0][this.data.dateTime1[0]] + `-` + this.data.dateTimeArray1[1][this.data.dateTime1[1]] + `-` +
           this.data.dateTimeArray1[2][this.data.dateTime1[2]] + ` ` +
           this.data.dateTimeArray1[3][this.data.dateTime1[3]] + `:` +
@@ -196,6 +201,10 @@ Page({
     } else if (e.target.id == 'truePrice') {
       this.setData({
         truePriceError: false
+      })
+    } else if (e.target.id == 'mealPrice') {
+      this.setData({
+        mealPriceError: false
       })
     }
   },

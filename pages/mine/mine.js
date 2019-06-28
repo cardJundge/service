@@ -13,7 +13,8 @@ Page({
     title_cell: 'title_cell',
     container: 'container',
     titleTop: '我的',
-    imgUrls: []
+    imgUrls: [],
+    userInfo: app.globalData.userInfo
 
   },
   toDataOrder:function(){

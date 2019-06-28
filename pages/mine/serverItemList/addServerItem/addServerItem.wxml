@@ -1,7 +1,7 @@
 
 <import src="../../../template/top1.wxml" />
 <template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
-<view class='container'>
+<view class='{{container}}'>
   <view class='img_cell_loading'></view>
   <view class='mian_content'>
     <form bindsubmit='addServer'>
@@ -45,6 +45,15 @@
           <view class='value'>
             <input type='text' bindfocus='cancelRed' id='truePrice' placeholder='请输入平台价格' name='truePrice' />
             <text class='redInfor' wx:if='{{truePriceError}}'>！</text>
+          </view>
+        </view>
+      </view>
+      <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>套餐价</view>
+          <view class='value'>
+            <input type='text' bindfocus='cancelRed' id='mealPrice' placeholder='请输入套餐价格' name='mealPrice' />
+            <text class='redInfor' wx:if='{{mealPriceError}}'>！</text>
           </view>
         </view>
       </view>

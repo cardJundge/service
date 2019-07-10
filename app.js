@@ -95,7 +95,7 @@ App({
     hostName1: "https://www.chedou123.cn/",
     // hostName:"https://dev.feecgo.com/",
     // hostName1: "https://dev.feecgo.com/",
-    // hostName: 'http://192.168.1.111/',
-    // hostName1: 'http://192.168.1.111/',
+    // hostName: 'http://192.168.1.108/',
+    // hostName1: 'http://192.168.1.108/',
   }
 })

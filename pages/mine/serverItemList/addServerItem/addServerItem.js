@@ -79,12 +79,12 @@ Page({
       })
       return
     }
-    if (!e.detail.value.mealPrice) {
-      this.setData({
-        mealPriceError: true
-      })
-      return
-    }
+    // if (!e.detail.value.mealPrice) {
+    //   this.setData({
+    //     mealPriceError: true
+    //   })
+    //   return
+    // }
     wx.showLoading({
       title: '添加中...',
     })
@@ -102,7 +102,7 @@ Page({
         classify_id: selectId,
         market_price: e.detail.value.marketPrice,
         platform_price: e.detail.value.truePrice,
-        combo_price: e.detail.value.mealPrice,
+        // combo_price: e.detail.value.mealPrice,
         useful: this.data.dateTimeArray1[0][this.data.dateTime1[0]] + `-` + this.data.dateTimeArray1[1][this.data.dateTime1[1]] + `-` +
           this.data.dateTimeArray1[2][this.data.dateTime1[2]] + ` ` +
           this.data.dateTimeArray1[3][this.data.dateTime1[3]] + `:` +
@@ -202,11 +202,12 @@ Page({
       this.setData({
         truePriceError: false
       })
-    } else if (e.target.id == 'mealPrice') {
-      this.setData({
-        mealPriceError: false
-      })
-    }
+    } 
+    // else if (e.target.id == 'mealPrice') {
+    //   this.setData({
+    //     mealPriceError: false
+    //   })
+    // }
   },
   changeClassify: function(e) {
     this.setData({

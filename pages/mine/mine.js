@@ -2,7 +2,7 @@
 var test = getApp().globalData.hostName;
 // var test1 = getApp().globalData.hostName1;
 var common = require('../../pages/common.js')
-var app=getApp()
+var app = getApp()
 Page({
 
   /**
@@ -17,106 +17,10 @@ Page({
     userInfo: app.globalData.userInfo
 
   },
-  toDataOrder:function(){
-    wx.navigateTo({
-      url: './allDataOrder/allDataOrder',
-    })
-  },
-  toServerItem:function(){
-    wx.navigateTo({
-      url: './serverItemList/serverItemList',
-    })
-  },
-  submitFormId: function (e) {
-    console.log(e.detail.formId)
-    common.getFormId(e.detail.formId)
-  },
-  toOrder: function() {
-    wx.navigateTo({
-      url: './allOder/allOder',
-    })
-  },
-  updateAvatar: function() {
-    var that = this
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function(res) {
-        // console.log(res.tempFilePaths[0])
-        wx.showLoading({
-          title: '上传中...',
-        })
-        wx.uploadFile({
-          url: test + 'service/index/up_head',
-          header: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Cookie': 'PHPSESSID=' + that.data.sessionId
-          },
-          filePath: res.tempFilePaths[0],
-          name: 'face',
-          formData: {
-            face: ''
-          },
-          success: res => {
-
-            var jsonStr = res.data;
-            jsonStr = jsonStr.replace(" ", "");
-            if (typeof jsonStr != 'object') {
-              jsonStr = jsonStr.replace(/\ufeff/g, ""); //重点
-              var jj = JSON.parse(jsonStr);
-              res.data = jj
-            }
-            if (res.data.status == 1) {
-              wx.showToast({
-                title: '修改成功',
-              })
-              that.onReady()
-
-            }
-          }
-        })
-      }
-    })
-  },
-  toAccount: function() {
-    var that = this
-    var openId = that.data.userInfo.openId_chedou
-    if (openId !== '' && openId !== null && openId !== false) {
-      wx.navigateTo({
-        url: './updateData/Account/Account',
-      })
-    } else {
-      wx.showModal({
-        title: '提示',
-        content: '微信绑定后才能执行此操作，是否进行微信绑定？',
-        success(res) {
-          if (res.confirm) {
-            that.bindWX()
-
-          } else if (res.cancel) {
-          }
-        }
-      })
-    }
-    
-  },
-  toBrand: function() {
-    wx.navigateTo({
-      url: './updateData/brand/brand',
-    })
-  },
-
-  toModifyPwd: function() {
-    wx.navigateTo({
-      url: '/pages/editPsw/editPsw',
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var iphoneReg = /iPhone X/
     if (getApp().globalData.mobileType.match(iphoneReg)) {
       this.setData({
@@ -135,6 +39,19 @@ Page({
       sessionId: wx.getStorageSync('PHPSESSID'),
       userId: wx.getStorageSync('userid')
     })
+    // 判断用户是否授权
+    // this.getSet(res => {
+    //   if (!res) {
+    //     this.setData({
+    //       hasUser: false
+    //     })
+    //   } else {
+    //     this.setData({
+    //       hasUser: true
+    //     })
+    //   }
+    // })
+    // 为了获取openId去绑定微信
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -170,14 +87,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
     getUser(this)
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     var temp = wx.getStorageSync('imgChange')
     if (temp) {
       getUser(this)
@@ -185,13 +102,111 @@ Page({
     }
 
   },
+  toDataOrder: function() {
+    wx.navigateTo({
+      url: './allDataOrder/allDataOrder',
+    })
+  },
+  toServerItem: function() {
+    wx.navigateTo({
+      url: './serverItemList/serverItemList',
+    })
+  },
+  submitFormId: function(e) {
+    console.log(e.detail.formId)
+    common.getFormId(e.detail.formId)
+  },
+  toOrder: function() {
+    wx.navigateTo({
+      url: './allOder/allOder',
+    })
+  },
+  updateAvatar: function() {
+    var that = this
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // console.log(res.tempFilePaths[0])
+        wx.showLoading({
+          title: '上传中...',
+        })
+        wx.uploadFile({
+          url: test + 'service/index/up_head',
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Cookie': 'PHPSESSID=' + that.data.sessionId
+          },
+          filePath: res.tempFilePaths[0],
+          name: 'face',
+          formData: {
+            face: ''
+          },
+          success: res => {
+            console.log('图片', res)
+            var jsonStr = res.data;
+            jsonStr = jsonStr.replace(" ", "");
+            if (typeof jsonStr != 'object') {
+              jsonStr = jsonStr.replace(/\ufeff/g, ""); //重点
+              var jj = JSON.parse(jsonStr);
+              res.data = jj
+            }
+            if (res.data.status == 1) {
+              wx.showToast({
+                title: '修改成功',
+              })
+              that.onReady()
+
+            }
+          }
+        })
+      }
+    })
+  },
+  // 进入我的钱包
+  toAccount: function() {
+    var that = this
+    var openId = that.data.userInfo.openId_chedou
+    if (openId) {
+      wx.navigateTo({
+        url: './updateData/Account/Account',
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '微信绑定后才能执行此操作，是否进行微信绑定？',
+        success(res) {
+          if (res.confirm) {
+            that.bindWX()
+
+          } else if (res.cancel) { }
+        }
+      })
+    }    
+
+  },
+
+  toBrand: function() {
+    wx.navigateTo({
+      url: './updateData/brand/brand',
+    })
+  },
+
+  toModifyPwd: function() {
+    wx.navigateTo({
+      url: '/pages/editPsw/editPsw',
+    })
+  },
+
+  
 
   updateAvatar1: function() {
     this.setData({
       binging: true
     })
   },
-  unbindWX:function(){
+  unbindWX: function() {
     var that = this
     wx.showLoading({
       title: '解绑中...',
@@ -208,9 +223,9 @@ Page({
           data: {
             type: 'chedou'
           },
-          success: function (res) {
+          success: function(res) {
             var dataType = typeof res.data
-            if (dataType == 'string') {
+            if (dataType == '') {
               var jsonStr = res.data;
               jsonStr = jsonStr.replace(" ", "");
               var temp
@@ -261,7 +276,7 @@ Page({
             'Content-Type': 'application/x-www-form-urlencoded',
             'Cookie': 'PHPSESSID=' + that.data.sessionId
           },
-          success: function (res) {
+          success: function(res) {
             var dataType = typeof res.data
             if (dataType == 'string') {
               var jsonStr = res.data;
@@ -277,7 +292,7 @@ Page({
               wx.showToast({
                 title: '绑定成功',
                 success: res => {
-                  setTimeout(function () {
+                  setTimeout(function() {
                     wx.navigateTo({
                       url: './updateData/Account/Account'
                     })
@@ -291,12 +306,12 @@ Page({
               // that.setData({
               //   [temp]: true
               // })
-            } else if(res.data.status==-2){
+            } else if (res.data.status == -2) {
               wx.showToast({
                 title: '该微信已被绑定到其他帐号',
                 icon: 'none'
               })
-            }else {
+            } else {
               wx.showToast({
                 title: '请求超时',
                 icon: 'none'
@@ -309,7 +324,7 @@ Page({
       }
     })
   },
- 
+
   toAdminPeople: function() {
     wx.navigateTo({
       url: './adminPeople/adminPeople',
@@ -421,16 +436,16 @@ function getUser(that) {
           that.setData({
             imgUrls: res.data.service.stores.split(','),
           })
-        } 
+        }
         that.setData({
           userInfo: res.data.service
         })
         getApp().globalData.userInfo = res.data.service
       } else {
-       wx.showToast({
-         title: '请求超时，请重试...',
-         icon: 'none'
-       })
+        wx.showToast({
+          title: '请求超时，请重试...',
+          icon: 'none'
+        })
       }
       wx.hideLoading()
 

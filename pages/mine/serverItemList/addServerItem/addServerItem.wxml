@@ -48,7 +48,7 @@
           </view>
         </view>
       </view>
-      <view class='each_Item'>
+      <!-- <view class='each_Item'>
         <view class='item_content'>
           <view class='label'>套餐价</view>
           <view class='value'>
@@ -56,7 +56,7 @@
             <text class='redInfor' wx:if='{{mealPriceError}}'>！</text>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class='each_Item'>
         <view class='item_content'>
           <view class='label'>有效期</view>

@@ -48,17 +48,40 @@
   border-bottom: 1rpx solid #EEEEEE;
 }
 .store_content{
-  margin: 0px 15px;
-  font-size: 12px;
+  margin: 0 30rpx;
+  font-size: 24rpx;
   text-align: left;
-  line-height: 32px;
+  line-height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .store_content image{
-  width:14px;
-  height: 13px;
+  width:32rpx;
+  height: 32rpx;
   vertical-align: top;
-  margin-top: 10px;
-  margin-right: 8px;
+  /* margin-top: 20rpx; */
+  margin-right: 16rpx;
+}
+
+.left-user {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width:32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+
+.user-number {
+  color:#B3B3B3;
+  font-size: 26rpx;
+}
+
+.right-user {
+
 }
 .store_name{
   color:#B3B3B3;
@@ -100,7 +123,7 @@
 }
 .service_num{
   color:#B3B3B3;
-  font-size: 11px;
+  font-size: 24rpx;
    vertical-align: middle;
 }
 .service_price{

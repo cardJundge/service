@@ -64,8 +64,10 @@
     <view class='titText'>已经上传的图片</view>
     <view class='imageBox' wx:for='{{allImgsArr}}' wx:for-item="item">
       <view class='closeBox' wx:if='{{deleteImg}}'>
-        <image bindtap='openImg' class='pic1' id='{{item.imgId}}' src='{{item.path}}'></image>
-
+        <image bindtap='openImg' class='pic1' id='{{index}}' src='{{item.path}}' data-path="{{item.path}}"></image>
+        <view class="delete-img" bind:tap="toDeleteImg" id='{{item.imgId}}'>
+          <image src="../../img/cancel.png" />
+        </view>
 
       </view>
     </view>

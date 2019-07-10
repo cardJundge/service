@@ -3,10 +3,11 @@
 <template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
 <view class='{{container}}'>
 <import src="../allotSort/allotSort.wxml" />
-<view wx:if='{{notask}}' style='text-align:center;font-size:14px;color:#3891F8;line-height:40px;padding-top:160px;'>
-  该模块下暂无作业员，请先添加作业员
-  <view style='text-decoration:underline' bindtap='back'>返回</view>
+<view wx:if='{{notask}}' class="no-task"bindtap='toAddPerson'>
+  该模块下暂无作业员，前往添加作业员
+  <!-- <view style='text-decoration:underline' bindtap='back'>返回</view> -->
 </view>
+ <!-- <view wx:if='{{notask}}' class="no-task" bindtap='toSkipAllot'>跳过作业员分配</view> -->
 <view wx:if='{{loaded}}'>
   <form bindsubmit="formSubmit" wx:if='{{pageReady}}'>
     <view>

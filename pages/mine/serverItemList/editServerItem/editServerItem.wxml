@@ -48,6 +48,16 @@
           </view>
         </view>
       </view>
+      
+      <!-- <view class='each_Item'>
+        <view class='item_content'>
+          <view class='label'>套餐价</view>
+          <view class='value'>
+            <input type='text' value='{{detail.combo_price}}' bindfocus='cancelRed' id='mealPrice' placeholder='请输入平台价格' name='mealPrice' />
+            <text class='redInfor' wx:if='{{mealPriceError}}'>！</text>
+          </view>
+        </view>
+      </view> -->
       <view class='each_Item'>
         <view class='item_content'>
           <view class='label'>有效期</view>

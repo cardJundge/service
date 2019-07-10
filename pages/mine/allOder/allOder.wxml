@@ -21,7 +21,14 @@
       <view class='each_order_cell' wx:for='{{orderList}}' wx:for-item='item'>
         <view class='store_name_state'>
           <view class='store_content'>
-            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==1}}'>
+            <view class="left-user" bind:tap="onPhoneNum" data-Num="{{item.user_phone}}">
+              <view class="user-avatar">
+                <image src='../../img/mobilephone.png'></image>
+              </view>
+              <view class="user-number">{{item.user_phone}}</view>
+            </view>
+            <view class="right-user">
+              <view wx:if='{{item.status==1}}'>
               <text class='order_state' wx:if='{{item.work_status==0}}'>待接单</text>
               <text class='order_state' wx:if='{{item.work_status==1}}'>待分配</text>
               <text class='order_state' wx:if='{{item.work_status==2}}'>待作业员接单</text>
@@ -29,20 +36,20 @@
               <text class='order_state' wx:if='{{item.work_status==4}}'>已完成</text>
               <text class='order_state' wx:if='{{item.work_status==6}}'>已取消</text>
             </view>
-
-            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==0}}'>
+            <view wx:if='{{item.status==0}}'>
               <text class='order_state'>待付款</text>
             </view>
-
-            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==2}}'>
+            <view  wx:if='{{item.status==2}}'>
               <text class='order_state'>已退款</text>
             </view>
-            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==3}}'>
+            <view wx:if='{{item.status==3}}'>
               <text class='order_state'>已评价</text>
             </view>
-            <view style='text:right;height:30px;line-height:30px' wx:if='{{item.status==4}}'>
+            <view wx:if='{{item.status==4}}'>
               <text class='order_state'>用户已取消</text>
             </view>
+            </view>
+            
           </view>
         </view>
         <view class='service_infor'>
@@ -81,13 +88,20 @@
           </view>
         </view>
         <view class='order_btn' wx:if='{{item.work_status==1&&item.status==1}}'>
-          <view class='each_btn' bindtap='cancelOrder' id='{{item.id}}'>
+        <view class='each_btn' bindtap='addProgress' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                添加进度
+              </button>
+            </form>
+          </view>
+          <!-- <view class='each_btn' bindtap='cancelOrder' id='{{item.id}}'>
             <form bindsubmit='submitFormId' report-submit='true'>
               <button form-type='submit' hover-class="none" class='formIdBtn'>
                 取消订单
               </button>
             </form>
-          </view>
+          </view> -->
           <view class='each_btn secondBtn' bindtap='toAllot' id='{{item.id}}'>
             <form bindsubmit='submitFormId' report-submit='true'>
               <button form-type='submit' hover-class="none" class='formIdBtn'>
@@ -96,7 +110,7 @@
             </form>
           </view>
         </view>
-        <view class='order_btn' wx:if='{{1<item.work_status&&item.work_status<4&&item.status==1}}'>
+        <view class='order_btn' wx:if='{{item.work_status>1&&item.work_status<4&&item.status==1&&!item.task_id}}'>
           <view class='each_btn' bindtap='addProgress' id='{{item.id}}'>
             <form bindsubmit='submitFormId' report-submit='true'>
               <button form-type='submit' hover-class="none" class='formIdBtn'>
@@ -104,7 +118,16 @@
               </button>
             </form>
           </view>
-          <view class='each_btn secondBtn'>
+          <view class='each_btn secondBtn'  bindtap='toComplete' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                完成
+              </button>
+            </form>
+          </view>
+        </view>
+        <view class='order_btn' wx:if='{{item.work_status>1&&item.work_status<4&&item.status==1&&item.task_id}}'>
+         <view class='each_btn secondBtn'>
             <form bindsubmit='submitFormId' report-submit='true'>
               <button form-type='submit' hover-class="none" class='formIdBtn'>
                 已分配
@@ -112,6 +135,22 @@
             </form>
           </view>
         </view>
+         <!-- <view class='order_btn' wx:if='{{item.work_status==3&&item.status==1}}'>
+          <view class='each_btn' bindtap='addProgress' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                添加进度
+              </button>
+            </form>
+          </view>
+          <view class='each_btn secondBtn'  bindtap='toComplete' id='{{item.id}}'>
+            <form bindsubmit='submitFormId' report-submit='true'>
+              <button form-type='submit' hover-class="none" class='formIdBtn'>
+                完成
+              </button>
+            </form>
+          </view>
+        </view> -->
         <view class='order_btn' style='height:20px;' wx:if='{{item.work_status==4||item.status==0||item.status==2||item.status==3||item.status==4||item.work_status==6}}'>
         </view>
       </view>

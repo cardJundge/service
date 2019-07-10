@@ -103,6 +103,12 @@ Page({
       })
       return
     }
+    // if (!e.detail.value.mealPrice) {
+    //   this.setData({
+    //     mealPriceError: true
+    //   })
+    //   return
+    // }
     wx.showLoading({
       title: '修改中...',
     })
@@ -121,6 +127,7 @@ Page({
         classify_id: selectId,
         market_price: e.detail.value.marketPrice,
         platform_price: e.detail.value.truePrice,
+        // combo_price: e.detail.value.mealPrice,
         useful: this.data.dateTimeArray1[0][this.data.dateTime1[0]] + `-` + this.data.dateTimeArray1[1][this.data.dateTime1[1]] + `-` +
           this.data.dateTimeArray1[2][this.data.dateTime1[2]] + ` ` +
           this.data.dateTimeArray1[3][this.data.dateTime1[3]] + `:` +
@@ -152,7 +159,7 @@ Page({
           for (var i in tempArr){
             if (tempArr[i].id==that.data.detail.id){
               tempArr.splice(i, 1, {
-                id: that.data.detail.id, classify_id: selectId, classify_name: that.data.classify[that.data.index], market_price: e.detail.value.marketPrice, platform_price: e.detail.value.truePrice, thumb: that.data.detail.thumb, useful: that.data.dateTimeArray1[0][that.data.dateTime1[0]] + `-` + that.data.dateTimeArray1[1][that.data.dateTime1[1]] + `-` +that.data.dateTimeArray1[2][that.data.dateTime1[2]] + ` ` +that.data.dateTimeArray1[3][that.data.dateTime1[3]] + `:` +that.data.dateTimeArray1[4][that.data.dateTime1[4]] + `:` + `00`})
+                id: that.data.detail.id, classify_id: selectId, classify_name: that.data.classify[that.data.index], market_price: e.detail.value.marketPrice, platform_price: e.detail.value.truePrice,thumb: that.data.detail.thumb, useful: that.data.dateTimeArray1[0][that.data.dateTime1[0]] + `-` + that.data.dateTimeArray1[1][that.data.dateTime1[1]] + `-` +that.data.dateTimeArray1[2][that.data.dateTime1[2]] + ` ` +that.data.dateTimeArray1[3][that.data.dateTime1[3]] + `:` +that.data.dateTimeArray1[4][that.data.dateTime1[4]] + `:` + `00`})
             }
           }
           prevPage.data.serverList = tempArr
@@ -231,7 +238,12 @@ Page({
       this.setData({
         truePriceError: false
       })
-    }
+    } 
+    // else if (e.target.id == 'mealPrice') {
+    //   this.setData({
+    //     mealPriceError: false
+    //   })
+    // }
   },
   changeClassify: function (e) {
     this.setData({

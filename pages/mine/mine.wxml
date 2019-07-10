@@ -9,8 +9,8 @@
       <view class='avatar_cell'>
         <view class='avatar'>
           <!-- <view class='avatar_top'></view> -->
-          <image src='../img/11.jpg' wx:if='{{!userInfor.face}}'></image>
-          <image src='{{hostName1}}uploads/face/{{userInfor.face}}' wx:else></image>
+          <image src='../img/11.jpg' wx:if='{{!userInfo.face}}'></image>
+          <image src='{{hostName}}uploads/face/{{userInfo.face}}' wx:if='{{userInfo.face}}'></image>
         </view>
       </view>
     </button>
@@ -73,7 +73,6 @@
         </button>
       </form>
     </view> -->
-
     <view class='each_cell' bindtap='toAccount'>
       <form bindsubmit='submitFormId' report-submit='true'>
         <button form-type='submit' hover-class="none" class='formIdBtn1'>

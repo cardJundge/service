@@ -15,38 +15,11 @@ Page({
     steps: [],
     allImg: []
   },
-  link: function(e) {
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.num //仅为示例，并非真实的电话号码
-    })
-  },
-  openImg: function(e) {
-    var that = this
-    this.data.openImg = true
-    console.log(e.target.id)
-    wx.previewImage({
-      current: e.target.id, // 当前显示图片的http链接
-      urls: that.data.allImg // 需要预览的图片http链接列表
-    })
-  },
-
-  toIndex: function() {
-    wx.switchTab({
-      url: '../../../index/index',
-    })
-  },
-  backPage: function() {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var that = this
-   
-   
     var iphoneReg = /iPhone X/
     if (getApp().globalData.mobileType.match(iphoneReg)) {
       this.setData({
@@ -60,7 +33,7 @@ Page({
       that.setData({
         formId: true
       })
-      app.getAuthKey(this).then(function() {
+      app.getAuthKey(this).then(function () {
         console.log(that.data.loginRes)
         wx.setStorageSync('userid', that.data.loginRes.data.service.id);
         wx.setStorageSync('module', that.data.loginRes.data.module_id);
@@ -82,18 +55,10 @@ Page({
 
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     if (this.data.openImg) {
       this.data.openImg = false
       return
@@ -104,11 +69,58 @@ Page({
     })
     getDetail(this)
   },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
+  link: function(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.num //仅为示例，并非真实的电话号码
+    })
+  },
+  openImg: function(e) {
+    var that = this
+    this.data.openImg = true
+    console.log('lve',that.data.allImg)
+    wx.previewImage({
+      current: e.target.id, // 当前显示图片的http链接
+      urls: that.data.allImg // 需要预览的图片http链接列表
+    })
+  },
 
+  toIndex: function() {
+    wx.switchTab({
+      url: '../../../index/index',
+    })
+  },
+  backPage: function() {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
+  
+  // 完成订单
+  toComplete: function () {
+    var that = this
+    wx.request({
+      url: test + '/service/order/finish',
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': 'PHPSESSID=' + that.data.sessionId
+      }, // 默认值
+      data: {
+        order_id: that.data.orderId,
+      },
+      success: function (res) {
+        if (res.data.status == 1) {
+          wx.showToast({
+            title: '订单完成',
+          })
+          getDetail(that)
+          // that.data.detailData.server.work_status == 4
+          // that.setData({
+          //   detailData: that.data.detailData
+          // })
+        }
+      }
+    })
   },
   toAllot: function (e) {
     wx.navigateTo({
@@ -221,19 +233,6 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
   copyTBL: function(e) {
     console.log(e.currentTarget.id)
     wx.setClipboardData({
@@ -245,20 +244,6 @@ Page({
         })
       }
     });
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
 })
 

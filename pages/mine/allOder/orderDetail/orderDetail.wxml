@@ -76,15 +76,27 @@
         </view>
       </view>
       <view class='order_btn' wx:if='{{detailData.server.work_status==1&&detailData.server.status==1}}'>
-      
+        <view class='each_btn'>
+          <text bindtap='addProgress'>添加进度</text>
+        </view>
         <view class='each_btn' bindtap='toAllot'>
           <text>去分配</text>
         </view>
       </view>
-      <view class='order_btn' wx:if='{{1<detailData.server.work_status&&detailData.server.work_status<4&&detailData.server.status==1}}'>
+      <view class='order_btn' wx:if='{{1<detailData.server.work_status&&detailData.server.work_status<4&&detailData.server.status==1&&!detailData.server.task_id}}'>
         <view class='each_btn'>
           <text bindtap='addProgress'>添加进度</text>
         </view>
+        <view class='each_btn' bindtap='toComplete'>
+          <text>完成</text>
+        </view>
+      </view>
+      <view class='order_btn' wx:if='{{1<detailData.server.work_status&&detailData.server.work_status<4&&detailData.server.status==1&&detailData.server.task_id}}'>
+        <view class='each_btn'>
+          <text>已分配</text>
+        </view>
+      </view>
+       <view class='order_btn' wx:if='{{detailData.server.work_status==4||detailData.server.status==0||detailData.server.status==2||detailData.server.status==3||detailData.server.status==4||detailData.server.status==6}}'>
       </view>
     </view>
     <view class='backList' bindtap='toIndex' wx:if='{{formId}}'>返回主页</view>

@@ -25,6 +25,7 @@ Page({
     deleteImg: true,
     imageArr: [],
     allImgsArr: [],
+    imageSrc: [],
     cameraBack: 'back',
     flash: {
       auto: true,
@@ -55,7 +56,8 @@ Page({
             wx.uploadFile({
               url: test + 'service/base/uploads',
               header: {
-                'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': 'PHPSESSID=' + that.data.sessionId
+                'Content-Type': 'application/x-www-form-urlencoded', 
+                'Cookie': 'PHPSESSID=' + that.data.sessionId
               },
               filePath: item,
               name: 'image',
@@ -65,8 +67,8 @@ Page({
                 task_name: ''
               },
               success: res => {
-                console.log(res)
-                console.log(item)
+                // console.log('111111222222',res)
+                // console.log('huohuohuo',item)
                
                 var jsonStr = res.data;
                 jsonStr = jsonStr.replace(" ", "");
@@ -77,28 +79,34 @@ Page({
                   imgNameArr.push(jj.file_name)
                 }
                 that.data.allImgsArr.unshift({ path: item, imgId: imgId++})
+                that.data.imageSrc.unshift(item)
 
                 if (item == lastPic) {
                   setTimeout(() => {
                     that.setData({
-                      allImgsArr: that.data.allImgsArr
+                      allImgsArr: that.data.allImgsArr,
+                      imageSrc: that.data.imageSrc
                       })
                     console.log('最后一张了')
-                    wx.hideLoading()
-                    
+                    wx.hideLoading()                   
                   }, 2000)
-
                 }
-
               }
-            }))).then(res => {
-              console.log(111)
-
-            })
-
-         
-        
+            }))).then(res => {})        
       }
+    })
+  },
+  toDeleteImg: function(e) {
+    var that = this
+    for (var i in that.data.allImgsArr) {
+      if (that.data.allImgsArr[i].imgId == e.currentTarget.id) {
+        console.log(that.data.allImgsArr[i])
+        // that.data.allImgsArr.remove(item)
+        that.data.allImgsArr.splice(i,1)
+      }
+    }
+    that.setData({
+      allImgsArr: that.data.allImgsArr
     })
   },
   toTakePhoto: function () {
@@ -204,13 +212,13 @@ console.log(res)
     })
   },
   openImg: function (e) {
-    var picId = e.currentTarget.id;
-    var a=this.data.src
+    console.log(this.data.imageSrc,e.currentTarget.dataset.path)
+    var picId = e.currentTarget.id
+    console.log('pic',picId)
     wx.previewImage({
-      current: '', // 当前显示图片的http链接
-      urls: [a] // 需要预览的图片http链接列表
+      current: this.data.imageSrc[picId], // 当前显示图片的http链接
+      urls: this.data.imageSrc // 需要预览的图片http链接列表
     })
-
   },
   toHidden:function(){
     this.setData({
@@ -370,7 +378,8 @@ console.log(res)
         content: '',
       },
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': 'PHPSESSID=' + that.data.sessionId
+        'Content-Type': 'application/x-www-form-urlencoded', 
+        'Cookie': 'PHPSESSID=' + that.data.sessionId
       },// 默认值
       success: function (res) {
         console.log(res)

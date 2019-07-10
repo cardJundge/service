@@ -7,19 +7,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    paddingTop: '114px',
+    paddingTop: '228rpx',
     back_cell: 'back_cell',
-    titTop: '64px',
+    titTop: '128rpx',
     title_cell: 'title_cell',
     container: 'container',
     titleTop: '分配作业员',
     peopleList: []
   },
+  // 返回
   back: function() {
     wx.navigateBack({
       delta: 1
     })
   },
+  // 跳过分配作业员这一步骤
+  toSkipAllot: function () {
+    wx.request({
+      url: app.globalData.hostName + 'service/order/skipTask',
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': 'PHPSESSID=' + this.data.sessionId
+      }, // 默认值
+      data: {
+        order_id: this.data.orderId
+      },
+      success: function(res) {
+        console.log(res)
+        if(res.data.status == 1) {
+          wx.redirectTo({
+            url: '../../mine/allOder/allOder',
+          })
+        }
+      }
+    })
+  },
+  // 去添加作业人员
+  toAddPerson: function () {
+    wx.redirectTo({
+      url: '../../mine/adminPeople/adminPeople',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,14 +59,14 @@ Page({
     })
   },
   onLoad: function(options) {
-
+    console.log('3', options.module)
     var iphoneReg = /iPhone X/
     if (getApp().globalData.mobileType.match(iphoneReg)) {
       this.setData({
-        paddingTop: '140px',
+        paddingTop: '280rpx',
         back_cell: 'back_cellX',
         title_cell: 'title_cellX',
-        titTop: '90px',
+        titTop: '180rpx',
         container: 'containerX',
       })
     }
@@ -45,11 +75,11 @@ Page({
     })
     wx.setStorageSync('freshFlag', true)
     this.data.moduleis = options.moduleis
-    console.log(this.data.moduleis)
     this.data.special = options.special
     var pageModule = options.module
     this.setData({
-      listId: pageModule
+      listId: pageModule,
+      orderId: options.module
     })
     var that = this
     var test = getApp().globalData.hostName;
@@ -182,23 +212,11 @@ Page({
                   notask: true
                 })
               }
-
-
             }
           })
         }
-
-
       }
-
-
-
-
     })
-
-
-
-
   },
 
   formSubmit: function(e) {
@@ -210,8 +228,6 @@ Page({
       })
       return
     }
-
-
     var test = getApp().globalData.hostName;
     this.data.sessionId = wx.getStorageSync('PHPSESSID');
     this.data.userId = wx.getStorageSync('userid');
@@ -226,8 +242,7 @@ Page({
     }
     
     if (that.data.moduleis == 100) {
-      console.log(test + 'service/order/orderAllot')
- 
+  
       wx.request({
         url: test + 'service/order/orderAllot',
         method: 'GET',
@@ -331,38 +346,8 @@ Page({
       }
 
     }
-   
-
-
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
+  
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -370,19 +355,5 @@ Page({
     this.onShow()
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
 })

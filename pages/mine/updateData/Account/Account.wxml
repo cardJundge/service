@@ -4,7 +4,7 @@
   <view class="container-cash" wx:if="{{!showSuccess}}">
     <!-- 我的余额 -->
     <view class="balance">
-      <text class="cash-deailed" bind:tap="toCashDetails">提现明细</text>
+      <text class="cash-deailed" bind:tap="toCashDetails">账户明细</text>
       <view class="balance-img">
         <image src="/pages/img/wallet.png" />
       </view>

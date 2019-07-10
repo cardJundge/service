@@ -3,25 +3,33 @@
 .add_Icon {
   background: #3891F8;
   text-align: right;
-  height: 40px;
+  height: 80rpx;
 }
 
 .add_Icon image {
-  width: 20px;
-  height: 20px;
-  margin-right: 15px;
-  margin-top: 10px;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+  margin-top: 20rpx;
 }
 
 .each_server {
   border-bottom: 1rpx solid #efefef;
 }
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
 
 .each_content {
-  margin: 0px 15px;
-  font-size: 14px;
-  padding: 20px 0px;
-  line-height: 30px;
+  margin: 0 24rpx;
+  font-size: 28rpx;
+  padding: 40rpx 0;
+  line-height: 60rpx;
 }
 
 .server_name {
@@ -33,17 +41,17 @@
 }
 
 .server_name_image view {
-  line-height: 30px;
+  line-height: 60rpx;
   display: inline-block;
 }
 
 .server_image image {
-  width: 40px;
-  height: 40px;
+  width: 80rpx;
+  height: 80rpx;
   vertical-align: middle;
 }
 .server_name {
-  margin-left: 10px;
+  margin-left: 20rpx;
 }
 .server_edit {
   float: right;
@@ -53,20 +61,22 @@
 .server_edit button {
   display: inline-block;
   color: #3891f8;
-  font-size: 14px;
+  font-size: 28rpx;
   border:1rpx solid #3891f8;
-  border-radius: 200px;
-  width:70px;
-  line-height: 30px;
+  border-radius: 400rpx;
+  width:130rpx;
   background: none;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 10rpx;
 }
 .server_edit .delete{
   color:#fff;
   background: #3891f8;
-  margin-left: 10px;
+  margin-left: 18rpx;
 }
 .noData{
-  font-size:14px;
-  line-height:50px;
+  font-size:28rpx;
+  line-height:100rpx;
   text-align:center;
 }

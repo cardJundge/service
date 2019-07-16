@@ -208,16 +208,16 @@ Page({
     //   })
     //   return
     // }
-    if (e.detail.value.intro) {
-      var temp = getLength(e.detail.value.intro)
-      if (temp > 23) {
-        that.setData({
-          introErr1: true
-        })
-        return
+    // if (e.detail.value.intro) {
+    //   var temp = getLength(e.detail.value.intro)
+    //   if (temp > 23) {
+    //     that.setData({
+    //       introErr1: true
+    //     })
+    //     return
 
-      }
-    }
+    //   }
+    // }
     wx.showNavigationBarLoading() //在标题栏中显示加载
     wx.request({
       url: test + 'service/index/setInfo',

@@ -76,8 +76,8 @@
 }
 
 .user-number {
-  color:#B3B3B3;
-  font-size: 26rpx;
+  color:#616161;
+  font-size: 30rpx;
 }
 
 .right-user {

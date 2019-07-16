@@ -25,7 +25,19 @@ Page({
     })
   },
   onLoad:function(){
-    var that=this
+    var that = this
+    var coupon = app.globalData.coupon
+    if (coupon) {
+      that.setData({
+        showCouponModal: true,
+        coupon: coupon
+      })
+      that.getCouponInfo(coupon)
+    } else {
+      that.setData({
+        showCouponModal: false
+      })
+    } 
     var iphoneReg = /iPhone X/
     console.log(app.globalData.mobileType)
     if (app.globalData.mobileType.match(iphoneReg)) {
@@ -63,6 +75,30 @@ Page({
     })
     // console.log(that.data.ownModule)
     
+  },
+  // 获取优惠券信息
+  getCouponInfo: function(couponId) {
+    var test = getApp().globalData.hostName
+    this.data.sessionId = wx.getStorageSync('PHPSESSID')
+    wx.request({
+      url: test + 'service/index/couponInfo',
+      method: 'GET',
+      data: {
+        coupon_id: couponId
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'Cookie': 'PHPSESSID=' + this.data.sessionId
+      },
+      success: (res)=> {
+        console.log(res)
+        if(res.data.status == 1) {
+          this.setData({
+            couponNumber: res.data.data.card_no
+          })
+        }
+      }
+    })
   },
   submitFormId: function (e) {
     // console.log(e.detail.formId)

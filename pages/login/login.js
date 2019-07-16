@@ -77,7 +77,6 @@ Page({
             error: false,
           })
           wx.hideNavigationBarLoading() //完成停止加载
-
           wx.switchTab({
             url: '../index/index'
           })
@@ -160,7 +159,12 @@ Page({
    */
   onLoad: function(options) {
     var that=this
-
+    // var scene = 30
+    // if (scene) {
+    if (options.scene){
+      var scene = decodeURIComponent(options.scene)
+      app.globalData.coupon = scene
+    }
     wx.getSystemInfo({
       success: function (res) {
         console.log(res.model)

@@ -1,3 +1,6 @@
 {
+  "usingComponents": {
+    "my-coupon-modal": "/pages/component/coupon/coupon"
+  },
   "navigationBarTitleText": "车代鼠商户端"
 }

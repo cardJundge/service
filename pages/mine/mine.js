@@ -277,6 +277,7 @@ Page({
             'Cookie': 'PHPSESSID=' + that.data.sessionId
           },
           success: function(res) {
+            wx.hideLoading()
             var dataType = typeof res.data
             if (dataType == 'string') {
               var jsonStr = res.data;
@@ -309,15 +310,16 @@ Page({
             } else if (res.data.status == -2) {
               wx.showToast({
                 title: '该微信已被绑定到其他帐号',
-                icon: 'none'
+                icon: 'none',
+                duration: 2000
               })
             } else {
               wx.showToast({
                 title: '请求超时',
-                icon: 'none'
+                icon: 'none',
+                duration: 2000
               })
             }
-            wx.hideLoading()
           }
         })
         // 发送 res.code 到后台换取 openId, sessionKey, unionId

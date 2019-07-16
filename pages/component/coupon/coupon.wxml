@@ -1,0 +1,14 @@
+<!--优惠券-->
+<view class="container" wx:if="{{show}}" catchtouchmove="ture">
+  <view class="modal-content">
+    <view class="close-btn">
+      <image src="../../img/guanbi.png" bind:tap="hideModal"/>
+    </view>
+    <view class="coupon-img">
+      <image src="../../img/querentupian.png" />
+    </view>
+    <text class="order-confirm">确认核销优惠券</text>
+    <text class="order-num">优惠券编码：{{couponNum}}</text>
+    <view class="coupon-btn" bind:tap="orderConfirm">确认</view>
+  </view>
+</view>

@@ -1,0 +1,72 @@
+/* 优惠券 */
+.container {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  width: 450rpx;
+  height: 490rpx;
+  position: relative;
+  background: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #36363C;
+}
+
+.close-btn {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+}
+
+.close-btn image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.coupon-img {
+  width: 230rpx;
+  height: 222rpx;
+  margin: 14rpx 0 32rpx;
+}
+
+.coupon-img image{
+  width: 230rpx;
+  height: 222rpx;
+}
+
+.order-confirm {
+  font-size: 34rpx;
+  margin-bottom: 16rpx;
+}
+
+.order-num {
+  font-size: 30rpx;
+  margin-bottom: 32rpx;
+}
+
+.coupon-btn {
+  width: 236rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #1A84FF;
+  color: #fff;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+}

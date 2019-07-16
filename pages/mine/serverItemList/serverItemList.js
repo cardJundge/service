@@ -55,12 +55,10 @@ Page({
       url: './addServerItem/addServerItem',
     })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
+  
+  serviceList: function() {
     var that = this
-    getServerList(that).then(function() {
+    getServerList(that).then(function () {
       if (that.data.serverList.length != 0) {
         for (let i in that.data.serverList) {
           for (let j in that.data.classfyArr) {
@@ -80,37 +78,13 @@ Page({
     })
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function() {
-    this.setData({
-      serverList: this.data.serverList
-    })
+    this.data.serverList = []
+    this.serviceList()
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
+  
   deleteServer: function(e) {
     var that = this
     wx.showLoading({
@@ -161,19 +135,6 @@ Page({
 
       }
     })
-  },
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
 })
 

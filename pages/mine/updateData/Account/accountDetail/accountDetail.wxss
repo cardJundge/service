@@ -61,11 +61,11 @@ view {
 
 .no-detail-img {
   width: 100%;
-  height: 300rpx;
+  height: 250rpx;
   text-align: center;
 }
 
 .no-detail-img image {
-  width: 302rpx;
-  height: 256rpx;
+  width: 226.5rpx;
+  height: 192rpx;
 }

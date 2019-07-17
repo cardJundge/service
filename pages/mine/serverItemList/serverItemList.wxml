@@ -11,7 +11,7 @@
     </view>
     <view class='noData' wx:if='{{serverList.length==0}}'>暂无服务项目</view>
     <view wx:else>
-      <view class='each_server' wx:for='{{serverList}}' wx:for-item='item'>
+      <view class='each_server' wx:for='{{serverList}}' wx:for-item='item' wx:key="">
         <view class='each_content clearfix'>
           <view class='server_name_image'>
             <view class='server_image'>

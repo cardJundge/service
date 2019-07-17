@@ -31,7 +31,8 @@ Page({
       })
     }
     this.setData({
-      detail: JSON.parse(options.allData)
+      detail: JSON.parse(options.allData),
+      hostName: test
     })
     // 获取完整的年月日 时分秒，以及默认显示的数组
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
@@ -44,9 +45,6 @@ Page({
     });
     this.data.sessionId = wx.getStorageSync('PHPSESSID')
     this.data.serviceId = wx.getStorageSync('userid')
-    this.setData({
-      hostName: test
-    })
     var temp = this.data.detail.useful.split(' ')[0].split('-').concat(this.data.detail.useful.split(' ')[1].split(':'))
     for (var i in this.data.dateTimeArray1[0]){
       if (this.data.dateTimeArray1[0][i] == temp[0]){

@@ -60,7 +60,7 @@
               <text class='redInfor' wx:if="{{introErr}}">！</text>
             </label>
             <view class='label_con_text'>
-              <textarea type="text" bindfocus='cancelRed' class='inforDataText' id='intro' name="intro" placeholder='请输入简介' value='{{userInfor.intro}}'></textarea>
+              <textarea auto-height='true' type="text" bindfocus='cancelRed' class='inforDataText' id='intro' name="intro" placeholder='请输入简介' value='{{userInfor.intro}}'></textarea>
             </view>
             <!-- <view class='redInfor' style='text-align:left;font-size:10px;line-height:20px;' wx:if="{{introErr1}}">简介过长，长度为12</view> -->
           </view>

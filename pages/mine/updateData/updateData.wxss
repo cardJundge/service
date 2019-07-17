@@ -1,7 +1,9 @@
 /* pages/index/updateData/updateData.wxss */
-
-textarea {
-}
+/* ::-webkit-scrollbar {
+width: 0;
+height: 0;
+color: transparent;
+} */
 
 .container {
   width: 100%;
@@ -147,7 +149,7 @@ image {
   width: 480rpx;
   min-height: 80rpx;
   max-height: 240rpx;
-  height: 180rpx;
+  /* height: 180rpx; */
   line-height: 50rpx;
 }
 

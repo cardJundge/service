@@ -159,10 +159,11 @@ Page({
    */
   onLoad: function(options) {
     var that=this
-    // var scene = 30
+    // var scene = 5
     // if (scene) {
     if (options.scene){
       var scene = decodeURIComponent(options.scene)
+      app.globalData.coupon = ''
       app.globalData.coupon = scene
     }
     wx.getSystemInfo({

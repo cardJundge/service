@@ -31,6 +31,7 @@ Component({
           coupon_id: this.data.couponId
         },
         success: (res)=>{
+          app.globalData.coupon = ''
           if(res.data.status == 1) {
             wx.showToast({
               title: '豆子已入账，前往账户钱包查看...',

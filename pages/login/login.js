@@ -86,6 +86,30 @@ Page({
             })
           }, 1000)
 
+          wx.request({
+            url: getApp().globalData.hostName + 'service/index/visit_count', 
+            method: 'POST',
+            header: {
+              'content-type': 'application/json', // 默认值
+              'Cookie': 'PHPSESSID=' + res.data.session_id
+            },
+            data: {
+              user_id: res.data.service.id,
+              type: '3'
+            },
+            success: function (visitres) {
+              if (visitres.data.status == 1) {
+                console.log('访问成功');
+              } else {
+                console.log('访问失败');
+              }
+            },
+            fail: function (visitres) {
+              console.log('fail', visitres);
+            }
+          })
+
+
         } else {
           setTimeout(function() {
             that.setData({

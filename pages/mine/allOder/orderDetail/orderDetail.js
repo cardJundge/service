@@ -20,6 +20,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.model)
+        app.globalData.mobileType = res.model
+      }
+    })
+
     var iphoneReg = /iPhone X/
     if (getApp().globalData.mobileType.match(iphoneReg)) {
       this.setData({
@@ -29,6 +37,7 @@ Page({
       })
     }
     this.data.orderId = options.order_id
+
     if (options.formId == 1) { //从通知进来做登录处理
       that.setData({
         formId: true

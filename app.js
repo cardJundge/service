@@ -46,7 +46,7 @@ App({
           console.log(res)
           if (res.code) {
             wx.request({
-              url: getApp().globalData.hostName1 + '/service/login/index',
+              url: getApp().globalData.hostName1 + 'service/login/index',
               method: 'POST',
               data: {
                 js_code: res.code

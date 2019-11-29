@@ -87,6 +87,43 @@ Page({
   // 完成订单
   toComplete: function(e) {
     var that = this
+
+    that.data.order_id = e.currentTarget.id;
+    wx.request({
+      url: test + '/service/order/orderInfo',
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': 'PHPSESSID=' + that.data.sessionId
+      },
+      data: {
+        order_id: e.currentTarget.id,
+      },
+      success: function (res) {
+
+        for (var item in res.data.data.schedule) {
+          console.log(res.data.data.schedule[item].picture)
+          if (res.data.data.schedule[item].picture) {
+            that.orderComplete(that);
+            that.data.flag = true;
+            return;
+          }
+        }
+
+        if (!that.data.flag) {
+          wx.showToast({
+            title: '进度没有添加图片,无法点击完成!',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      }
+    })
+
+  },
+
+  //订单完成
+  orderComplete(that){
     wx.request({
       url: test + '/service/order/finish',
       method: 'GET',
@@ -95,15 +132,15 @@ Page({
         'Cookie': 'PHPSESSID=' + that.data.sessionId
       }, // 默认值
       data: {
-        order_id: e.currentTarget.id,
+        order_id: that.data.order_id,
       },
-      success: function(res) {
+      success: function (res) {
         if (res.data.status == 1) {
           wx.showToast({
             title: '订单完成',
           })
           for (let i in that.data.orderList) {
-            if (that.data.orderList[i].id == e.currentTarget.id) {
+            if (that.data.orderList[i].id == that.data.order_id) {
               var temp = 'orderList[' + i + '].work_status'
               that.setData({
                 [temp]: 4

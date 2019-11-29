@@ -104,9 +104,31 @@ Page({
     })
   },
   
-  // 完成订单
+  // 完成订单按钮
   toComplete: function () {
     var that = this
+    
+    for (var item in that.data.detailData.schedule) {
+
+      if (that.data.detailData.schedule[item].picture) {
+        that.data.flag = true;
+        that.orderComplete(that)
+        return;
+      }
+    }
+
+    if (!that.data.flag) {
+      wx.showToast({
+        title: '进度没有添加图片,无法点击完成!',
+        icon: 'none',
+        duration: 1000
+      })
+    }
+
+  },
+
+  //完成订单
+  orderComplete(that){
     wx.request({
       url: test + '/service/order/finish',
       method: 'GET',
@@ -131,6 +153,8 @@ Page({
       }
     })
   },
+
+
   toAllot: function (e) {
     wx.navigateTo({
       url: '../../../index/allot/allot?module=' + this.data.orderId + '&&moduleis=100',

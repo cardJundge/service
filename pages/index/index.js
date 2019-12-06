@@ -129,6 +129,11 @@ Page({
       url: './trailer/trailer',
     })
   },
+  toAgency: function () {
+    wx.navigateTo({
+      url: './agency/agency',
+    })
+  },
   toRescue: function () {
     wx.navigateTo({
       url: './rescue/rescue',
@@ -264,11 +269,11 @@ Page({
     var session_id = this.data.sessionId
     unhandle(that)
   },
-  toAgency: function () {
-    wx.navigateTo({
-      url: './adminAgency/adminAgency',
-    })
-  },
+  // toAgency: function () {
+  //   wx.navigateTo({
+  //     url: './adminAgency/adminAgency',
+  //   })
+  // },
   toAdminPeople: function () {
     wx.navigateTo({
       url: './adminPeople/adminPeople',

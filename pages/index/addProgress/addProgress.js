@@ -173,7 +173,7 @@ Page({
     ctx.takePhoto({
       quality: 'high',
       success: (res) => {
-console.log(res)
+        console.log(res)
         this.setData({
           src: res.tempImagePath,
           waiting: false
@@ -363,9 +363,11 @@ console.log(res)
     }) 
     console.log(that.data.modueis)
 
-    if (that.data.modueis==100){
+    if (that.data.modueis == 100){
       url ='service/order/schedule'
-    }else{
+    } else if (that.data.modueis == 101){
+      url = 'service/project/schedule'
+    } else {
       url = 'service/push/schedule'
     }
     wx.request({
@@ -396,6 +398,10 @@ console.log(res)
           }
         }
         if (res.data.status == 1) {
+          console.log('goon',that.data.goon)
+          if (that.data.goon == 'true') {
+            that.goon()
+          }
           imgNameArr = []
           wx.showToast({
             title: '添加成功',
@@ -418,6 +424,23 @@ console.log(res)
       }
     })
   },
+
+  goon: function() {
+    wx.request({
+      url: test + 'service/project/goon',
+      method: 'GET',
+      data: {
+        id: this.data.detailId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Cookie': 'PHPSESSID=' + this.data.sessionId
+      },// 默认值
+      success: res=> {
+        console.log(res)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -430,8 +453,10 @@ console.log(res)
     console.log(options)
     this.setData({
       detailId: options.detailId,
-      modueis: options.moduleis
+      modueis: options.modueis,
+      goon: options.goon ? options.goon : false
     })
+    console.log(this.data.modueis)
     wx.setStorageSync('freshFlag', true)
     var iphoneReg = /iPhone X/
     if (getApp().globalData.mobileType.match(iphoneReg)) {
@@ -468,8 +493,6 @@ console.log(res)
     })
 
     
-
-
     let lastState = 0;
     let lastTime = Date.now();
 
@@ -554,40 +577,8 @@ console.log(res)
     this.data.sessionId = wx.getStorageSync('PHPSESSID')
     console.log(this.data.sessionId)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
     wx.hideNavigationBarLoading() //完成停止加载
     wx.stopPullDownRefresh() //停止下拉刷新
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

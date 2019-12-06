@@ -1,0 +1,37 @@
+<!--年审代办-->
+<import src="../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <view class="list-body">
+    <view class="list-top">
+      <view class="search-bg">
+        <view class="search-box">
+          <view class="search">
+            <input placeholder-class="ph-class" type='text' placeholder="搜索业务" bindinput="search"></input>
+            <image src="/pages/img/icon_search.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="list-content" wx:if="{{!hasNoData}}">
+      <view class="list-item" wx:for="{{agencyList}}" bindtap="toAgencyDetails" data-id="{{item.id}}">
+        <view class="list-item-left">
+          <text>{{item.name}} | {{item.mobile}} | {{item.car_no}}</text>
+          <text>{{item.created_at}}</text>
+        </view>
+        <view class="list-item-right">
+          <text wx:if="{{item.status == 0}}">待接单</text>
+          <text wx:if="{{item.status == 1}}">待分配</text>
+          <text wx:if="{{item.status == 2}}">已分配</text>
+          <text wx:if="{{item.status == 3}}">进行中</text>
+          <text wx:if="{{item.status == 4}}">已取消</text>
+          <text wx:if="{{item.status == 5}}">已完成</text>
+        </view>
+      </view>
+      <view class="more-data" wx:if="{{hasMoreData}}" bindtap="getMoreData">点击加载更多...</view>
+    </view>
+    <view class="no-data" wx:if="{{hasNoData}}">
+      暂无数据
+    </view>
+  </view>
+</view>

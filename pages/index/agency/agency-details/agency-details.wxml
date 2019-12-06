@@ -1,0 +1,123 @@
+<!--年审代办-->
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+  <!-- 业务基本信息 -->
+  <view class="business-info">
+    <view class="info-title">
+      <text>业务基本信息</text>
+      <!-- <i-icon type="more" size="24" bindtap="operation" /> -->
+    </view>
+    <view class="info-content">
+      <view class="info-content-item">
+        姓名:
+        <text decode="true">&nbsp;&nbsp;{{agencyDetails.name}}</text>
+      </view>
+      <view class="info-content-item">
+        电话:
+        <text decode="true">&nbsp;&nbsp;{{agencyDetails.mobile}}</text>
+      </view>
+      <view class="info-content-item">
+        车牌号:
+        <text decode="true">&nbsp;&nbsp;{{agencyDetails.car_no}}</text>
+      </view>
+      <view class="info-content-item">
+        检测类型:
+        <text decode="true">&nbsp;&nbsp;{{agencyDetails.type == 0 ? '上线检测' : '代领年检标'}}</text>
+      </view>
+      <view class="info-content-item">
+        地址:
+        <text decode="true">&nbsp;&nbsp;{{agencyDetails.address}}</text>
+      </view>
+      <view class="info-content-item">
+        取车地址:
+        <text decode="true">&nbsp;&nbsp;{{agencyDetails.take_car_address}}</text>
+      </view>
+      <view class="info-content-box">
+        <view class="box-cell">
+          <text class="img-title">行驶证: </text>
+          <view class="img-cell">
+            <view class="img">
+              <image src="{{hostName}}uploads/work/{{agencyDetails.driver_license}}"></image>
+              <text>行驶证正面</text>
+            </view>
+          </view>
+        </view>
+        <view class="box-cell">
+          <text class="img-title">行驶证副本: </text>
+          <view class="img-cell">
+            <view class="img" wx:for="{{imgLicenseArr}}" wx:for-item="imgitem">
+              <image src="{{hostName}}uploads/work/{{imgitem}}"></image>
+              <text>行驶证副本</text>
+            </view>
+          </view>
+        </view>
+        <view class="box-cell" wx:if="{{agencyDetails.car_policy}}">
+          <text class="img-title">车辆保险单副本: </text>
+          <view class="img-cell">
+            <view class="img img-insurance">
+              <image src="{{hostName}}uploads/work/{{agencyDetails.car_policy}}"></image>
+              <text>车辆保险单副本</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 业务时效 -->
+  <view class="business-speed">
+    <view class="speed-title">业务时效</view>
+    <view class="speed-content" wx:if="{{schedule.length !== 0}}">
+      <view>
+        <i-steps current="{{schedule.length}}" direction="vertical">
+          <i-step wx:for="{{schedule}}" wx:for-item="scheduleitem">
+            <view slot="title" class="step-title">
+              <text>{{scheduleitem.title}}</text>
+              <text>{{scheduleitem.date}}</text>
+            </view>
+            <view slot="content" class="step-content">
+              <text>{{scheduleitem.content}}</text>
+              <view class="step-img-box">
+                <view class="step-img" wx:for="{{scheduleitem.imgProgressArr}}" wx:for-item="imageitem">
+                  <image src="{{hostName}}uploads/work/{{imageitem}}"></image>
+                </view>
+              </view>
+            </view>
+          </i-step>
+        </i-steps>
+      </view>
+    </view>
+  </view>
+  <!-- 操作按钮栏 -->
+  <view class="operation-bar">
+    <view class="operation-bar-item" bindtap="toReceipt" wx:if="{{agencyDetails.status == 0}}">
+      <view>
+        <i-icon type="other" size="24" />接单</view>
+    </view>
+    <view class="operation-bar-item" wx:if="{{agencyDetails.status == 1 && !agencyDetails.task_id}}">
+      <view bindtap="toAddPrograss">
+        <i-icon type="other" size="24" />添加进度</view>
+      <view bindtap="toDistribution">
+        <i-icon type="other" size="24" />分配作业员</view>
+    </view>
+    <view class="operation-bar-item" wx:if="{{agencyDetails.status == 2 && agencyDetails.task_id}}">
+      <view>
+        <i-icon type="other" size="24" />已分配作业员</view>
+    </view>
+    <view class="operation-bar-item" wx:if="{{agencyDetails.status == 3 && !agencyDetails.task_id}}">
+      <view bindtap="toAddPrograss">
+        <i-icon type="other" size="24" />添加进度</view>
+      <view bindtap="toFinish">
+        <i-icon type="other" size="24" />完成</view>
+    </view>
+  </view>
+  <!-- 底部模态框 -->
+  <view class="bottom-modal-body" wx:if="{{showBottomOperation}}" catchtap="closeModal">
+    <view class="bottom-content" catchtap="stopBubble">
+      <view class="bottom-item" bindtap="toDel">
+        <i-icon class="icon" type="trash_fill" size="18" />
+        <text>删除</text>
+      </view>
+    </view>
+  </view>
+</view>

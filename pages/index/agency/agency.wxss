@@ -1,0 +1,137 @@
+/* 年审代办 */
+page {
+  font-size: 30rpx;
+}
+
+.list-top {
+  width: 100%;
+  height: 60rpx;
+}
+
+.search-bg {
+  width: 100%;
+  height: 80rpx;
+  background: #3891F8;
+  position: relative;
+}
+
+.search-box {
+  width: 100%;
+  height: 60rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: -30rpx;
+  top: 0;
+  left: 0;
+}
+
+.search {
+  width: 702rpx;
+  height: 60rpx;
+  background: #fff;
+  border: 2rpx solid #f2f2f2;
+  border-radius: 36rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+}
+
+.search image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.add {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.loading-img {
+  width: 100%;
+  height: 80rpx;
+  margin-top: 61rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-img image{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.list-content {
+  padding-top: 20rpx;
+}
+
+.list-item {
+  width: 100%;
+  height: 135rpx;
+  border-bottom: 1rpx solid #F7F7F7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24rpx;
+}
+
+.list-item-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.list-item-left text:first-child {
+  margin-bottom: 12rpx;
+}
+
+.list-item-left text:last-child {
+  font-size: 24rpx;
+  color: #737373;
+}
+
+.list-item-right {
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 30rpx;
+  color: #fff;
+  background: #3891F8;
+}
+
+.more-data {
+  width: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  color: #737373;
+}
+
+.no-data {
+  width: 100%;
+  margin-top: 120rpx;
+  text-align: center;
+  color: #737373;
+}
+
+.status01 {
+  background: #3891F8;
+}
+.status02 {
+  background: #FF451A;
+}
+.status03 {
+  background: #14D680;
+}
+.status04 {
+  background: #FFA91A;
+}
+.status05 {
+  background: #14D680;
+}
+.status06 {
+  background: #D0D0D0;
+}

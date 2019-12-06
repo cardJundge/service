@@ -1,0 +1,187 @@
+/* 年审代办 */
+
+page {
+  font-size: 30rpx;
+}
+
+view {
+  box-sizing: border-box;
+}
+
+.business-info {
+}
+
+.info-title {
+  width: 100%;
+  height: 90rpx;
+  padding: 0 24rpx;
+  background-color: #fafafa;
+  color: #4f93fd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-content {
+  width: 100%;
+  padding: 0 24rpx;
+}
+
+.info-content-item {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.info-content-box {
+}
+
+.box-cell {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12rpx;
+}
+
+.img-title {
+  line-height: 90rpx;
+}
+
+.img-cell {
+  display: flex;
+}
+
+.img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50rpx;
+}
+
+.img image {
+  width: 240rpx;
+  height: 180rpx;
+  border: 1rpx solid #eee;
+}
+
+.img-insurance image {
+  width: 240rpx;
+  height: 320rpx;
+}
+
+.img text {
+  font-size: 24rpx;
+  line-height: 48rpx;
+}
+
+.business-speed {
+  padding-bottom: 138rpx;
+}
+
+.speed-title {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0 24rpx;
+  background-color: #fafafa;
+  color: #4f93fd;
+}
+
+.speed-content {
+  padding: 12rpx 0;
+}
+
+.step-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-title text:last-child {
+  font-weight: normal;
+  font-size: 24rpx;
+  color: #80848f;
+}
+
+.step-content {
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+}
+
+.step-img-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.step-img {
+  width: 146rpx;
+  height: 146rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #eee;
+  margin-right: 18rpx;
+  margin-bottom: 14rpx;
+}
+
+.step-img image {
+  width: 146rpx;
+  height: 146rpx;
+}
+
+.operation-bar {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #4f93fd;
+  color: #ffffff;
+}
+
+.operation-bar-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.operation-bar-item view {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 底部操作模态框 */
+
+.bottom-modal-body {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.bottom-content {
+  width: 100%;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.bottom-item {
+  width: 100%;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 24rpx;
+}

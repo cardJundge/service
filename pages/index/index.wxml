@@ -66,6 +66,18 @@
         </button>
       </view>
     </form>
+    <!-- 年审代办 -->
+    <form bindsubmit='submitFormId' report-submit='true'>
+      <view class='task' bindtap="toAgency">
+        <button form-type='submit' hover-class="none" class='formIdBtn'>
+          <view class="zan-icon">
+            <image src='../img/agency.png' style='margin-top:5px;width:35px;height:35px;'></image>
+            <view class="badge-count" wx:if="{{false}}">2</view>
+          </view>
+          <view>年审代办</view>
+        </button>
+      </view>
+    </form>
   </view>
   <view class="titleText" wx:if='{{serviceType!=1&&serviceType!=11}}'>订单管理</view>
   <form bindsubmit='submitFormId' report-submit='true' wx:if='{{serviceType!=1&&serviceType!=11}}'>

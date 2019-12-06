@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-steps": "../../../../utils/steps/index",
+    "i-step": "../../../../utils/step/index",
+    "i-icon": "../../../../utils/icon/index"
+  }
+}

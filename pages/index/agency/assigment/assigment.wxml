@@ -1,0 +1,31 @@
+<!--分配-->
+<import src="../../../template/top1.wxml" />
+<template is="top" data="{{titleTop,back_cell,title_cell}}"></template>
+<view class='{{container}}'>
+<view class="assignment-top">
+    <view class="search-bg">
+      <view class="search-box">
+        <view class="search">
+          <input placeholder-class="ph-class" type='text' placeholder="搜索人员" bindinput="search"></input>
+          <image src="/pages/img/icon_search.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="assignment-content" wx:if="{{!someone}}">
+    <view class="assignment-content-null">
+      <image src="cloud://chedou-service.6368-chedou-service/images/someone_null_bg.png"></image>
+      <text>暂无人员</text>
+      <view bindtap="addStaff">立即添加</view>
+    </view>
+  </view>
+  <view class="assignment-content" wx:if="{{someone}}">
+    <radio-group class="radiogroup" bindchange="taskChange">
+      <view class="assignment-item" wx:for="{{taskList}}" wx:key="">
+        <label>{{item.nickname}}</label>
+        <radio value="{{item.id}}" checked="{{item.checked}}"></radio>
+      </view>
+    </radio-group>
+    <view class="assignment-btn" bindtap="submitAssignment">确 认</view>
+  </view>
+</view>

@@ -39,7 +39,6 @@ Page({
       })
     } 
     var iphoneReg = /iPhone X/
-    console.log(app.globalData.mobileType)
     if (app.globalData.mobileType.match(iphoneReg)) {
       this.setData({
         back_cell: 'back_cellX',
@@ -52,7 +51,8 @@ Page({
     this.data.serviceId = wx.getStorageSync('userid')
     this.data.sessionId = wx.getStorageSync('PHPSESSID')
     this.setData({
-      serviceType: wx.getStorageSync('type')
+      serviceType: wx.getStorageSync('type'),
+      servicesId: app.globalData.userInfo.service.id
     })
     var moduleTemp = wx.getStorageSync('module')
     that.setData({

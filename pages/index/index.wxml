@@ -67,7 +67,7 @@
       </view>
     </form>
     <!-- 年审代办 -->
-    <form bindsubmit='submitFormId' report-submit='true'>
+    <form bindsubmit='submitFormId' report-submit='true' wx:if="{{servicesId == 3982 || servicesId == 4090}}">
       <view class='task' bindtap="toAgency">
         <button form-type='submit' hover-class="none" class='formIdBtn'>
           <view class="zan-icon">

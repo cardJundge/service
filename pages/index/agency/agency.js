@@ -98,5 +98,9 @@ Page({
     wx.navigateTo({
       url: './agency-details/agency-details?listId=' + listId,
     })
+  },
+
+  search() {
+    
   }
 })

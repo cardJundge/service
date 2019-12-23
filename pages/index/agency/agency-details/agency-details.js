@@ -60,8 +60,10 @@ Page({
               item.imgProgressArr = item.picture.split(",")
             }
           })
+
+
           this.setData({
-            schedule: res.data.schedule
+            schedule: res.data.schedule.reverse()
           })
         } else {
           wx.showToast({
@@ -165,6 +167,38 @@ Page({
   closeModal() {
     this.setData({
       showBottomOperation: false
+    })
+  },
+
+  //预览照片
+  previewImage(e){
+
+    var imgArr =[];
+    imgArr.push(e.currentTarget.dataset.src)
+
+    wx.previewImage({
+      urls: imgArr,
+      current: imgArr[0]
+    })
+  },
+
+  previewImage1(e){
+    var that = this;
+
+    var imgArr1 = [];
+
+    console.log("hhhh",e)
+
+    var imgProgressArr = e.currentTarget.dataset.imgprogressarr;
+    var imageindex = e.currentTarget.dataset.imgindex;
+
+    imgProgressArr.forEach((item, index) => {
+      imgArr1.push(that.data.hostName + "uploads/work/" + item)
+    })
+
+    wx.previewImage({
+      urls: imgArr1,
+      current: imgArr1[imageindex]
     })
   }
 })

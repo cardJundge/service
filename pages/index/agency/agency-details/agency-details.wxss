@@ -185,3 +185,8 @@ view {
 .icon {
   margin-right: 24rpx;
 }
+
+.schedulelist{
+  display: flex;
+  flex-direction: column-reverse;
+}

@@ -361,11 +361,12 @@ Page({
     that.setData({
       submitOver:true
     }) 
-    console.log(that.data.modueis)
+    console.log(that.data.moduleis)
 
-    if (that.data.modueis == 100){
+    if (that.data.moduleis == 100) {
+      
       url ='service/order/schedule'
-    } else if (that.data.modueis == 101){
+    } else if (that.data.moduleis == 101){
       url = 'service/project/schedule'
     } else {
       url = 'service/push/schedule'
@@ -453,10 +454,10 @@ Page({
     console.log(options)
     this.setData({
       detailId: options.detailId,
-      modueis: options.modueis,
+      moduleis: options.moduleis,
       goon: options.goon ? options.goon : false
     })
-    console.log(this.data.modueis)
+    console.log(this.data.moduleis)
     wx.setStorageSync('freshFlag', true)
     var iphoneReg = /iPhone X/
     if (getApp().globalData.mobileType.match(iphoneReg)) {

@@ -38,7 +38,8 @@
           <text class="img-title">行驶证: </text>
           <view class="img-cell">
             <view class="img">
-              <image src="{{hostName}}uploads/work/{{agencyDetails.driver_license}}"></image>
+              <image src="{{hostName}}uploads/evaluate/{{agencyDetails.driver_license}}" 
+              bindtap="previewImage" data-src="{{hostName}}uploads/evaluate/{{agencyDetails.driver_license}}"></image>
               <text>行驶证正面</text>
             </view>
           </view>
@@ -47,7 +48,8 @@
           <text class="img-title">行驶证副本: </text>
           <view class="img-cell">
             <view class="img" wx:for="{{imgLicenseArr}}" wx:for-item="imgitem">
-              <image src="{{hostName}}uploads/work/{{imgitem}}"></image>
+              <image src="{{hostName}}uploads/evaluate/{{imgitem}}" bindtap="previewImage" 
+              data-src="{{hostName}}uploads/evaluate/{{imgitem}}"></image>
               <text>行驶证副本</text>
             </view>
           </view>
@@ -56,7 +58,8 @@
           <text class="img-title">车辆保险单副本: </text>
           <view class="img-cell">
             <view class="img img-insurance">
-              <image src="{{hostName}}uploads/work/{{agencyDetails.car_policy}}"></image>
+              <image src="{{hostName}}uploads/evaluate/{{agencyDetails.car_policy}}" bindtap="previewImage" 
+              data-src="{{hostName}}uploads/evaluate/{{agencyDetails.car_policy}}"></image>
               <text>车辆保险单副本</text>
             </view>
           </view>
@@ -70,7 +73,7 @@
     <view class="speed-content" wx:if="{{schedule.length !== 0}}">
       <view>
         <i-steps current="{{schedule.length}}" direction="vertical">
-          <i-step wx:for="{{schedule}}" wx:for-item="scheduleitem">
+          <i-step wx:for="{{schedule}}" wx:for-item="scheduleitem" >
             <view slot="title" class="step-title">
               <text>{{scheduleitem.title}}</text>
               <text>{{scheduleitem.date}}</text>
@@ -78,8 +81,10 @@
             <view slot="content" class="step-content">
               <text>{{scheduleitem.content}}</text>
               <view class="step-img-box">
-                <view class="step-img" wx:for="{{scheduleitem.imgProgressArr}}" wx:for-item="imageitem">
-                  <image src="{{hostName}}uploads/work/{{imageitem}}"></image>
+                <view class="step-img" wx:for="{{scheduleitem.imgProgressArr}}" wx:for-item="imageitem" 
+                wx:for-index="imageindex" wx:key="">
+                  <image src="{{hostName}}uploads/work/{{imageitem}}" bindtap="previewImage1" 
+                  data-imgProgressArr="{{scheduleitem.imgProgressArr}}" data-imgindex="{{imageindex}}"></image>
                 </view>
               </view>
             </view>

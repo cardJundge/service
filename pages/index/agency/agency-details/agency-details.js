@@ -117,11 +117,11 @@ Page({
   toAddPrograss() {
     if (this.data.agencyDetails.status >= 3) {
       wx.navigateTo({
-        url: '../../addProgress/addProgress?detailId=' + this.data.listId + '&modueis=' + 101,
+        url: '../../addProgress/addProgress?detailId=' + this.data.listId + '&moduleis=' + 101,
       })
     } else {
       wx.navigateTo({
-        url: '../../addProgress/addProgress?detailId=' + this.data.listId + '&modueis=' + 101 + '&goon=' + true,
+        url: '../../addProgress/addProgress?detailId=' + this.data.listId + '&moduleis=' + 101 + '&goon=' + true,
       })
     }
     

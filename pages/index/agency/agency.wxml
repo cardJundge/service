@@ -19,14 +19,14 @@
           <text>{{item.name}} | {{item.mobile}} | {{item.car_no}}</text>
           <text>{{item.created_at}}</text>
         </view>
-        <view class="list-item-right">
-          <text wx:if="{{item.status == 0}}">待接单</text>
-          <text wx:if="{{item.status == 1}}">待分配</text>
-          <text wx:if="{{item.status == 2}}">已分配</text>
-          <text wx:if="{{item.status == 3}}">进行中</text>
-          <text wx:if="{{item.status == 4}}">已取消</text>
-          <text wx:if="{{item.status == 5}}">已完成</text>
-        </view>
+        <!-- <view class="list-item-right"> -->
+        <text class="list-item-right" wx:if="{{item.status == 0}}">待接单</text>
+        <text class="list-item-right" wx:if="{{item.status == 1}}">待分配</text>
+        <text class="list-item-right status03" wx:if="{{item.status == 2}}">已分配</text>
+        <text class="list-item-right status05" wx:if="{{item.status == 3}}">进行中</text>
+        <text class="list-item-right status06" wx:if="{{item.status == 4}}">已取消</text>
+        <text class="list-item-right status06" wx:if="{{item.status == 5}}">已完成</text>
+        <!-- </view> -->
       </view>
       <view class="more-data" wx:if="{{hasMoreData}}" bindtap="getMoreData">点击加载更多...</view>
     </view>

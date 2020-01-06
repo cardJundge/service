@@ -133,6 +133,7 @@ view {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 9;
   background-color: #4f93fd;
   color: #ffffff;
 }
